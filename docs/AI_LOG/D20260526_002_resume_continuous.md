@@ -111,6 +111,11 @@
 - auto-pick: `/flow:feature feedback`(inline 実行)。論点-002 は D-043 承認の案A(自前DB先行)、SEC-004(feedback ゲスト送信)+ SEC-002(PII scrub)反映
 - chosen_type: auto-recommended
 
+### 反復 14 (2026-05-27)
+- 判定: P3/P4 残り機能 → inspection (依存 inventory/notification 済)
+- auto-pick: `/flow:feature inspection`(inline)。期限リマインド cron + 季節点検モード
+- chosen_type: auto-recommended
+
 ### D20260526-028
 - question: 課金モデルの再変更 (買い切り → 投げ銭)
 - chosen: **100円の投げ銭(任意支援)**。社会善アプリのためペイウォール廃止 → 買い物 TODO リスト含む全機能を無料化。投げ銭は機能アンロックを伴わない (Stripe・ログイン不要・複数回可)

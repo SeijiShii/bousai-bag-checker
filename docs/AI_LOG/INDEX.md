@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 15 (..._feature:db/ui/auth/notification/legal/service-info/billing/inventory/feedback)
-**総 decision 数**: 51
-**Phase 2 設計進捗**: 横断 7/7 + 機能 2/4 (inventory/feedback)。残: inspection/shopping-list → 全機能 P3.7 spec-review → tdd
+**総セッション数**: 16 (..._feature:..../inventory/feedback/inspection)
+**総 decision 数**: 53
+**Phase 2 設計進捗**: 横断 7/7 + 機能 3/4 (inventory/feedback/inspection)。残: shopping-list → 全機能 P3.7 spec-review → tdd
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -15,6 +15,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_016_feature_inspection.md](./D20260527_016_feature_inspection.md) | 2026-05-27 | /flow:feature | inspection | D20260527-052〜053 | 完了 |
 | [D20260527_015_feature_feedback.md](./D20260527_015_feature_feedback.md) | 2026-05-27 | /flow:feature | feedback | D20260527-050〜051 | 完了 |
 | [D20260527_014_feature_inventory.md](./D20260527_014_feature_inventory.md) | 2026-05-27 | /flow:feature | inventory | D20260527-048〜049 | 完了 |
 | [D20260527_013_feature__shared_billing.md](./D20260527_013_feature__shared_billing.md) | 2026-05-27 | /flow:feature | _shared/billing | D20260527-046〜047 | 完了 |
@@ -35,6 +36,8 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-053 | /flow:feature | inspection cron | Cron シークレット保護+通知トリガー | auto-recommended | D20260527_016_feature_inspection.md |
+| D20260527-052 | /flow:feature | inspection タグ | feature/auth/stateful、期限抽出+季節点検 | auto-recommended | D20260527_016_feature_inspection.md |
 | D20260527-051 | /flow:feature | feedback SEC | レート制限/bot+PII scrub(SEC-004/002) | auto-recommended | D20260527_015_feature_feedback.md |
 | D20260527-050 | /flow:feature | feedback 論点002 | 案A 自前DB+運用通知(hub後、D-043承認) | auto-recommended | D20260527_015_feature_feedback.md |
 | D20260527-049 | /flow:feature | inventory SEC/E2E | withOwner(IDOR防止)+E2E L1/L2採用 | auto-recommended | D20260527_014_feature_inventory.md |

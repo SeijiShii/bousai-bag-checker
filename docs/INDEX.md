@@ -18,7 +18,7 @@
 |---|---|---|---|---|---|---|---|---|
 | 3 | ✅ | [inventory](./inventory/) | 設計済 | ✅ | 0 | 0 | 0 | [INDEX](./inventory/INDEX.md) |
 | 3 | ❌ | [feedback](./feedback/) | 設計済 | ✅ | 0 | 0 | 0 | [INDEX](./feedback/INDEX.md) |
-| 4 | ❌ | [inspection](./inspection/) | 未設計 | ❌ | 0 | 0 | 0 | [INDEX](./inspection/INDEX.md) |
+| 4 | ❌ | [inspection](./inspection/) | 設計済 | ✅ | 0 | 0 | 0 | [INDEX](./inspection/INDEX.md) |
 | 4 | ❌ | [shopping-list](./shopping-list/) | 未設計 | ❌ | 0 | 0 | 0 | [INDEX](./shopping-list/INDEX.md) |
 
 ## 横断フォルダ
