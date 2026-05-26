@@ -148,8 +148,14 @@
 ### 反復 17 (2026-05-27、復帰後)
 - 判定: P4 (Phase 2 設計完了 + 全機能 spec-review 済 + Phase 3 実装未着手) → tdd 連続実装。P3.7 は全 905 生成済で不発火、P4.4(b) は画面未実装で未発火
 - auto-pick: `/flow:tdd`(連続実装モード、scaffold → 優先度順 db から)
+- 結果: _shared/db 実装完了(scaffold + 9テスト green、commit e0a7f3f/7e2c477)
 - chosen_type: auto-recommended
 - 備考: 直前の誤停止(設計完了で一区切り)を契約違反として復帰
+
+### 反復 18 (2026-05-27)
+- 判定: 連続実装 → 次=_shared/ui (P1 基盤、101 不在、依存 design-system 済)
+- auto-pick: `/flow:tdd _shared/ui`(React/Vite/Tailwind scaffold 追加 → トークン → 基本コンポーネント TDD)
+- chosen_type: auto-recommended
 
 ### D20260526-028
 - question: 課金モデルの再変更 (買い切り → 投げ銭)

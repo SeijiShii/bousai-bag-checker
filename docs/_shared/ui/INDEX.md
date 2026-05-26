@@ -15,6 +15,8 @@ UI 基盤・デザイントークン。design-system.md(ティールグリーン
 | 002 | [002__shared_ui_PLAN.md](./002__shared_ui_PLAN.md) | PLAN | 設計済 | 2026-05-26 | 12ファイル + 3 Phase (tokens→base→layout/illust) |
 | 003 | [003__shared_ui_UNIT_TEST.md](./003__shared_ui_UNIT_TEST.md) | UNIT_TEST | 設計済 | 2026-05-26 | トークン/a11y/絵文字不使用検証。視覚回帰は --review-only |
 | 004 | (E2E は cross-cutting でスキップ。視覚レビューは /flow:design --review-only) | — | — | — | — |
+| 101 | [101__shared_ui_IMPL_REPORT.md](./101__shared_ui_IMPL_REPORT.md) | IMPL_REPORT | 実装完了 | 2026-05-27 | トークン + 基本コンポーネント、13テスト green |
+| 102 | [102__shared_ui_UNIT_TEST_REPORT.md](./102__shared_ui_UNIT_TEST_REPORT.md) | UNIT_TEST_REPORT | 実装完了 | 2026-05-27 | 13/13 green(絵文字不使用/a11y/3状態色) |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
