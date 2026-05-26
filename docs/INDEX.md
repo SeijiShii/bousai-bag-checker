@@ -16,7 +16,7 @@
 ## 機能フォルダ
 | 優先度 | 基盤 | フォルダ | 状態 | 設計完了 | 改修件数 | バグ修正件数 | クレーム件数 | INDEX |
 |---|---|---|---|---|---|---|---|---|
-| 3 | ✅ | [inventory](./inventory/) | 設計済 | ✅ | 0 | 0 | 0 | [INDEX](./inventory/INDEX.md) |
+| 3 | ✅ | [inventory](./inventory/) | 実装完了 | ✅ | 0 | 0 | 0 | [INDEX](./inventory/INDEX.md) |
 | 3 | ❌ | [feedback](./feedback/) | 設計済 | ✅ | 0 | 0 | 0 | [INDEX](./feedback/INDEX.md) |
 | 4 | ❌ | [inspection](./inspection/) | 設計済 | ✅ | 0 | 0 | 0 | [INDEX](./inspection/INDEX.md) |
 | 4 | ❌ | [shopping-list](./shopping-list/) | 設計済 | ✅ | 0 | 0 | 0 | [INDEX](./shopping-list/INDEX.md) |
