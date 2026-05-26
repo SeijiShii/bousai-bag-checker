@@ -26,7 +26,7 @@
 |---|---|---|---|---|
 | 1 | [_shared/db](./_shared/db/) | 設計済 | ✅ | [INDEX](./_shared/db/INDEX.md) |
 | 1 | [_shared/ui](./_shared/ui/) | 設計済 | ✅ | [INDEX](./_shared/ui/INDEX.md) |
-| 2 | [_shared/auth](./_shared/auth/) | 未設計 | ❌ | [INDEX](./_shared/auth/INDEX.md) |
+| 2 | [_shared/auth](./_shared/auth/) | 設計済 | ✅ | [INDEX](./_shared/auth/INDEX.md) |
 | 2 | [_shared/notification](./_shared/notification/) | 未設計 | ❌ | [INDEX](./_shared/notification/INDEX.md) |
 | 2 | [_shared/legal](./_shared/legal/) | 未設計 | ❌ | [INDEX](./_shared/legal/INDEX.md) |
 | 2 | [_shared/service-info](./_shared/service-info/) | 未設計 | ❌ | [INDEX](./_shared/service-info/INDEX.md) |
