@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 30 (... + tdd:...,shopping-list)
-**総 decision 数**: 78
-**進捗**: **P4 tdd 実装完了 11/11**(計102テスト green)。次=P4.5 E2E gate / P4.4(b) Design 視覚レビュー → app shell bootstrap → P4.7 Release
+**総セッション数**: 31 (... + tdd:shopping-list, app-shell bootstrap)
+**総 decision 数**: 82
+**進捗**: **P4 unit 11/11 + app shell bootstrap 完了**(134テスト green、keyless 起動可、build OK、本番api経路配線済)。次=P4.4(b) Design 視覚レビュー / P4.5 E2E gate(両方 app shell で解錠済)→ P4.7 Release(実キー+デプロイ)
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
@@ -16,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_031_tdd_app-shell.md](./D20260527_031_tdd_app-shell.md) | 2026-05-27 | /flow:auto (bootstrap) | app-shell | D20260527-079〜082 | 完了 |
 | [D20260527_030_tdd_shopping-list.md](./D20260527_030_tdd_shopping-list.md) | 2026-05-27 | /flow:tdd | shopping-list | D20260527-078 | 完了 |
 | [D20260527_029_tdd_inspection.md](./D20260527_029_tdd_inspection.md) | 2026-05-27 | /flow:tdd | inspection | D20260527-077 | 完了 |
 | [D20260527_028_tdd_feedback.md](./D20260527_028_tdd_feedback.md) | 2026-05-27 | /flow:tdd | feedback | D20260527-076 | 完了 |
@@ -51,6 +52,10 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-082 | /flow:auto | app-shell Phase E | dev launcher(keyless smoke)+CI+.env.example、O36/O37 完了 | auto-recommended | D20260527_031_tdd_app-shell.md |
+| D20260527-081 | /flow:auto | app-shell Phase D | api core(SEC-001/PGlite)+Vercel adapters+httpBackend、実SDKはrelease注入 | auto-recommended | D20260527_031_tdd_app-shell.md |
+| D20260527-080 | /flow:auto | app-shell データ層 | injectable Backend port(memory keyless/http本番)、最小pathルーティング | auto-recommended | D20260527_031_tdd_app-shell.md |
+| D20260527-079 | /flow:auto | 全11後の次アクション | app shell bootstrap を no-key Class A 前提作業として実施(§4.5.1#0)、停止しない | auto-recommended | D20260527_031_tdd_app-shell.md |
 | D20260527-078 | /flow:tdd | shopping-list 実装 | CSV安全(R3)+重複防止(R2)+購入管理+無料UI(D-028)、11テスト green、全11実装完了 | auto-recommended | D20260527_030_tdd_shopping-list.md |
 | D20260527-077 | /flow:tdd | inspection 実装 | 期限抽出+cron冪等(R2)+季節点検、freshness共有(R1)、テスト green | auto-recommended | D20260527_029_tdd_inspection.md |
 | D20260527-076 | /flow:tdd | feedback 実装 | 👍/👎+バグ報告+PII scrub(SEC-002)+レート制限(SEC-004)、8テスト green | auto-recommended | D20260527_028_tdd_feedback.md |
