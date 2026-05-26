@@ -1,8 +1,8 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
-**最終更新**: 2026-05-26 20:44 (+09:00)
-**総セッション数**: 11 (concept / auto進行中 / secure / estimate×2 / design / feature:db/ui/auth/notification/legal)
-**総 decision 数**: 42
+**最終更新**: 2026-05-27 (+09:00)
+**総セッション数**: 12 (concept / auto進行中 / secure / estimate×2 / design / feature:db/ui/auth/notification/legal/service-info)
+**総 decision 数**: 45
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -14,6 +14,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_012_feature__shared_service-info.md](./D20260527_012_feature__shared_service-info.md) | 2026-05-27 | /flow:feature | _shared/service-info | D20260527-044〜045 | 完了 |
 | [D20260526_011_feature__shared_legal.md](./D20260526_011_feature__shared_legal.md) | 2026-05-26 | /flow:feature | _shared/legal | D20260526-041〜042 | 完了 |
 | [D20260526_010_feature__shared_notification.md](./D20260526_010_feature__shared_notification.md) | 2026-05-26 | /flow:feature | _shared/notification | D20260526-038〜040 | 完了 |
 | [D20260526_009_feature__shared_auth.md](./D20260526_009_feature__shared_auth.md) | 2026-05-26 | /flow:feature | _shared/auth | D20260526-035〜037 | 完了 |
@@ -30,6 +31,9 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-045 | /flow:feature | svc-info 認可 | 共有トークン+レート制限+PII非混入(SEC-004部分) | auto-recommended | D20260527_012_feature__shared_service-info.md |
+| D20260527-044 | /flow:feature | svc-info 論点003 | MVP最小スキーマ先行(契約SoT=service-hub) | auto-recommended | D20260527_012_feature__shared_service-info.md |
+| D20260527-043 | /flow:auto | seiji論点の進め方(user) | concept推奨でauto-pick進行(003/001/002) | explicit-choice | D20260526_002_resume_continuous.md |
 | D20260526-042 | /flow:feature | legal 構成 | privacy/terms/特商法(投げ銭)+免責、文言は公開前human | auto-recommended | D20260526_011_feature__shared_legal.md |
 | D20260526-041 | /flow:feature | legal タグ | cross-cutting (静的法務ページ) | auto-recommended | D20260526_011_feature__shared_legal.md |
 | D20260526-040 | /flow:feature | notif schema | notifications/email_deliveries 追加(配信履歴/コスト) | auto-recommended | D20260526_010_feature__shared_notification.md |
@@ -79,7 +83,8 @@
 |---|---|---|---|
 | [論点-001] | 期限のない品目の鮮度の扱い | D20260526_001 | concept §8 |
 | [論点-002] | feedback-hub 未構築 | D20260526_001 | concept §8 |
-| [論点-003] | service-info スキーマ | D20260526_001 | concept §8 |
+| [論点-003] | service-info スキーマ | D20260526_001 | **dispatched-to-feature** (MVP最小先行、調整は論点-S-svc-1) |
+| [論点-S-svc-1] | service-hub 契約スキーマ確定 | D20260527_012 | 契約確定時 (担当 seiji) |
 | [論点-006] | [SEC-003] 入力検証 (Zod/CSV/XSS) | D20260526_003 | concept §8、feature 設計時解消 |
 | [論点-007] | [SEC-004] レート制限/公開EP | D20260526_003 | concept §8、feature 設計時解消 |
 | [論点-S-db-1] | freshness_type 最終形 | D20260526_006 | inventory 設計時 (担当 seiji) |

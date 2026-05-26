@@ -414,6 +414,7 @@ service-hub → /api/service-info を pull(アプリ層指標)
 - **推奨**: service-hub の concept/SPEC を参照して契約確定後に実装(契約 SoT=service-hub)。MVP では最小(uptime/エラー数/ユーザー数程度)で先行可
 - **判断期限**: _shared/service-info 設計時
 - **担当**: seiji
+- **status**: 2026-05-27 dispatched-to-feature — _shared/service-info SPEC で MVP 最小スキーマ先行を採用 (D20260527-043 auto-pick 承認、論点-S-svc-1 で契約確定後の調整を追跡)
 
 ### [論点-004] [SEC-001] 認可漏れ・所有者分離: High
 - **status**: `accepted-as-requirement`
@@ -454,7 +455,7 @@ service-hub → /api/service-info を pull(アプリ層指標)
 
 ### [論点-007] [SEC-004] レート制限 / 公開エンドポイント: Medium
 - **status**: `open`
-- **status 履歴**: 2026-05-26 20:20 open
+- **status 履歴**: 2026-05-26 20:20 open → 2026-05-27 service-info 部分は dispatched-to-feature (service-info SPEC で共有トークン+レート制限を設計)、feedback 部分は open (feedback 設計時)
 - **影響範囲**: feedback, _shared/service-info
 - **観点 ID**: O27_rate_limit_scope
 - **severity**: Medium

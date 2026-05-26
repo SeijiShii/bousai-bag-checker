@@ -85,6 +85,17 @@
 - auto-pick: `/flow:feature _shared/legal` (プライバシー/利用規約/特商法[投げ銭])。構造は auto-pick、法令文言レビューは公開前 human
 - chosen_type: auto-recommended
 
+### D20260527-043 (ユーザー選択、2026-05-27)
+- question: 残り設計対象の「担当: seiji」論点(003/001/002)の進め方
+- chosen: **concept 推奨で auto-pick 進行** — 003=MVP最小スキーマ先行 / 001=案A(3種 freshness) / 002=案A(自前DB先行)。AI_LOG 追跡で後から revise 可、ループ停止せず残り6件設計
+- chosen_type: explicit-choice (ユーザー直接選択)
+- context: service-info で 論点-003 checkpoint に到達 → 3 論点の進め方を確認 → auto-pick 承認
+
+### 反復 10 (2026-05-27)
+- 判定: P2 残り = service-info。論点-003 は D-043 に従い MVP 最小スキーマ先行で解決
+- auto-pick: `/flow:feature _shared/service-info`
+- chosen_type: auto-recommended
+
 ### D20260526-028
 - question: 課金モデルの再変更 (買い切り → 投げ銭)
 - chosen: **100円の投げ銭(任意支援)**。社会善アプリのためペイウォール廃止 → 買い物 TODO リスト含む全機能を無料化。投げ銭は機能アンロックを伴わない (Stripe・ログイン不要・複数回可)
