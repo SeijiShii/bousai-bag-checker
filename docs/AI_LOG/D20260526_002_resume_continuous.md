@@ -80,6 +80,11 @@
 - auto-pick: `/flow:feature _shared/notification` (Resend + アプリ内通知 + 購読 + Sentry PII マスク SEC-002)
 - chosen_type: auto-recommended
 
+### 反復 9 (2026-05-26 20:43)
+- 判定: P2 基盤(db/ui/auth/notification)完了。P2 残り基盤外の先頭 = _shared/legal
+- auto-pick: `/flow:feature _shared/legal` (プライバシー/利用規約/特商法[投げ銭])。構造は auto-pick、法令文言レビューは公開前 human
+- chosen_type: auto-recommended
+
 ### D20260526-028
 - question: 課金モデルの再変更 (買い切り → 投げ銭)
 - chosen: **100円の投げ銭(任意支援)**。社会善アプリのためペイウォール廃止 → 買い物 TODO リスト含む全機能を無料化。投げ銭は機能アンロックを伴わない (Stripe・ログイン不要・複数回可)
