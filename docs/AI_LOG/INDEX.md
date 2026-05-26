@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 27 (... + tdd:...,inventory)
-**総 decision 数**: 75
-**進捗**: **P4 tdd 実装中**。実装 8/11(横断7 + inventory、計76テスト green)。残=機能3(feedback/inspection/shopping-list)。次=feedback
+**総セッション数**: 28 (... + tdd:...,feedback)
+**総 decision 数**: 76
+**進捗**: **P4 tdd 実装中**。実装 9/11(横断7 + inventory/feedback、計84テスト green)。残=機能2(inspection/shopping-list)。次=inspection
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
@@ -16,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_028_tdd_feedback.md](./D20260527_028_tdd_feedback.md) | 2026-05-27 | /flow:tdd | feedback | D20260527-076 | 完了 |
 | [D20260527_027_tdd_inventory.md](./D20260527_027_tdd_inventory.md) | 2026-05-27 | /flow:tdd | inventory | D20260527-074〜075 | 完了 |
 | [D20260527_026_tdd__shared_billing.md](./D20260527_026_tdd__shared_billing.md) | 2026-05-27 | /flow:tdd | _shared/billing | D20260527-073 | 完了 |
 | [D20260527_025_tdd__shared_service-info.md](./D20260527_025_tdd__shared_service-info.md) | 2026-05-27 | /flow:tdd | _shared/service-info | D20260527-071〜072 | 完了 |

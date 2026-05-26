@@ -16,6 +16,8 @@
 | 003 | [003_feedback_UNIT_TEST.md](./003_feedback_UNIT_TEST.md) | UNIT_TEST | 設計済 | 2026-05-27 | PII scrub + レート制限/bot 重点 |
 | 004 | [004_feedback_E2E_TEST.md](./004_feedback_E2E_TEST.md) | E2E_TEST | 設計済 | 2026-05-27 | 送信ジャーニー + レート + PII 非混入 + L1/L2 |
 | 905 | [905_feedback_SPEC_REVIEW.md](./905_feedback_SPEC_REVIEW.md) | SPEC_REVIEW | 完了 | 2026-05-27 | レート制限/bot を _shared 共通化(R1)、scrubPII import(R2) |
+| 101 | [101_feedback_IMPL_REPORT.md](./101_feedback_IMPL_REPORT.md) | IMPL_REPORT | 実装完了 | 2026-05-27 | 👍/👎+バグ報告+PII scrub+レート制限、8テスト green |
+| 102 | [102_feedback_UNIT_TEST_REPORT.md](./102_feedback_UNIT_TEST_REPORT.md) | UNIT_TEST_REPORT | 実装完了 | 2026-05-27 | 8/8 green(SEC-002/004) |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
