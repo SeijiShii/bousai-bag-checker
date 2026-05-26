@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 19 (..._feature×11 + spec-review×2セッション=4機能)
+**総セッション数**: 19 (concept / auto完了(設計分) / secure / estimate×2 / design / feature×11 / spec-review×2)
 **総 decision 数**: 60
-**進捗**: **全11設計 + 全4機能 spec-review 完了**。Critical/High なし。次は P4 tdd 実装(要 scaffold)
+**進捗**: **設計フェーズ完了** = 全11設計 + 全4機能 spec-review + concept gates(secure/estimate)+ design SoT。Critical/High なし。**次フェーズ = P4 tdd 実装(要 scaffold)、次回 /flow:auto で再開**
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
@@ -33,7 +33,7 @@
 | [D20260526_005_design_system.md](./D20260526_005_design_system.md) | 2026-05-26 | /flow:design | system (NEW) | D20260526-026〜027 | 完了 |
 | [D20260526_004_estimate_whole.md](./D20260526_004_estimate_whole.md) | 2026-05-26 | /flow:estimate | whole (rough) | D20260526-025 | 完了 |
 | [D20260526_003_secure_concept.md](./D20260526_003_secure_concept.md) | 2026-05-26 | /flow:secure | concept (design) | D20260526-017〜023 | 完了 |
-| [D20260526_002_resume_continuous.md](./D20260526_002_resume_continuous.md) | 2026-05-26 | /flow:auto | next-step ルーティング | (反復ログ) | 進行中 |
+| [D20260526_002_resume_continuous.md](./D20260526_002_resume_continuous.md) | 2026-05-26〜27 | /flow:auto | next-step ルーティング (16 dispatch) | D20260527-043/D20260526-024/028 等 | 完了(設計フェーズ分) |
 | [D20260526_001_concept_initial.md](./D20260526_001_concept_initial.md) | 2026-05-26 | /flow:concept | initial | D20260526-001〜014 | 完了 |
 
 ## decision_id 索引（grep 用、新しい順）
