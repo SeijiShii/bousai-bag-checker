@@ -1,8 +1,8 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
-**最終更新**: 2026-05-26 19:55 (+09:00)
-**総セッション数**: 1
-**総 decision 数**: 16
+**最終更新**: 2026-05-26 20:22 (+09:00)
+**総セッション数**: 3 (concept 完了 / auto 進行中 / secure 完了)
+**総 decision 数**: 23
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -14,12 +14,21 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260526_003_secure_concept.md](./D20260526_003_secure_concept.md) | 2026-05-26 | /flow:secure | concept (design) | D20260526-017〜023 | 完了 |
+| [D20260526_002_resume_continuous.md](./D20260526_002_resume_continuous.md) | 2026-05-26 | /flow:auto | next-step ルーティング | (反復ログ) | 進行中 |
 | [D20260526_001_concept_initial.md](./D20260526_001_concept_initial.md) | 2026-05-26 | /flow:concept | initial | D20260526-001〜014 | 完了 |
 
 ## decision_id 索引（grep 用、新しい順）
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260526-023 | /flow:secure | O28 依存 | --phase=design 対象外で skip | auto-recommended | D20260526_003_secure_concept.md |
+| D20260526-022 | /flow:secure | SEC-005 O25 | 秘密情報=対応済み(注記のみ) | auto-recommended | D20260526_003_secure_concept.md |
+| D20260526-021 | /flow:secure | SEC-004 O27 | レート制限 Medium→§8 open | auto-recommended | D20260526_003_secure_concept.md |
+| D20260526-020 | /flow:secure | SEC-003 O24 | 入力検証 Medium→§8 open | auto-recommended | D20260526_003_secure_concept.md |
+| D20260526-019 | /flow:secure | SEC-002 O26 | PII ログ High→accepted-as-req(§3.1) | auto-recommended | D20260526_003_secure_concept.md |
+| D20260526-018 | /flow:secure | SEC-001 O23 | 認可漏れ High→accepted-as-req(§3.1) | auto-recommended | D20260526_003_secure_concept.md |
+| D20260526-017 | /flow:secure | PJ 性質判定 | 公開MT/有償/PIIあり/AIなし/国内 | auto-recommended | D20260526_003_secure_concept.md |
 | D20260526-016 | /flow:concept | Step 7.7 Git 実施 | git init + commit aff3cc9 | explicit-choice | D20260526_001_concept_initial.md |
 | D20260526-015 | /flow:concept | Step 7.5 preferences 実施 | 全更新(Neon等 +1, Resend新規) | explicit-choice | D20260526_001_concept_initial.md |
 | D20260526-014 | /flow:concept | Step 7.7 Git | git init+commit(→D-016 で解決) | open→解決 | D20260526_001_concept_initial.md |
@@ -44,6 +53,10 @@
 | [論点-001] | 期限のない品目の鮮度の扱い | D20260526_001 | concept §8 |
 | [論点-002] | feedback-hub 未構築 | D20260526_001 | concept §8 |
 | [論点-003] | service-info スキーマ | D20260526_001 | concept §8 |
+| [論点-006] | [SEC-003] 入力検証 (Zod/CSV/XSS) | D20260526_003 | concept §8、feature 設計時解消 |
+| [論点-007] | [SEC-004] レート制限/公開EP | D20260526_003 | concept §8、feature 設計時解消 |
+
+> [論点-004] [SEC-001] 認可漏れ / [論点-005] [SEC-002] PII ログ は `accepted-as-requirement` (§3.1 NFR 化済、open ではない)。
 
 ## Superseded chain（旧 Open → 新解決）
 

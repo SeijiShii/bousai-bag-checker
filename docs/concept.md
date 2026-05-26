@@ -124,6 +124,15 @@ api/                   # Vercel Functions（CRUD / cron / webhook / service-info
 | 運用・監視 | Sentry(エラー)+ 自前コストログ。無料枠超過アラート(§4.6) | 個人ツール、Cookie バナー回避のため GA4 は入れない |
 | スケール上限 | 無料枠内(Neon 0.5GB/DB, Vercel Hobby)。超過時は §4.3 代替へ切替判断 | 商用化想定なし、無料枠厳守 |
 
+<!-- auto-generated-start -->
+### 3.1 セキュリティ要件 (auto-added by /flow:secure 2026-05-26)
+
+> /flow:secure --phase=design (L1) が検出した High finding を要件化。詳細: `./SECURITY_REVIEW_20260526.md`
+
+- **[SEC-001 / O23 認可漏れ・所有者分離] 必須**: 全 API/DB クエリで Clerk 認証由来の `userId` による所有者フィルタを強制する。**Neon (素の Postgres) は RLS 非対応**のため DB レベルの自動セーフティネットが無く、アプリ層で全クエリに `where user_id = <auth userId>` を強制すること。`_shared/db` 設計で共通クエリラッパ (例: `withOwner(userId)`) を用意し、各 feature SPEC で「エンドポイント × リソース × 許可操作」の認可マトリクスを設計する。保管場所 (storage_location) は世帯防犯情報に近く IDOR の高インパクト露出面。
+- **[SEC-002 / O26 PII ログ漏洩] 必須 (法令必須)**: Sentry `beforeSend` で PII (メール / Clerk トークン / リクエストボディ=品目名・保管場所) をマスク or 除去する。logger・自前コストログ (§4.6.2) に PII を出力しない (匿名 ID or user_id のみ)。エラーメッセージに DB 内容を含めない。委託先 (Sentry) への PII 送信は個人情報保護法上の漏洩扱いとなり報告義務が発生し得るため。
+<!-- auto-generated-end -->
+
 ## 4. 全体アーキテクチャ
 
 ```
@@ -399,6 +408,55 @@ service-hub → /api/service-info を pull(アプリ層指標)
 - **推奨**: service-hub の concept/SPEC を参照して契約確定後に実装(契約 SoT=service-hub)。MVP では最小(uptime/エラー数/ユーザー数程度)で先行可
 - **判断期限**: _shared/service-info 設計時
 - **担当**: seiji
+
+### [論点-004] [SEC-001] 認可漏れ・所有者分離: High
+- **status**: `accepted-as-requirement`
+- **status 履歴**: 2026-05-26 20:20 open → 2026-05-26 20:20 accepted-as-requirement (理由: concept §3.1 NFR に要件化、/flow:secure --phase=design 自動 dispatch)
+- **影響範囲**: §3 NFR, §5, §6, 全 feature (特に inventory/inspection/shopping-list/billing/feedback), _shared/db
+- **観点 ID**: O23_authorization_check
+- **severity**: High
+- **検出根拠**: Neon (素の Postgres) + Drizzle = RLS セーフティネット無し。§3 は「本人限定」の意図のみで全クエリ所有者強制機構が未設計。multi-tenant 公開 + 保管場所等の防犯情報で IDOR 高インパクト
+- **詰めるべき問い**: 認可マトリクス (エンドポイント × リソース × 操作) の具体設計、共通クエリラッパの実装方式
+- **推奨**: §3.1 NFR の要件に従い feature SPEC で認可マトリクスを設計。`_shared/db` に `withOwner(userId)` 共通ラッパ
+- **判断期限**: 実装着手前 (各 feature 設計時)
+- **担当**: seiji
+- **L1 レポート**: `./SECURITY_REVIEW_20260526.md#sec-001`
+
+### [論点-005] [SEC-002] PII ログ漏洩: High (法令必須)
+- **status**: `accepted-as-requirement`
+- **status 履歴**: 2026-05-26 20:20 open → 2026-05-26 20:20 accepted-as-requirement (理由: concept §3.1 NFR に要件化、legal_required=true)
+- **影響範囲**: §3 NFR, §4.6, §9.1, §9.2, _shared/notification, feedback
+- **観点 ID**: O26_pii_logging
+- **severity**: High (legal_required=true、除外不可)
+- **検出根拠**: feedback PII scrub は明示済だが Sentry beforeSend / logger / コストログ全般の PII マスクが未明示。委託先送信は個人情報保護法上の漏洩扱い
+- **推奨**: §3.1 NFR の要件に従い Sentry beforeSend マスク + logger PII 非出力を実装
+- **判断期限**: 実装着手前 (_shared/notification + Sentry 設定時)
+- **担当**: seiji
+- **L1 レポート**: `./SECURITY_REVIEW_20260526.md#sec-002`
+
+### [論点-006] [SEC-003] 入力検証 (Zod / CSV インジェクション / XSS): Medium
+- **status**: `open`
+- **status 履歴**: 2026-05-26 20:20 open
+- **影響範囲**: inventory, shopping-list, feedback
+- **観点 ID**: O24_input_validation
+- **severity**: Medium (Drizzle で SQLi 緩和・React で XSS 基本緩和の部分対応)
+- **検出根拠**: API 入力スキーマ (Zod) 一元化方針が未記載。買い替えリスト出力 (UC4 CSV/PDF) の CSV インジェクションエスケープ未設計。photo_url 取り扱い時の SSRF 検討
+- **推奨**: feature 設計時に Zod 入力スキーマ + エクスポート時 CSV インジェクションエスケープを SPEC 化 → status=dispatched-to-feature
+- **判断期限**: inventory / shopping-list feature 設計時
+- **担当**: seiji
+- **L1 レポート**: `./SECURITY_REVIEW_20260526.md#sec-003`
+
+### [論点-007] [SEC-004] レート制限 / 公開エンドポイント: Medium
+- **status**: `open`
+- **status 履歴**: 2026-05-26 20:20 open
+- **影響範囲**: feedback, _shared/service-info
+- **観点 ID**: O27_rate_limit_scope
+- **severity**: Medium
+- **検出根拠**: feedback 送信 API が user_id nullable=ゲスト送信可=認証不要公開エンドポイント、レート制限/bot 対策未設計。/api/service-info の認可スコープ・レート制限が contract 依存で未確定 (論点-003 関連)
+- **推奨**: feature 設計時に公開エンドポイントへレート制限 (IP/ユーザー単位) + bot 対策 (Turnstile/honeypot) を SPEC 化 → status=dispatched-to-feature
+- **判断期限**: feedback / _shared/service-info feature 設計時
+- **担当**: seiji
+- **L1 レポート**: `./SECURITY_REVIEW_20260526.md#sec-004`
 
 ## 9. 法務・コンプライアンス書類
 

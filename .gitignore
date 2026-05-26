@@ -10,6 +10,9 @@ dist/
 # logs
 *.log
 npm-debug.log*
+# flow transient markers
+.flow-loop-active
+.flow-needs-compact
 # OS / editor
 .DS_Store
 .idea/
