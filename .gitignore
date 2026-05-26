@@ -13,6 +13,9 @@ npm-debug.log*
 # flow transient markers
 .flow-loop-active
 .flow-needs-compact
+# dev launcher (scripts/dev.sh)
+.dev-server.pid
+.dev-server.log
 # OS / editor
 .DS_Store
 .idea/
