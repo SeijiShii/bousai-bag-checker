@@ -65,6 +65,11 @@
 - auto-pick: `/flow:estimate` (refined、db 設計の具体構造で rough を再校正)
 - chosen_type: auto-recommended
 
+### 反復 6 (2026-05-26 20:37)
+- 判定: estimate ゲート完了。P1/P2 非該当、P3.7 は db cross-cutting(004なし)で不発火。P3/P4 = Phase 2 次ターゲット
+- auto-pick: `/flow:feature _shared/ui` (優先度1 基盤、design-system.md ティールグリーン反映)
+- chosen_type: auto-recommended
+
 ### D20260526-028
 - question: 課金モデルの再変更 (買い切り → 投げ銭)
 - chosen: **100円の投げ銭(任意支援)**。社会善アプリのためペイウォール廃止 → 買い物 TODO リスト含む全機能を無料化。投げ銭は機能アンロックを伴わない (Stripe・ログイン不要・複数回可)

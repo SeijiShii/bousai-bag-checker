@@ -25,7 +25,7 @@
 | 優先度 | フォルダ | 状態 | 設計完了 | INDEX |
 |---|---|---|---|---|
 | 1 | [_shared/db](./_shared/db/) | 設計済 | ✅ | [INDEX](./_shared/db/INDEX.md) |
-| 1 | [_shared/ui](./_shared/ui/) | 未設計 | ❌ | [INDEX](./_shared/ui/INDEX.md) |
+| 1 | [_shared/ui](./_shared/ui/) | 設計済 | ✅ | [INDEX](./_shared/ui/INDEX.md) |
 | 2 | [_shared/auth](./_shared/auth/) | 未設計 | ❌ | [INDEX](./_shared/auth/INDEX.md) |
 | 2 | [_shared/notification](./_shared/notification/) | 未設計 | ❌ | [INDEX](./_shared/notification/INDEX.md) |
 | 2 | [_shared/legal](./_shared/legal/) | 未設計 | ❌ | [INDEX](./_shared/legal/INDEX.md) |
