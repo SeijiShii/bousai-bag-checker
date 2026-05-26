@@ -1,0 +1,87 @@
+import { useState, type FormEvent } from 'react';
+import { Button } from '@/components/ui/button';
+import { Field } from '@/components/ui/field';
+import { ITEM_CATEGORIES, FRESHNESS_TYPES } from '@/db/enums';
+import { itemInputSchema, type ItemInput } from './itemSchema';
+
+export interface ItemFormProps {
+  onSubmit: (input: ItemInput) => void;
+}
+
+/** 品目登録/編集フォーム。freshness_type で動的に期限/交換目安入力を出し分け。Zod 検証(SEC-003)。 */
+export function ItemForm({ onSubmit }: ItemFormProps) {
+  const [name, setName] = useState('');
+  const [category, setCategory] = useState<(typeof ITEM_CATEGORIES)[number]>('water');
+  const [freshnessType, setFreshnessType] = useState<(typeof FRESHNESS_TYPES)[number]>('expiry');
+  const [expiresAt, setExpiresAt] = useState('');
+  const [replaceMonths, setReplaceMonths] = useState('');
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    const parsed = itemInputSchema.safeParse({
+      name,
+      category,
+      freshnessType,
+      expiresAt: freshnessType === 'expiry' ? expiresAt || undefined : undefined,
+      replaceMonths: freshnessType === 'replace_guide' && replaceMonths ? Number(replaceMonths) : undefined,
+    });
+    if (!parsed.success) {
+      const errs: Record<string, string> = {};
+      for (const issue of parsed.error.issues) errs[String(issue.path[0])] = issue.message;
+      setErrors(errs);
+      return;
+    }
+    setErrors({});
+    onSubmit(parsed.data);
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <Field label="品目名" value={name} onChange={(e) => setName(e.target.value)} error={errors['name']} />
+      <label className="text-sm text-text">
+        区分
+        <select
+          aria-label="区分"
+          value={category}
+          onChange={(e) => setCategory(e.target.value as typeof category)}
+          className="mt-1 block min-h-[44px] rounded-md border border-border bg-surface px-3"
+        >
+          {ITEM_CATEGORIES.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label className="text-sm text-text">
+        鮮度種別
+        <select
+          aria-label="鮮度種別"
+          value={freshnessType}
+          onChange={(e) => setFreshnessType(e.target.value as typeof freshnessType)}
+          className="mt-1 block min-h-[44px] rounded-md border border-border bg-surface px-3"
+        >
+          {FRESHNESS_TYPES.map((f) => (
+            <option key={f} value={f}>
+              {f}
+            </option>
+          ))}
+        </select>
+      </label>
+      {freshnessType === 'expiry' ? (
+        <Field label="期限" type="date" value={expiresAt} onChange={(e) => setExpiresAt(e.target.value)} error={errors['expiresAt']} />
+      ) : null}
+      {freshnessType === 'replace_guide' ? (
+        <Field
+          label="交換の目安(月)"
+          type="number"
+          value={replaceMonths}
+          onChange={(e) => setReplaceMonths(e.target.value)}
+          error={errors['replaceMonths']}
+        />
+      ) : null}
+      <Button type="submit">保存</Button>
+    </form>
+  );
+}
