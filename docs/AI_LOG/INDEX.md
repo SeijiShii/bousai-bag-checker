@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 14 (concept / auto進行中 / secure / estimate×2 / design / feature:db/ui/auth/notification/legal/service-info/billing/inventory)
-**総 decision 数**: 49
-**Phase 2 設計進捗**: 横断 7/7 完了 + 機能 1/4 (inventory)。次は P3.7 spec-review gate (inventory) → feedback/inspection/shopping-list
+**総セッション数**: 15 (..._feature:db/ui/auth/notification/legal/service-info/billing/inventory/feedback)
+**総 decision 数**: 51
+**Phase 2 設計進捗**: 横断 7/7 + 機能 2/4 (inventory/feedback)。残: inspection/shopping-list → 全機能 P3.7 spec-review → tdd
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -15,6 +15,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_015_feature_feedback.md](./D20260527_015_feature_feedback.md) | 2026-05-27 | /flow:feature | feedback | D20260527-050〜051 | 完了 |
 | [D20260527_014_feature_inventory.md](./D20260527_014_feature_inventory.md) | 2026-05-27 | /flow:feature | inventory | D20260527-048〜049 | 完了 |
 | [D20260527_013_feature__shared_billing.md](./D20260527_013_feature__shared_billing.md) | 2026-05-27 | /flow:feature | _shared/billing | D20260527-046〜047 | 完了 |
 | [D20260527_012_feature__shared_service-info.md](./D20260527_012_feature__shared_service-info.md) | 2026-05-27 | /flow:feature | _shared/service-info | D20260527-044〜045 | 完了 |
@@ -34,6 +35,8 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-051 | /flow:feature | feedback SEC | レート制限/bot+PII scrub(SEC-004/002) | auto-recommended | D20260527_015_feature_feedback.md |
+| D20260527-050 | /flow:feature | feedback 論点002 | 案A 自前DB+運用通知(hub後、D-043承認) | auto-recommended | D20260527_015_feature_feedback.md |
 | D20260527-049 | /flow:feature | inventory SEC/E2E | withOwner(IDOR防止)+E2E L1/L2採用 | auto-recommended | D20260527_014_feature_inventory.md |
 | D20260527-048 | /flow:feature | inventory 論点001 | 案A 3種freshness(D-043承認) | auto-recommended | D20260527_014_feature_inventory.md |
 | D20260527-047 | /flow:feature | billing 安全性 | 金額サーバー強制+署名検証+冪等+アンロックなし | auto-recommended | D20260527_013_feature__shared_billing.md |
@@ -89,7 +92,7 @@
 | ID | 論点タイトル | 採番セッション | 関連 decision |
 |---|---|---|---|
 | [論点-001] | 期限のない品目の鮮度の扱い | D20260526_001 | **解決**: 案A(3種freshness)採用、inventory SPEC+db schema 反映 (D-043/048) |
-| [論点-002] | feedback-hub 未構築 | D20260526_001 | concept §8 |
+| [論点-002] | feedback-hub 未構築 | D20260526_001 | **解決**: 案A(自前DB+運用通知、hub後)採用、feedback SPEC 反映 (D-043/050) |
 | [論点-003] | service-info スキーマ | D20260526_001 | **dispatched-to-feature** (MVP最小先行、調整は論点-S-svc-1) |
 | [論点-S-svc-1] | service-hub 契約スキーマ確定 | D20260527_012 | 契約確定時 (担当 seiji) |
 | [論点-006] | [SEC-003] 入力検証 (Zod/CSV/XSS) | D20260526_003 | concept §8、feature 設計時解消 |
