@@ -1,6 +1,8 @@
+CREATE TYPE "public"."email_delivery_status" AS ENUM('sent', 'failed', 'skipped');--> statement-breakpoint
 CREATE TYPE "public"."feedback_type" AS ENUM('reaction', 'bug');--> statement-breakpoint
 CREATE TYPE "public"."freshness_type" AS ENUM('expiry', 'replace_guide', 'check_only');--> statement-breakpoint
 CREATE TYPE "public"."item_category" AS ENUM('water', 'food', 'battery', 'medicine', 'document', 'other');--> statement-breakpoint
+CREATE TYPE "public"."notification_type" AS ENUM('expiry_reminder', 'inspection', 'system');--> statement-breakpoint
 CREATE TYPE "public"."shopping_reason" AS ENUM('expired', 'insufficient', 'manual');--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "donations" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
@@ -9,6 +11,14 @@ CREATE TABLE IF NOT EXISTS "donations" (
 	"amount" integer DEFAULT 100 NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	CONSTRAINT "donations_stripe_payment_id_unique" UNIQUE("stripe_payment_id")
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "email_deliveries" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"user_id" uuid NOT NULL,
+	"template" text NOT NULL,
+	"status" "email_delivery_status" NOT NULL,
+	"created_at" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "feedback" (
@@ -55,6 +65,16 @@ CREATE TABLE IF NOT EXISTS "notification_settings" (
 	"updated_at" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "notifications" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"user_id" uuid NOT NULL,
+	"type" "notification_type" NOT NULL,
+	"title" text NOT NULL,
+	"body" text NOT NULL,
+	"read_at" timestamp with time zone,
+	"created_at" timestamp with time zone DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "shopping_items" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"user_id" uuid NOT NULL,
@@ -76,6 +96,12 @@ CREATE TABLE IF NOT EXISTS "users" (
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "donations" ADD CONSTRAINT "donations_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "email_deliveries" ADD CONSTRAINT "email_deliveries_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -105,6 +131,12 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
+ ALTER TABLE "notifications" ADD CONSTRAINT "notifications_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
  ALTER TABLE "shopping_items" ADD CONSTRAINT "shopping_items_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
@@ -116,7 +148,9 @@ EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "email_deliveries_user_idx" ON "email_deliveries" USING btree ("user_id");--> statement-breakpoint
 CREATE INDEX IF NOT EXISTS "inspection_logs_user_idx" ON "inspection_logs" USING btree ("user_id");--> statement-breakpoint
 CREATE INDEX IF NOT EXISTS "items_user_idx" ON "items" USING btree ("user_id");--> statement-breakpoint
 CREATE INDEX IF NOT EXISTS "items_user_expires_idx" ON "items" USING btree ("user_id","expires_at");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "notifications_user_idx" ON "notifications" USING btree ("user_id");--> statement-breakpoint
 CREATE INDEX IF NOT EXISTS "shopping_items_user_idx" ON "shopping_items" USING btree ("user_id");

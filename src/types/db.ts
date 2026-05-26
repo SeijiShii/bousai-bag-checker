@@ -6,7 +6,9 @@ import type {
   donations,
   shoppingItems,
   feedback,
-} from '@/db/schema';
+  notifications,
+  emailDeliveries,
+} from "@/db/schema";
 
 // Drizzle 推論による Select/Insert 型の再エクスポート (機能側が import)。
 export type User = typeof users.$inferSelect;
@@ -23,3 +25,7 @@ export type ShoppingItem = typeof shoppingItems.$inferSelect;
 export type NewShoppingItem = typeof shoppingItems.$inferInsert;
 export type Feedback = typeof feedback.$inferSelect;
 export type NewFeedback = typeof feedback.$inferInsert;
+export type Notification = typeof notifications.$inferSelect;
+export type NewNotification = typeof notifications.$inferInsert;
+export type EmailDelivery = typeof emailDeliveries.$inferSelect;
+export type NewEmailDelivery = typeof emailDeliveries.$inferInsert;
