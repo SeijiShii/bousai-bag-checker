@@ -2,7 +2,7 @@
 
 **最終更新**: 2026-05-26 19:55
 **生成元**: /flow:concept (初回) / /flow:scenario (更新)
-**シナリオ種別**: 新規 MVP 立ち上げ (UI あり PWA、公開 + 100円単発買い切り)
+**シナリオ種別**: 新規 MVP 立ち上げ (UI あり PWA、公開 + 100円の投げ銭/任意支援)
 
 > 本ファイルは AI が「次に何をすべきか」を判断する際の参照ドキュメント。
 > §5 現在地カーソルは flow コマンドが auto-generated 範囲で書き換える。それ以外はユーザー編集可。
@@ -72,7 +72,7 @@
 - 最終更新時刻: 2026-05-26 20:27
 - 完了フェーズ: [Phase 1, Phase 1.5(SoT)]
 - 次の推奨コマンド: /flow:feature _shared/db (Phase 2 基盤起点、優先度順: db → ui → auth → notification → service-info → legal → billing → inventory → feedback → inspection → shopping-list)
-- 備考: secure(concept L1)済 / initial 見積済 / design-system.md(ティールグリーン)済。視覚レビューは画面実装後に /flow:design --review-only。課金=100円買い切り(買い物TODOリスト)に変更済(D-024)
+- 備考: secure(concept L1)済 / initial 見積済 / design-system.md(ティールグリーン)済。視覚レビューは画面実装後に /flow:design --review-only。課金=**100円の投げ銭(任意支援、機能アンロックなし)**に変更済(D-028、買い切り D-024 を supersede)。全機能無料、billing 優先度 3→2、shopping-list の billing 依存解消
 <!-- AUTO-GENERATED:END scenario-cursor -->
 
 ## 6. 変更履歴

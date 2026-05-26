@@ -16,7 +16,7 @@
 | Neon | `DATABASE_URL` | DB 接続 | neon.tech | 0.5GB × 10 DB |
 | Cloudflare R2 | `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` / `R2_BUCKET` | 品目写真(任意) | cloudflare.com → R2 | 10GB |
 | Resend | `RESEND_API_KEY` | 期限リマインドメール | resend.com | 3,000 通/月 |
-| Stripe | `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` | 100円 one-time 買い切り課金 | dashboard.stripe.com | 従量手数料のみ |
+| Stripe | `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` | 100円の投げ銭(任意支援) | dashboard.stripe.com | 従量手数料のみ |
 | Sentry | `SENTRY_DSN` | エラー監視 | sentry.io | 5,000 events/月 |
 
 ## 2. BaaS / インフラアカウント (charter §0 Neon スタック)
@@ -48,15 +48,15 @@
 | 項目 | 取得方法 | 備考 |
 |---|---|---|
 | Clerk App 作成 | clerk.com → New Application | Publishable / Secret Key を .env.local |
-| ゲスト認証 (O22) | Clerk Anonymous sign-in 有効化 | 起動 → 即利用、課金/同期時に連携 |
+| ゲスト認証 (O22) | Clerk Anonymous sign-in 有効化 | 起動 → 即利用、クラウド同期時に連携(投げ銭はログイン不要) |
 | Google OAuth (任意) | console.cloud.google.com | Clerk の Social Provider で利用 |
 | パスキー (任意) | Clerk Passkeys 有効化 | v2 検討 |
 
-## 5. 決済プロバイダ設定 (有償 PJ、charter §1)
+## 5. 決済プロバイダ設定 (投げ銭/Stripe、charter §1)
 
 | 項目 | 取得方法 | 備考 |
 |---|---|---|
-| Stripe アカウント本人確認 | dashboard.stripe.com | 国内有償時必須 |
+| Stripe アカウント本人確認 | dashboard.stripe.com | 投げ銭でも決済受領に必須 |
 | Stripe API キー (test/live) | dashboard.stripe.com/apikeys | live は本番デプロイ後 |
 | Webhook エンドポイント登録 | dashboard.stripe.com/webhooks | 署名検証鍵を .env.local |
 
@@ -66,7 +66,7 @@
 |---|---|---|---|
 | プライバシーポリシー | ✅ 必須 | `/legal/privacy` | テンプレ + 自前ドラフト |
 | 利用規約 | ✅ 必須 | `/legal/terms` | 免責(防災情報)明記 |
-| 特定商取引法表記 | ✅ 有償時必須 | `/legal/specified-commercial-transactions` | 自前作成 |
+| 特定商取引法表記 | △ 投げ銭は原則非該当 | `/legal/specified-commercial-transactions` | 運営者情報は明示。決済導線次第で要確認 |
 | Cookie 同意 | ❌ 不要 | — | トラッキング Cookie 不使用 |
 
 ## 7. 監視・アナリティクス (O01)

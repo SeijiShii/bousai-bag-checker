@@ -17,9 +17,9 @@
 | 特定機能を理解する | `./<feature>/README.md` | `./<feature>/INDEX.md` → SPEC | feature 一覧は §2 |
 | 実装前準備を確認する | `./PREREQUISITES.md` | `./concept.md §4.3` | API キー / アカウント |
 | 設計判断の経緯を辿る | `./AI_LOG/INDEX.md` | 該当セッション | decision_id 索引で grep |
-| 未決論点を見る | `./concept.md §8` | — | 3 件(期限なし品目/feedback-hub/service-info) |
-| 工数感を知る | `./estimates/` | — | `/flow:estimate` で生成 |
-| 法務対応状況を見る | `./concept.md §9` | `./_shared/legal/` | 公開+有償 PJ |
+| 未決論点を見る | `./concept.md §8` | — | 7 件(設計3: 期限なし品目/feedback-hub/service-info + SEC4: 004/005=accepted-as-req, 006/007=open) |
+| 工数感を知る | `./estimates/` | — | `/flow:estimate` で生成(initial 済) |
+| 法務対応状況を見る | `./concept.md §9` | `./_shared/legal/` | 公開 + 投げ銭(任意支援)PJ |
 
 ## 1. プロダクト全体
 - **概念設計 (SoT)**: [./concept.md](./concept.md)

@@ -1,8 +1,8 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
-**最終更新**: 2026-05-26 20:27 (+09:00)
+**最終更新**: 2026-05-26 20:30 (+09:00)
 **総セッション数**: 5 (concept / auto進行中 / secure / estimate / design)
-**総 decision 数**: 27
+**総 decision 数**: 28
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -24,6 +24,7 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260526-028 | /flow:auto | 課金モデル再変更(user) | 100円投げ銭=任意支援(全機能無料、アンロックなし) | explicit-choice | D20260526_002_resume_continuous.md |
 | D20260526-027 | /flow:design | SoT 生成 | design-system.md 全節生成 | auto-recommended | D20260526_005_design_system.md |
 | D20260526-026 | /flow:design | 主色方向(user) | ティールグリーン #2E8B74(緑寄り) | explicit-choice | D20260526_005_design_system.md |
 | D20260526-025 | /flow:estimate | whole rough | Min/Std/Full=50/115/230 files, NFR 0.5x | auto-recommended | D20260526_004_estimate_whole.md |
@@ -71,6 +72,7 @@
 | D20260526-013 (preferences 更新) | D20260526-015 | 2026-05-26 | D20260526_001 |
 | D20260526-014 (Git init) | D20260526-016 | 2026-05-26 | D20260526_001 |
 | D20260526-003 (課金=PWYW) | D20260526-024 | 2026-05-26 | D20260526_002 |
+| D20260526-024 (100円買い切り) | D20260526-028 | 2026-05-26 | D20260526_002 |
 
 <!-- auto-generated-end -->
 

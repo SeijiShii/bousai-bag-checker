@@ -68,7 +68,7 @@ summary:
 | feedback | 👍/👎 + バグ報告ウィジェット + PII scrub + rate limit | ui_code/api_code/unit | ai_impl | 7 | 420 |
 | **小計** | | | | **40** | **3,020** |
 
-**根拠**: inventory が最大 (CRUD + 写真 + カテゴリ別鮮度ロジック、他機能の参照元)。shopping-list は有料機能で課金ゲート分が乗る。E2E は Playwright 自動化前提 (perspectives O33)。
+**根拠**: inventory が最大 (CRUD + 写真 + カテゴリ別鮮度ロジック、他機能の参照元)。shopping-list は買い物 TODO 管理(無料、課金ゲートなし — D-028)。E2E は Playwright 自動化前提 (perspectives O33)。
 
 ## 2. 横断フォルダ別ブレークダウン (NFR 適用後、Standard 基準)
 
@@ -83,7 +83,7 @@ summary:
 | _shared/legal | privacy/terms/特商法 静的ページ + フッタ導線 + 免責 | true | 5 | 280 |
 | **小計** | | | **52** | **3,470** |
 
-**根拠**: db/ui/auth/notification が基盤投資。billing は新規(有料機能の中核)。legal は内容物中心で行数の割にロジック少。service-info は契約確定後に最小実装。
+**根拠**: db/ui/auth/notification が基盤投資。billing は投げ銭(donation 記録 + Stripe Checkout のみ、アンロック不要で簡素 — D-028)。legal は内容物中心で行数の割にロジック少。service-info は契約確定後に最小実装。
 
 ## 3. 基本部分 (新規 PJ、Standard 基準)
 
@@ -141,7 +141,7 @@ summary:
 
 1. **NFR が効いている**: 個人ツール・低頻度・無料枠厳守 (concept §3) で合成 0.5x。同規模でも商用 SaaS なら倍以上。
 2. **基盤投資が先行 (横断 52 files)**: db/ui/auth/notification/billing を P1-P3 で先に作るため、序盤は機能より横断のコード比率が高い。
-3. **shopping-list が唯一の有料機能**: 課金ゲート + 購入管理 (shopping_item) 分が乗るが、PDF 廃止で出力系は CSV 共有のみに簡素化。
+3. **全機能無料 + 100円投げ銭(D-028)**: shopping-list は購入管理(無料・ゲートなし)、billing は donation 記録のみで簡素化(アンロック判定不要)。やや見積減方向だが rough band 内。
 4. **セキュリティ要件 (SEC-001/002) がコードに反映**: withOwner 所有者強制 (db/auth) + Sentry beforeSend PII マスク (notification) を Std から織り込み済。
 5. **人間時間 ~16h の過半が実機/実課金/法務/デプロイ**: コード量と非相関のボトルネック。
 

@@ -40,7 +40,30 @@
 ### 反復 3 (2026-05-26 20:26)
 - 判定: P4.4(a) Design gate (concept 確定済 + docs/design/design-system.md 不在) = SCENARIO Phase 1.5
 - auto-pick: `/flow:design` (デザイン SoT 生成。画面未実装のため headless 視覚レビューは defer)
+- 結果: 完了 (commit 6bc995b)。ティールグリーン SoT 生成、視覚レビュー defer
 - chosen_type: auto-recommended
+
+### heavy 検知 (2026-05-26 20:28)
+- 完了対象 3 (secure/estimate/design) + 生成/更新 35+ files → §4.5.2a heavy
+- 対応: `.flow-needs-compact` marker 書き込み + 継続 (停止しない、harness auto-compact 透過処理)
+
+### 反復 4 (2026-05-26 20:28)
+- 判定: P4 (Phase 1.5 完了 + Phase 2 未着手) → 機能設計開始。SCENARIO §5 次推奨 = /flow:feature _shared/db
+- auto-pick: `/flow:feature _shared/db` (優先度1 基盤、論点なしの infra から)
+- chosen_type: auto-recommended
+- 進捗: db SPEC (001) 生成中にユーザー割込 → 課金モデル再変更を先に反映 (下記 D-028)、その後 db 設計を再開
+
+### 割込: ユーザー指示 2 (2026-05-26 20:30) — flow 書き換え + 課金モデル変更2回目
+- 「flowを書き換えました」→ 次回 invoke する flow skill から新定義反映 (今回ロード済み skill は旧定義)
+- 「社会善アプリなので買い切りTODOではなく投げ銭にします。100円」→ D20260526-028
+
+### D20260526-028
+- question: 課金モデルの再変更 (買い切り → 投げ銭)
+- chosen: **100円の投げ銭(任意支援)**。社会善アプリのためペイウォール廃止 → 買い物 TODO リスト含む全機能を無料化。投げ銭は機能アンロックを伴わない (Stripe・ログイン不要・複数回可)
+- chosen_type: explicit-choice (ユーザー直接指示)
+- supersedes: D20260526-024 (100円買い切り)
+- 反映: concept (§1.1 UC4+UC6 / §1.2 / §1.3.1-2 billing無料化+優先度3→2 / §1.3.4 topo: shopping-list の billing 依存解消 / §4.1/§4.3/§4.4/§4.6.4/§4.7.5/§4.8.2 / §5.1 user.plan廃止・billing→donation・shopping_item無料 / §5.2 投げ銭フロー / §6 / §7 / §9.4 特商法→投げ銭非該当)、_shared/db SPEC (users.plan削除/billing→donations/shopping_items無料/withOwner対象調整)、README/SCENARIO/billing/shopping-list/PREREQUISITES/DOC_MAP/design-system(O43)/SECURITY_REVIEW(PJ性質)/estimate(根拠)
+- データモデル: donation(id/user_id?/stripe_payment_id/amount=100/created_at)。user.plan 廃止。shopping_item は無料機能のまま
 
 ---
 
