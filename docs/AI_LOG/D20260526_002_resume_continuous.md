@@ -31,6 +31,15 @@
 ### 反復 2 (2026-05-26 20:23)
 - 判定: §3.0 estimate 1回目 (concept 全節 + secure Critical/High 解決済[accepted-as-req] + initial 見積なし)
 - auto-pick: `/flow:estimate`
+- 結果: 完了 (commit f423b7b)。initial rough 見積生成
+- chosen_type: auto-recommended
+
+### 割込: ユーザー指示 (2026-05-26 20:24)
+- 「課金は100円単発買い切り / PDFではない / 買い物TODOリストを100円で売る」→ D20260526-024 で concept 刷新 (commit 514429d、estimate に反映済)
+
+### 反復 3 (2026-05-26 20:26)
+- 判定: P4.4(a) Design gate (concept 確定済 + docs/design/design-system.md 不在) = SCENARIO Phase 1.5
+- auto-pick: `/flow:design` (デザイン SoT 生成。画面未実装のため headless 視覚レビューは defer)
 - chosen_type: auto-recommended
 
 ---

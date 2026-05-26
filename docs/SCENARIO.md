@@ -66,12 +66,13 @@
 ## 5. 現在地カーソル
 
 <!-- AUTO-GENERATED:BEGIN scenario-cursor -->
-- 現在フェーズ: Phase 1 (概念設計) 完了
-- 進行中ターゲット: なし (Phase 1.5 / Phase 2 着手待ち)
-- 最終更新セッション: D20260526_001_concept_initial
-- 最終更新時刻: 2026-05-26 19:55
-- 完了フェーズ: [Phase 1]
-- 次の推奨コマンド: /flow:secure --phase=design --scope=concept (Phase 1 完了ゲート) → /flow:design (Phase 1.5) → /flow:feature _shared/db (Phase 2 基盤起点)
+- 現在フェーズ: Phase 1.5 (デザインシステム) — SoT 生成済み (視覚レビューは画面実装後)
+- 進行中ターゲット: なし (Phase 2 機能設計 着手待ち)
+- 最終更新セッション: D20260526_005_design_system (auto loop D20260526_002 経由)
+- 最終更新時刻: 2026-05-26 20:27
+- 完了フェーズ: [Phase 1, Phase 1.5(SoT)]
+- 次の推奨コマンド: /flow:feature _shared/db (Phase 2 基盤起点、優先度順: db → ui → auth → notification → service-info → legal → billing → inventory → feedback → inspection → shopping-list)
+- 備考: secure(concept L1)済 / initial 見積済 / design-system.md(ティールグリーン)済。視覚レビューは画面実装後に /flow:design --review-only。課金=100円買い切り(買い物TODOリスト)に変更済(D-024)
 <!-- AUTO-GENERATED:END scenario-cursor -->
 
 ## 6. 変更履歴

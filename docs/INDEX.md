@@ -10,6 +10,8 @@
 - [`./SCENARIO.md`](./SCENARIO.md) — 開発シナリオ（next-step 判断用）
 - [`./DOC_MAP.md`](./DOC_MAP.md) — AI 用エントリポイント
 - [`./PREREQUISITES.md`](./PREREQUISITES.md) — 実装前準備チェックリスト
+- [`./design/design-system.md`](./design/design-system.md) — デザインシステム SoT（ティールグリーン、視覚言語/トークン/コピー方針）
+- [`./SECURITY_REVIEW_20260526.md`](./SECURITY_REVIEW_20260526.md) — concept L1 脆弱性レビュー
 
 ## 機能フォルダ
 | 優先度 | 基盤 | フォルダ | 状態 | 設計完了 | 改修件数 | バグ修正件数 | クレーム件数 | INDEX |
