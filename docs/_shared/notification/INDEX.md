@@ -1,17 +1,20 @@
 # notification (横断) ドキュメントインデックス
 
-**最終更新**: 2026-05-26 19:55
-**生成元**: /flow:concept (初期化)
+**最終更新**: 2026-05-26 20:42
+**生成元**: /flow:concept (初期化) → /flow:feature (設計)
 
 <!-- auto-generated-start -->
 
 ## 機能概要
-通知基盤。メール(Resend)+ アプリ内通知、購読 ON/OFF、配信履歴。Web Push 不採用。
+通知基盤。メール(Resend)+ アプリ内通知、購読 ON/OFF、配信履歴。Web Push 不採用。SEC-002 (PII マスク/Sentry beforeSend、論点-005) の実装担当。
 
 ## ファイル一覧（番号順）
 | 番号 | ファイル | 種別 | 状態 | 最終更新 | 短い説明 |
 |---|---|---|---|---|---|
-| (まだ設計文書なし。`/flow:feature` で生成) |
+| 001 | [001__shared_notification_SPEC.md](./001__shared_notification_SPEC.md) | SPEC | 設計済 | 2026-05-26 | Resend+アプリ内+購読+配信履歴+PII マスク(SEC-002) |
+| 002 | [002__shared_notification_PLAN.md](./002__shared_notification_PLAN.md) | PLAN | 設計済 | 2026-05-26 | PII マスク最優先の 4 Phase、notifications/email_deliveries 追加 |
+| 003 | [003__shared_notification_UNIT_TEST.md](./003__shared_notification_UNIT_TEST.md) | UNIT_TEST | 設計済 | 2026-05-26 | PII マスク(SEC-002)100%カバー、購読/送信/所有者分離 |
+| 004 | (E2E は cross-cutting でスキップ。統合は inspection 側 E2E でカバー) | — | — | — | — |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
@@ -24,7 +27,7 @@
 - 実装コード: §1.4 参照
 
 ## 機能性質タグ
-- (未確定。`/flow:feature` 実行時に決定)
+- cross-cutting, auth-required (購読/通知は user-scoped)
 
 <!-- auto-generated-end -->
 

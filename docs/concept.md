@@ -430,7 +430,7 @@ service-hub → /api/service-info を pull(アプリ層指標)
 
 ### [論点-005] [SEC-002] PII ログ漏洩: High (法令必須)
 - **status**: `accepted-as-requirement`
-- **status 履歴**: 2026-05-26 20:20 open → 2026-05-26 20:20 accepted-as-requirement (理由: concept §3.1 NFR に要件化、legal_required=true)
+- **status 履歴**: 2026-05-26 20:20 open → 2026-05-26 20:20 accepted-as-requirement (理由: concept §3.1 NFR に要件化、legal_required=true) → 2026-05-26 20:42 実装担当=_shared/notification (scrubPII/sentryBeforeSend/logger ラッパ、Phase 1 最優先)
 - **影響範囲**: §3 NFR, §4.6, §9.1, §9.2, _shared/notification, feedback
 - **観点 ID**: O26_pii_logging
 - **severity**: High (legal_required=true、除外不可)

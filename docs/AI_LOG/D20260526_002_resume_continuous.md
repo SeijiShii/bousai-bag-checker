@@ -75,6 +75,11 @@
 - auto-pick: `/flow:feature _shared/auth` (Clerk ゲスト→段階的認証、withOwner 連携)
 - chosen_type: auto-recommended
 
+### 反復 8 (2026-05-26 20:41)
+- 判定: P2 基盤(db/ui/auth)済。次の基盤✅ = _shared/notification (依存先 db 済)
+- auto-pick: `/flow:feature _shared/notification` (Resend + アプリ内通知 + 購読 + Sentry PII マスク SEC-002)
+- chosen_type: auto-recommended
+
 ### D20260526-028
 - question: 課金モデルの再変更 (買い切り → 投げ銭)
 - chosen: **100円の投げ銭(任意支援)**。社会善アプリのためペイウォール廃止 → 買い物 TODO リスト含む全機能を無料化。投げ銭は機能アンロックを伴わない (Stripe・ログイン不要・複数回可)
