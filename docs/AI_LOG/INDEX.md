@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 22 (... + tdd:db,ui,auth)
-**総 decision 数**: 67
-**進捗**: 設計+spec-review 完了 → **P4 tdd 実装中**。実装 3/11(db 9 / ui 13 / auth 7、計29テスト green)。次=_shared/notification
+**総セッション数**: 23 (... + tdd:db,ui,auth,notification)
+**総 decision 数**: 69
+**進捗**: **P4 tdd 実装中**。実装 4/11(db 9 / ui 13 / auth 7 / notification 12、計41テスト green)。次=_shared/legal
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
@@ -16,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_023_tdd__shared_notification.md](./D20260527_023_tdd__shared_notification.md) | 2026-05-27 | /flow:tdd | _shared/notification | D20260527-068〜069 | 完了 |
 | [D20260527_022_tdd__shared_auth.md](./D20260527_022_tdd__shared_auth.md) | 2026-05-27 | /flow:tdd | _shared/auth | D20260527-066〜067 | 完了 |
 | [D20260527_021_tdd__shared_ui.md](./D20260527_021_tdd__shared_ui.md) | 2026-05-27 | /flow:tdd | _shared/ui | D20260527-064〜065 | 完了 |
 | [D20260527_020_tdd__shared_db.md](./D20260527_020_tdd__shared_db.md) | 2026-05-27 | /flow:tdd | _shared/db | D20260527-061〜063 | 完了 |
@@ -43,6 +44,8 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-069 | /flow:tdd | notif サービス | 購読/quiet/配信履歴/in-app、db拡張、12テスト green | auto-recommended | D20260527_023_tdd__shared_notification.md |
+| D20260527-068 | /flow:tdd | notif PII(SEC-002) | scrubPII/sentryBeforeSend 最優先、PII 5テスト | auto-recommended | D20260527_023_tdd__shared_notification.md |
 | D20260527-067 | /flow:tdd | auth SEC-001/O22 | getAuthUserId信用線+冪等、7テスト green | auto-recommended | D20260527_022_tdd__shared_auth.md |
 | D20260527-066 | /flow:tdd | auth injectable | SessionResolver mock、実Clerkはrelease(O35) | auto-recommended | D20260527_022_tdd__shared_auth.md |
 | D20260527-065 | /flow:tdd | ui コンポーネント | Button/StatusChip/Field/InfoButton等 13テスト green | auto-recommended | D20260527_021_tdd__shared_ui.md |
