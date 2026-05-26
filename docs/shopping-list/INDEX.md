@@ -1,17 +1,21 @@
 # shopping-list ドキュメントインデックス
 
-**最終更新**: 2026-05-26 19:55
-**生成元**: /flow:concept (初期化)
+**最終更新**: 2026-05-27
+**生成元**: /flow:concept (初期化) → /flow:feature (設計)
 
 <!-- auto-generated-start -->
 
 ## 機能概要
-期限切れ/不足分から買い物 TODO リスト生成 + 購入状況管理(UC4)。無料機能(D-028 で課金ゲート廃止)。
+期限切れ/不足分から買い物 TODO リスト生成 + 購入状況管理(UC4)。無料機能(D-028)。CSV エクスポートはインジェクションエスケープ(SEC-003)。
 
 ## ファイル一覧（番号順）
 | 番号 | ファイル | 種別 | 状態 | 最終更新 | 短い説明 |
 |---|---|---|---|---|---|
-| (まだ設計文書なし。`/flow:feature` で生成) |
+| 001 | [001_shopping-list_SPEC.md](./001_shopping-list_SPEC.md) | SPEC | 設計済 | 2026-05-27 | TODO 生成+購入管理+CSV安全、無料 |
+| 002 | [002_shopping-list_PLAN.md](./002_shopping-list_PLAN.md) | PLAN | 設計済 | 2026-05-27 | generate/csv→repo/api→UI の 3 Phase |
+| 003 | [003_shopping-list_UNIT_TEST.md](./003_shopping-list_UNIT_TEST.md) | UNIT_TEST | 設計済 | 2026-05-27 | CSV インジェクション + 所有者分離重点 |
+| 004 | [004_shopping-list_E2E_TEST.md](./004_shopping-list_E2E_TEST.md) | E2E_TEST | 設計済 | 2026-05-27 | TODO 生成/購入/エクスポート + 無料確認 + IDOR |
+| 905 | (spec-review 未) | — | 未 | — | tdd 着手前に /flow:spec-review |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
@@ -24,7 +28,7 @@
 - 実装コード: §1.4 参照
 
 ## 機能性質タグ
-- (未確定。`/flow:feature` 実行時に決定)
+- feature, auth-required
 
 <!-- auto-generated-end -->
 
