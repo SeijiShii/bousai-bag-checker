@@ -30,7 +30,7 @@
 | 2 | [_shared/notification](./_shared/notification/) | 実装完了(core) | ✅ | [INDEX](./_shared/notification/INDEX.md) |
 | 2 | [_shared/legal](./_shared/legal/) | 実装完了 | ✅ | [INDEX](./_shared/legal/INDEX.md) |
 | 2 | [_shared/service-info](./_shared/service-info/) | 実装完了 | ✅ | [INDEX](./_shared/service-info/INDEX.md) |
-| 2 | [_shared/billing](./_shared/billing/) | 設計済 | ✅ | [INDEX](./_shared/billing/INDEX.md) |
+| 2 | [_shared/billing](./_shared/billing/) | 実装完了 | ✅ | [INDEX](./_shared/billing/INDEX.md) |
 
 ## 見積もり
 | ファイル | 種別 | 最終更新 |
