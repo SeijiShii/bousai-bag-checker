@@ -1,8 +1,8 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
-**最終更新**: 2026-05-26 20:30 (+09:00)
-**総セッション数**: 5 (concept / auto進行中 / secure / estimate / design)
-**総 decision 数**: 28
+**最終更新**: 2026-05-26 20:32 (+09:00)
+**総セッション数**: 6 (concept / auto進行中 / secure / estimate / design / feature:db)
+**総 decision 数**: 31
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -14,6 +14,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260526_006_feature__shared_db.md](./D20260526_006_feature__shared_db.md) | 2026-05-26 | /flow:feature | _shared/db | D20260526-029〜031 | 完了 |
 | [D20260526_005_design_system.md](./D20260526_005_design_system.md) | 2026-05-26 | /flow:design | system (NEW) | D20260526-026〜027 | 完了 |
 | [D20260526_004_estimate_whole.md](./D20260526_004_estimate_whole.md) | 2026-05-26 | /flow:estimate | whole (rough) | D20260526-025 | 完了 |
 | [D20260526_003_secure_concept.md](./D20260526_003_secure_concept.md) | 2026-05-26 | /flow:secure | concept (design) | D20260526-017〜023 | 完了 |
@@ -24,6 +25,9 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260526-031 | /flow:feature | db SEC-001 | withOwner 所有者強制(IDOR防止、100%カバー) | auto-recommended | D20260526_006_feature__shared_db.md |
+| D20260526-030 | /flow:feature | db schema | 7テーブル確定(donations/plan廃止反映) | auto-recommended | D20260526_006_feature__shared_db.md |
+| D20260526-029 | /flow:feature | db タグ | cross-cutting, auth-required | auto-recommended | D20260526_006_feature__shared_db.md |
 | D20260526-028 | /flow:auto | 課金モデル再変更(user) | 100円投げ銭=任意支援(全機能無料、アンロックなし) | explicit-choice | D20260526_002_resume_continuous.md |
 | D20260526-027 | /flow:design | SoT 生成 | design-system.md 全節生成 | auto-recommended | D20260526_005_design_system.md |
 | D20260526-026 | /flow:design | 主色方向(user) | ティールグリーン #2E8B74(緑寄り) | explicit-choice | D20260526_005_design_system.md |
