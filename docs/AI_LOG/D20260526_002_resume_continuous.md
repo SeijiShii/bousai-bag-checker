@@ -96,6 +96,11 @@
 - auto-pick: `/flow:feature _shared/service-info`
 - chosen_type: auto-recommended
 
+### 反復 11 (2026-05-27)
+- 判定: P2 残り = _shared/billing (投げ銭)。課金モデルは D-028 確定済
+- auto-pick: `/flow:feature _shared/billing` (Stripe 100円 one-time Checkout + webhook + donation 記録)
+- chosen_type: auto-recommended
+
 ### D20260526-028
 - question: 課金モデルの再変更 (買い切り → 投げ銭)
 - chosen: **100円の投げ銭(任意支援)**。社会善アプリのためペイウォール廃止 → 買い物 TODO リスト含む全機能を無料化。投げ銭は機能アンロックを伴わない (Stripe・ログイン不要・複数回可)

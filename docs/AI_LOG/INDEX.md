@@ -1,8 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 12 (concept / auto進行中 / secure / estimate×2 / design / feature:db/ui/auth/notification/legal/service-info)
-**総 decision 数**: 45
+**総セッション数**: 13 (concept / auto進行中 / secure / estimate×2 / design / feature:db/ui/auth/notification/legal/service-info/billing)
+**総 decision 数**: 47
+**Phase 2 横断設計**: 7/7 完了 (db/ui/auth/notification/legal/service-info/billing)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -14,6 +15,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_013_feature__shared_billing.md](./D20260527_013_feature__shared_billing.md) | 2026-05-27 | /flow:feature | _shared/billing | D20260527-046〜047 | 完了 |
 | [D20260527_012_feature__shared_service-info.md](./D20260527_012_feature__shared_service-info.md) | 2026-05-27 | /flow:feature | _shared/service-info | D20260527-044〜045 | 完了 |
 | [D20260526_011_feature__shared_legal.md](./D20260526_011_feature__shared_legal.md) | 2026-05-26 | /flow:feature | _shared/legal | D20260526-041〜042 | 完了 |
 | [D20260526_010_feature__shared_notification.md](./D20260526_010_feature__shared_notification.md) | 2026-05-26 | /flow:feature | _shared/notification | D20260526-038〜040 | 完了 |
@@ -31,6 +33,8 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-047 | /flow:feature | billing 安全性 | 金額サーバー強制+署名検証+冪等+アンロックなし | auto-recommended | D20260527_013_feature__shared_billing.md |
+| D20260527-046 | /flow:feature | billing タグ/フロー | 投げ銭 Checkout+webhook→donation(D-028) | auto-recommended | D20260527_013_feature__shared_billing.md |
 | D20260527-045 | /flow:feature | svc-info 認可 | 共有トークン+レート制限+PII非混入(SEC-004部分) | auto-recommended | D20260527_012_feature__shared_service-info.md |
 | D20260527-044 | /flow:feature | svc-info 論点003 | MVP最小スキーマ先行(契約SoT=service-hub) | auto-recommended | D20260527_012_feature__shared_service-info.md |
 | D20260527-043 | /flow:auto | seiji論点の進め方(user) | concept推奨でauto-pick進行(003/001/002) | explicit-choice | D20260526_002_resume_continuous.md |
