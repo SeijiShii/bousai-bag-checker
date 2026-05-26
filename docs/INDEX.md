@@ -19,7 +19,7 @@
 | 3 | ✅ | [inventory](./inventory/) | 実装完了 | ✅ | 0 | 0 | 0 | [INDEX](./inventory/INDEX.md) |
 | 3 | ❌ | [feedback](./feedback/) | 実装完了 | ✅ | 0 | 0 | 0 | [INDEX](./feedback/INDEX.md) |
 | 4 | ❌ | [inspection](./inspection/) | 実装完了 | ✅ | 0 | 0 | 0 | [INDEX](./inspection/INDEX.md) |
-| 4 | ❌ | [shopping-list](./shopping-list/) | 設計済 | ✅ | 0 | 0 | 0 | [INDEX](./shopping-list/INDEX.md) |
+| 4 | ❌ | [shopping-list](./shopping-list/) | 実装完了 | ✅ | 0 | 0 | 0 | [INDEX](./shopping-list/INDEX.md) |
 
 ## 横断フォルダ
 | 優先度 | フォルダ | 状態 | 設計完了 | INDEX |

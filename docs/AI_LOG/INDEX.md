@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 29 (... + tdd:...,inspection)
-**総 decision 数**: 77
-**進捗**: **P4 tdd 実装中**。実装 10/11(計91テスト green)。残=shopping-list(最後)。次=shopping-list
+**総セッション数**: 30 (... + tdd:...,shopping-list)
+**総 decision 数**: 78
+**進捗**: **P4 tdd 実装完了 11/11**(計102テスト green)。次=P4.5 E2E gate / P4.4(b) Design 視覚レビュー → app shell bootstrap → P4.7 Release
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
@@ -16,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_030_tdd_shopping-list.md](./D20260527_030_tdd_shopping-list.md) | 2026-05-27 | /flow:tdd | shopping-list | D20260527-078 | 完了 |
 | [D20260527_029_tdd_inspection.md](./D20260527_029_tdd_inspection.md) | 2026-05-27 | /flow:tdd | inspection | D20260527-077 | 完了 |
 | [D20260527_028_tdd_feedback.md](./D20260527_028_tdd_feedback.md) | 2026-05-27 | /flow:tdd | feedback | D20260527-076 | 完了 |
 | [D20260527_027_tdd_inventory.md](./D20260527_027_tdd_inventory.md) | 2026-05-27 | /flow:tdd | inventory | D20260527-074〜075 | 完了 |
@@ -50,6 +51,9 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-078 | /flow:tdd | shopping-list 実装 | CSV安全(R3)+重複防止(R2)+購入管理+無料UI(D-028)、11テスト green、全11実装完了 | auto-recommended | D20260527_030_tdd_shopping-list.md |
+| D20260527-077 | /flow:tdd | inspection 実装 | 期限抽出+cron冪等(R2)+季節点検、freshness共有(R1)、テスト green | auto-recommended | D20260527_029_tdd_inspection.md |
+| D20260527-076 | /flow:tdd | feedback 実装 | 👍/👎+バグ報告+PII scrub(SEC-002)+レート制限(SEC-004)、8テスト green | auto-recommended | D20260527_028_tdd_feedback.md |
 | D20260527-069 | /flow:tdd | notif サービス | 購読/quiet/配信履歴/in-app、db拡張、12テスト green | auto-recommended | D20260527_023_tdd__shared_notification.md |
 | D20260527-068 | /flow:tdd | notif PII(SEC-002) | scrubPII/sentryBeforeSend 最優先、PII 5テスト | auto-recommended | D20260527_023_tdd__shared_notification.md |
 | D20260527-067 | /flow:tdd | auth SEC-001/O22 | getAuthUserId信用線+冪等、7テスト green | auto-recommended | D20260527_022_tdd__shared_auth.md |
