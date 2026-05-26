@@ -1,8 +1,8 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
-**最終更新**: 2026-05-26 20:22 (+09:00)
-**総セッション数**: 3 (concept 完了 / auto 進行中 / secure 完了)
-**総 decision 数**: 24
+**最終更新**: 2026-05-26 20:25 (+09:00)
+**総セッション数**: 4 (concept 完了 / auto 進行中 / secure 完了 / estimate 完了)
+**総 decision 数**: 25
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -14,6 +14,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260526_004_estimate_whole.md](./D20260526_004_estimate_whole.md) | 2026-05-26 | /flow:estimate | whole (rough) | D20260526-025 | 完了 |
 | [D20260526_003_secure_concept.md](./D20260526_003_secure_concept.md) | 2026-05-26 | /flow:secure | concept (design) | D20260526-017〜023 | 完了 |
 | [D20260526_002_resume_continuous.md](./D20260526_002_resume_continuous.md) | 2026-05-26 | /flow:auto | next-step ルーティング | (反復ログ) | 進行中 |
 | [D20260526_001_concept_initial.md](./D20260526_001_concept_initial.md) | 2026-05-26 | /flow:concept | initial | D20260526-001〜014 | 完了 |
@@ -22,6 +23,7 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260526-025 | /flow:estimate | whole rough | Min/Std/Full=50/115/230 files, NFR 0.5x | auto-recommended | D20260526_004_estimate_whole.md |
 | D20260526-024 | /flow:auto | 課金モデル(user 指示) | 100円単発買い切り=買い物TODOリスト(PWYW廃止) | explicit-choice | D20260526_002_resume_continuous.md |
 | D20260526-023 | /flow:secure | O28 依存 | --phase=design 対象外で skip | auto-recommended | D20260526_003_secure_concept.md |
 | D20260526-022 | /flow:secure | SEC-005 O25 | 秘密情報=対応済み(注記のみ) | auto-recommended | D20260526_003_secure_concept.md |
