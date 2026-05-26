@@ -1,14 +1,20 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { App } from './routes/App';
-import { BackendProvider, makeMemoryBackend } from './services/backend';
-import './styles/globals.css';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { App } from "./routes/App";
+import {
+  BackendProvider,
+  makeMemoryBackend,
+  makeHttpBackend,
+} from "./services/backend";
+import "./styles/globals.css";
 
-const el = document.getElementById('root');
-if (!el) throw new Error('#root が見つかりません');
+const el = document.getElementById("root");
+if (!el) throw new Error("#root が見つかりません");
 
-// dev/デモは keyless memory backend (seed 付き)。Phase D で env により httpBackend に切替。
-const backend = makeMemoryBackend({ seed: true });
+// 本番 (build) は /api/* を呼ぶ httpBackend。dev/E2E は keyless な seed 付き memory backend。
+// VITE_BACKEND=http で dev でも http を強制可能 (api 結合確認用)。
+const useHttp = import.meta.env.PROD || import.meta.env.VITE_BACKEND === "http";
+const backend = useHttp ? makeHttpBackend() : makeMemoryBackend({ seed: true });
 
 createRoot(el).render(
   <React.StrictMode>
