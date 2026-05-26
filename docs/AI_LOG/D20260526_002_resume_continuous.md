@@ -155,6 +155,12 @@
 ### 反復 18 (2026-05-27)
 - 判定: 連続実装 → 次=_shared/ui (P1 基盤、101 不在、依存 design-system 済)
 - auto-pick: `/flow:tdd _shared/ui`(React/Vite/Tailwind scaffold 追加 → トークン → 基本コンポーネント TDD)
+- 結果: 実装完了(13テスト green、commit e5e59bc/1afc0ac)
+- chosen_type: auto-recommended
+
+### 反復 19 (2026-05-27)
+- 判定: 連続実装 → 次=_shared/auth (P2 基盤、依存 db 実装済)
+- auto-pick: `/flow:tdd _shared/auth`(injectable core: getOrCreateUser + userId 信用線、mock 注入。実 Clerk は O35 最終段階)
 - chosen_type: auto-recommended
 
 ### D20260526-028

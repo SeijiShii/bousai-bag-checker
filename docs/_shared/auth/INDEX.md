@@ -15,6 +15,8 @@
 | 002 | [002__shared_auth_PLAN.md](./002__shared_auth_PLAN.md) | PLAN | 設計済 | 2026-05-26 | interface→mock→実Clerk の 3 Phase |
 | 003 | [003__shared_auth_UNIT_TEST.md](./003__shared_auth_UNIT_TEST.md) | UNIT_TEST | 設計済 | 2026-05-26 | userId 信用線(SEC-001)100%カバー、O22 継続検証 |
 | 004 | (E2E は cross-cutting でスキップ。統合は機能側 E2E でカバー) | — | — | — | — |
+| 101 | [101__shared_auth_IMPL_REPORT.md](./101__shared_auth_IMPL_REPORT.md) | IMPL_REPORT | 実装完了(core) | 2026-05-27 | userId信用線+getOrCreateUser+O22、7テスト green。実Clerkはrelease |
+| 102 | [102__shared_auth_UNIT_TEST_REPORT.md](./102__shared_auth_UNIT_TEST_REPORT.md) | UNIT_TEST_REPORT | 実装完了 | 2026-05-27 | 7/7 green(SEC-001 信用線 100%) |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
