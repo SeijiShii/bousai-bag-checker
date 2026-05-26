@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 13 (concept / auto進行中 / secure / estimate×2 / design / feature:db/ui/auth/notification/legal/service-info/billing)
-**総 decision 数**: 47
-**Phase 2 横断設計**: 7/7 完了 (db/ui/auth/notification/legal/service-info/billing)
+**総セッション数**: 14 (concept / auto進行中 / secure / estimate×2 / design / feature:db/ui/auth/notification/legal/service-info/billing/inventory)
+**総 decision 数**: 49
+**Phase 2 設計進捗**: 横断 7/7 完了 + 機能 1/4 (inventory)。次は P3.7 spec-review gate (inventory) → feedback/inspection/shopping-list
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -15,6 +15,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_014_feature_inventory.md](./D20260527_014_feature_inventory.md) | 2026-05-27 | /flow:feature | inventory | D20260527-048〜049 | 完了 |
 | [D20260527_013_feature__shared_billing.md](./D20260527_013_feature__shared_billing.md) | 2026-05-27 | /flow:feature | _shared/billing | D20260527-046〜047 | 完了 |
 | [D20260527_012_feature__shared_service-info.md](./D20260527_012_feature__shared_service-info.md) | 2026-05-27 | /flow:feature | _shared/service-info | D20260527-044〜045 | 完了 |
 | [D20260526_011_feature__shared_legal.md](./D20260526_011_feature__shared_legal.md) | 2026-05-26 | /flow:feature | _shared/legal | D20260526-041〜042 | 完了 |
@@ -33,6 +34,8 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-049 | /flow:feature | inventory SEC/E2E | withOwner(IDOR防止)+E2E L1/L2採用 | auto-recommended | D20260527_014_feature_inventory.md |
+| D20260527-048 | /flow:feature | inventory 論点001 | 案A 3種freshness(D-043承認) | auto-recommended | D20260527_014_feature_inventory.md |
 | D20260527-047 | /flow:feature | billing 安全性 | 金額サーバー強制+署名検証+冪等+アンロックなし | auto-recommended | D20260527_013_feature__shared_billing.md |
 | D20260527-046 | /flow:feature | billing タグ/フロー | 投げ銭 Checkout+webhook→donation(D-028) | auto-recommended | D20260527_013_feature__shared_billing.md |
 | D20260527-045 | /flow:feature | svc-info 認可 | 共有トークン+レート制限+PII非混入(SEC-004部分) | auto-recommended | D20260527_012_feature__shared_service-info.md |
@@ -85,7 +88,7 @@
 
 | ID | 論点タイトル | 採番セッション | 関連 decision |
 |---|---|---|---|
-| [論点-001] | 期限のない品目の鮮度の扱い | D20260526_001 | concept §8 |
+| [論点-001] | 期限のない品目の鮮度の扱い | D20260526_001 | **解決**: 案A(3種freshness)採用、inventory SPEC+db schema 反映 (D-043/048) |
 | [論点-002] | feedback-hub 未構築 | D20260526_001 | concept §8 |
 | [論点-003] | service-info スキーマ | D20260526_001 | **dispatched-to-feature** (MVP最小先行、調整は論点-S-svc-1) |
 | [論点-S-svc-1] | service-hub 契約スキーマ確定 | D20260527_012 | 契約確定時 (担当 seiji) |
