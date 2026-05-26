@@ -1,9 +1,10 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 18 (..._feature:..×11 + spec-review:inventory)
-**総 decision 数**: 57
-**進捗**: 全11設計完了 + spec-review 1/4 (inventory)。残 spec-review: feedback/inspection/shopping-list → P4 tdd 実装
+**総セッション数**: 19 (..._feature×11 + spec-review×2セッション=4機能)
+**総 decision 数**: 60
+**進捗**: **全11設計 + 全4機能 spec-review 完了**。Critical/High なし。次は P4 tdd 実装(要 scaffold)
+**横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -15,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_019_spec-review_feedback-inspection-shopping.md](./D20260527_019_spec-review_feedback-inspection-shopping.md) | 2026-05-27 | /flow:spec-review | feedback/inspection/shopping-list | D20260527-058〜060 | 完了 |
 | [D20260527_018_spec-review_inventory.md](./D20260527_018_spec-review_inventory.md) | 2026-05-27 | /flow:spec-review | inventory | D20260527-056〜057 | 完了 |
 | [D20260527_017_feature_shopping-list.md](./D20260527_017_feature_shopping-list.md) | 2026-05-27 | /flow:feature | shopping-list | D20260527-054〜055 | 完了 |
 | [D20260527_016_feature_inspection.md](./D20260527_016_feature_inspection.md) | 2026-05-27 | /flow:feature | inspection | D20260527-052〜053 | 完了 |
@@ -38,6 +40,9 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-060 | /flow:spec-review | shopping 905 | freshness import+generate重複防止マージ | auto-recommended | D20260527_019_spec-review_feedback-inspection-shopping.md |
+| D20260527-059 | /flow:spec-review | inspection 905 | freshness import+cron冪等+通知PII最小化 | auto-recommended | D20260527_019_spec-review_feedback-inspection-shopping.md |
+| D20260527-058 | /flow:spec-review | feedback 905 | レート制限/bot共通化(P2)+scrubPII import | auto-recommended | D20260527_019_spec-review_feedback-inspection-shopping.md |
 | D20260527-057 | /flow:spec-review | inventory 905 | 905生成+002反映、Critical/Highなし | auto-recommended | D20260527_018_spec-review_inventory.md |
 | D20260527-056 | /flow:spec-review | inventory 判断4件 | freshness共有/itemSchema単一/写真proxy/lead_days連動 | auto-recommended | D20260527_018_spec-review_inventory.md |
 | D20260527-055 | /flow:feature | shopping CSV/SEC | CSV インジェクションエスケープ+withOwner | auto-recommended | D20260527_017_feature_shopping-list.md |

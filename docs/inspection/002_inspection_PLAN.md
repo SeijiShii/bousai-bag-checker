@@ -10,7 +10,8 @@
 | ファイル | 責務 | 依存 | LOC 見積 |
 |---|---|---|---|
 | `dueItems.ts` | lead_days 以内の期限/交換目安 items 抽出 | db, inventory(freshness) | 80 |
-| `api/cron/expiry-check.ts` | Vercel Cron: 全ユーザー期限抽出 → 通知トリガー | db, notification | 90 |
+| `api/cron/expiry-check.ts` | Vercel Cron: 全ユーザー期限抽出 → 通知トリガー。**多重起動耐性: email_deliveries で当日同 item の重複送信を抑制(冪等)** <!-- spec-review R2: cron 冪等性 --> | db, notification | 90 |
+| `dueItems.ts` (再掲) | **inventory.freshness を import(再実装禁止)** <!-- spec-review R1 --> | inventory(freshness) | — |
 | `api/inspection/log.ts` / `due.ts` / `logs.ts` | 点検 API (withOwner) | db | 90 |
 | `InspectionDashboard.tsx` | 点検ダッシュボード (鮮度サマリ) | ui, inventory | 110 |
 | `InspectionChecklist.tsx` | 季節点検チェックリスト + 完了サマリ | ui | 130 |

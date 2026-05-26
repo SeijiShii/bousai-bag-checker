@@ -10,7 +10,7 @@
 | ファイル | 責務 | 依存 | LOC 見積 |
 |---|---|---|---|
 | `shoppingRepository.ts` | shopping_item CRUD (withOwner) | db | 80 |
-| `generate.ts` | 期限切れ/不足 items → shopping_item 生成 | inventory(freshness) | 70 |
+| `generate.ts` | 期限切れ/不足 items → shopping_item 生成。**inventory.freshness を import(再実装禁止)。既存の未購入 shopping_item とマージして重複生成を防止** <!-- spec-review R1/R2: freshness再利用 + generate冪等(重複防止) --> | inventory(freshness) | 70 |
 | `csvExport.ts` | CSV 生成 + インジェクションエスケープ (SEC-003) | — | 50 |
 | `api/shopping/*.ts` | CRUD + generate + export API | repo | 110 |
 | `ShoppingList.tsx` | TODO リスト (未購入/購入済 + チェック) | ui | 120 |

@@ -15,7 +15,7 @@
 | 002 | [002_inspection_PLAN.md](./002_inspection_PLAN.md) | PLAN | 設計済 | 2026-05-27 | dueItems→cron/api→UI の 4 Phase |
 | 003 | [003_inspection_UNIT_TEST.md](./003_inspection_UNIT_TEST.md) | UNIT_TEST | 設計済 | 2026-05-27 | dueItems 抽出 + cron 認可 + 所有者分離 |
 | 004 | [004_inspection_E2E_TEST.md](./004_inspection_E2E_TEST.md) | E2E_TEST | 設計済 | 2026-05-27 | 季節点検ジャーニー + cron 通知 + L1/L2 |
-| 905 | (spec-review 未) | — | 未 | — | tdd 着手前に /flow:spec-review |
+| 905 | [905_inspection_SPEC_REVIEW.md](./905_inspection_SPEC_REVIEW.md) | SPEC_REVIEW | 完了 | 2026-05-27 | freshness import(R1)、cron 冪等(R2)、通知PII最小化(R3) |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |

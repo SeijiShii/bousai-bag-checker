@@ -10,7 +10,8 @@
 | ファイル | 責務 | 依存 | LOC 見積 |
 |---|---|---|---|
 | `feedbackSchema.ts` | Zod 入力スキーマ + PII scrub | zod, notification(pii) | 60 |
-| `api/feedback.ts` | POST /api/feedback (レート制限 + bot + scrub + 挿入 + 通知) | db, notification | 90 |
+| `api/feedback.ts` | POST /api/feedback (レート制限 + bot + scrub + 挿入 + 通知) | db, notification, **_shared ratelimit** | 90 |
+| `src/services/ratelimit/` | **共通レート制限 + bot(Turnstile/honeypot) ヘルパ** (feedback/tip/service-info で共有) <!-- spec-review R1: 公開EPレート制限を_shared共通化(P2重複回避) --> | (Upstash等) | 60 |
 | `FeedbackWidget.tsx` | 👍/👎 + バグ報告ウィジェット (控えめ) | ui | 110 |
 | `useFeedback.ts` | 送信フック | — | 40 |
 
