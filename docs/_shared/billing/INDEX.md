@@ -6,7 +6,7 @@
 <!-- auto-generated-start -->
 
 ## 機能概要
-課金基盤(PWYW/one-time)。Stripe 連携、機能アンロック、特商法導線。
+課金基盤(100 円 one-time 買い切り)。Stripe 単発決済、買い物 TODO リスト(shopping-list)のアンロック、特商法導線。
 
 ## ファイル一覧（番号順）
 | 番号 | ファイル | 種別 | 状態 | 最終更新 | 短い説明 |

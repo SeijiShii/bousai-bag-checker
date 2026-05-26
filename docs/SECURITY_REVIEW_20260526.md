@@ -15,7 +15,7 @@
 |---|---|---|
 | ユーザー数 | **公開 multi-tenant**（"単一ユーザー設計"=家族共有なし、だが多数の世帯が各自データを持つ） | §1.1 1世帯=1アカウント、§4 Clerk + Neon |
 | 公開 / ローカル | **公開** | §4.7 bousai.<domain> で Vercel 公開 |
-| 無償 / 有償 | **有償** (PWYW/one-time) | §1.2, _shared/billing, Stripe |
+| 無償 / 有償 | **有償** (100円単発買い切り one-time) | §1.2, _shared/billing, Stripe |
 | 個人情報扱い | **あり** (メール・品目・保管場所)。**機微医療は設計上除外** | §3 NFR、§5.1。常備薬は"予備有無"のみ |
 | AI 利用 | **なし** | §6 で明示確認 (Q12.5) |
 | 地域 | **国内向け** | §2、§9.2 GDPR 当面対象外 |
@@ -65,8 +65,8 @@
 - **該当箇所**: §4.2 Drizzle ORM (SQLi 緩和)、React デフォルトエスケープ (XSS 基本緩和)
 - **不在根拠**:
   - API 入力スキーマ (Zod 等) の一元バリデーション方針が concept に未記載。
-  - **CSV インジェクション**: §1.1 UC4 買い替えリスト出力 (印刷/共有/PDF/CSV) で、品目名が `=`/`+`/`-`/`@` で始まる場合のエスケープが未設計。
-  - PDF 生成や `dangerouslySetInnerHTML` 使用時の XSS、photo_url の取り扱い (R2、外部 URL fetch があれば SSRF 検討)。
+  - **CSV インジェクション**: §1.1 UC4 買い物 TODO リストの共有/エクスポート (CSV) で、品目名が `=`/`+`/`-`/`@` で始まる場合のエスケープが未設計。
+  - `dangerouslySetInnerHTML` 使用時の XSS、photo_url の取り扱い (R2、外部 URL fetch があれば SSRF 検討)。
 - **PJ 性質との関連**: 公開 PJ (require=公開)
 - **推奨方針**: feature 設計時 (inventory / shopping-list) で Zod 入力スキーマ + エクスポート時の CSV インジェクションエスケープを SPEC 化。
 - **route**: open (§8 [論点-006] 登録、判断期限=inventory / shopping-list feature 設計時)

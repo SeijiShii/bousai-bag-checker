@@ -16,7 +16,7 @@
 | Neon | `DATABASE_URL` | DB 接続 | neon.tech | 0.5GB × 10 DB |
 | Cloudflare R2 | `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` / `R2_BUCKET` | 品目写真(任意) | cloudflare.com → R2 | 10GB |
 | Resend | `RESEND_API_KEY` | 期限リマインドメール | resend.com | 3,000 通/月 |
-| Stripe | `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` | PWYW/one-time 課金 | dashboard.stripe.com | 従量手数料のみ |
+| Stripe | `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` | 100円 one-time 買い切り課金 | dashboard.stripe.com | 従量手数料のみ |
 | Sentry | `SENTRY_DSN` | エラー監視 | sentry.io | 5,000 events/月 |
 
 ## 2. BaaS / インフラアカウント (charter §0 Neon スタック)

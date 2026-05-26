@@ -2,7 +2,7 @@
 
 **最終更新**: 2026-05-26 20:22 (+09:00)
 **総セッション数**: 3 (concept 完了 / auto 進行中 / secure 完了)
-**総 decision 数**: 23
+**総 decision 数**: 24
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -22,6 +22,7 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260526-024 | /flow:auto | 課金モデル(user 指示) | 100円単発買い切り=買い物TODOリスト(PWYW廃止) | explicit-choice | D20260526_002_resume_continuous.md |
 | D20260526-023 | /flow:secure | O28 依存 | --phase=design 対象外で skip | auto-recommended | D20260526_003_secure_concept.md |
 | D20260526-022 | /flow:secure | SEC-005 O25 | 秘密情報=対応済み(注記のみ) | auto-recommended | D20260526_003_secure_concept.md |
 | D20260526-021 | /flow:secure | SEC-004 O27 | レート制限 Medium→§8 open | auto-recommended | D20260526_003_secure_concept.md |
@@ -64,6 +65,7 @@
 |---|---|---|---|
 | D20260526-013 (preferences 更新) | D20260526-015 | 2026-05-26 | D20260526_001 |
 | D20260526-014 (Git init) | D20260526-016 | 2026-05-26 | D20260526_001 |
+| D20260526-003 (課金=PWYW) | D20260526-024 | 2026-05-26 | D20260526_002 |
 
 <!-- auto-generated-end -->
 

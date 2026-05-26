@@ -1,6 +1,6 @@
 # billing (横断)
 
-課金基盤(PWYW/one-time)。Stripe 連携、機能アンロック、特商法導線。
+課金基盤(100 円 one-time 買い切り)。Stripe 単発決済、買い物 TODO リスト(shopping-list)のアンロック、特商法導線。
 
 ## このフォルダに置くドキュメント
 - `001_billing (横断)_SPEC.md` — 仕様書（`/flow:feature` で生成）
