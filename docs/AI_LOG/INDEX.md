@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 19 (concept / auto完了(設計分) / secure / estimate×2 / design / feature×11 / spec-review×2)
-**総 decision 数**: 60
-**進捗**: **設計フェーズ完了** = 全11設計 + 全4機能 spec-review + concept gates(secure/estimate)+ design SoT。Critical/High なし。**次フェーズ = P4 tdd 実装(要 scaffold)、次回 /flow:auto で再開**
+**総セッション数**: 20 (... + tdd:_shared/db)
+**総 decision 数**: 63
+**進捗**: 設計+spec-review 完了 → **P4 tdd 実装 開始(誤停止から復帰)**。実装 1/11 完了(_shared/db: scaffold + 9テスト green)。次=_shared/ui
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
@@ -16,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_020_tdd__shared_db.md](./D20260527_020_tdd__shared_db.md) | 2026-05-27 | /flow:tdd | _shared/db | D20260527-061〜063 | 完了 |
 | [D20260527_019_spec-review_feedback-inspection-shopping.md](./D20260527_019_spec-review_feedback-inspection-shopping.md) | 2026-05-27 | /flow:spec-review | feedback/inspection/shopping-list | D20260527-058〜060 | 完了 |
 | [D20260527_018_spec-review_inventory.md](./D20260527_018_spec-review_inventory.md) | 2026-05-27 | /flow:spec-review | inventory | D20260527-056〜057 | 完了 |
 | [D20260527_017_feature_shopping-list.md](./D20260527_017_feature_shopping-list.md) | 2026-05-27 | /flow:feature | shopping-list | D20260527-054〜055 | 完了 |
@@ -33,13 +34,16 @@
 | [D20260526_005_design_system.md](./D20260526_005_design_system.md) | 2026-05-26 | /flow:design | system (NEW) | D20260526-026〜027 | 完了 |
 | [D20260526_004_estimate_whole.md](./D20260526_004_estimate_whole.md) | 2026-05-26 | /flow:estimate | whole (rough) | D20260526-025 | 完了 |
 | [D20260526_003_secure_concept.md](./D20260526_003_secure_concept.md) | 2026-05-26 | /flow:secure | concept (design) | D20260526-017〜023 | 完了 |
-| [D20260526_002_resume_continuous.md](./D20260526_002_resume_continuous.md) | 2026-05-26〜27 | /flow:auto | next-step ルーティング (16 dispatch) | D20260527-043/D20260526-024/028 等 | 完了(設計フェーズ分) |
+| [D20260526_002_resume_continuous.md](./D20260526_002_resume_continuous.md) | 2026-05-26〜27 | /flow:auto | next-step ルーティング (16+ dispatch) | D20260527-043/D20260526-024/028 等 | 進行中(誤停止から復帰、P4 tdd 継続) |
 | [D20260526_001_concept_initial.md](./D20260526_001_concept_initial.md) | 2026-05-26 | /flow:concept | initial | D20260526-001〜014 | 完了 |
 
 ## decision_id 索引（grep 用、新しい順）
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-063 | /flow:tdd | db テスト | 9/9 green、SEC-001 所有者分離100% | auto-recommended | D20260527_020_tdd__shared_db.md |
+| D20260527-062 | /flow:tdd | db enum 生成 | drizzle.config schema 配列化で CREATE TYPE 生成 | auto-recommended | D20260527_020_tdd__shared_db.md |
+| D20260527-061 | /flow:tdd | db scaffold | greenfield scaffold を db 前段で作成(Class A) | auto-recommended | D20260527_020_tdd__shared_db.md |
 | D20260527-060 | /flow:spec-review | shopping 905 | freshness import+generate重複防止マージ | auto-recommended | D20260527_019_spec-review_feedback-inspection-shopping.md |
 | D20260527-059 | /flow:spec-review | inspection 905 | freshness import+cron冪等+通知PII最小化 | auto-recommended | D20260527_019_spec-review_feedback-inspection-shopping.md |
 | D20260527-058 | /flow:spec-review | feedback 905 | レート制限/bot共通化(P2)+scrubPII import | auto-recommended | D20260527_019_spec-review_feedback-inspection-shopping.md |

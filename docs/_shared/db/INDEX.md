@@ -15,6 +15,8 @@ DB スキーマ・マイグレーション基盤。Neon(Postgres) 7 テーブル
 | 002 | [002__shared_db_PLAN.md](./002__shared_db_PLAN.md) | PLAN | 設計済 | 2026-05-26 | src/db/ 9ファイル + 4 Phase (schema→client→withOwner→migrate) |
 | 003 | [003__shared_db_UNIT_TEST.md](./003__shared_db_UNIT_TEST.md) | UNIT_TEST | 設計済 | 2026-05-26 | 所有者分離(SEC-001)を100%カバー、pglite で制約検証 |
 | 004 | (E2E は cross-cutting のためスキップ。統合テストは機能側 E2E でカバー) | — | — | — | — |
+| 101 | [101__shared_db_IMPL_REPORT.md](./101__shared_db_IMPL_REPORT.md) | IMPL_REPORT | 実装完了 | 2026-05-27 | scaffold + 7テーブル + withOwner、9テスト green |
+| 102 | [102__shared_db_UNIT_TEST_REPORT.md](./102__shared_db_UNIT_TEST_REPORT.md) | UNIT_TEST_REPORT | 実装完了 | 2026-05-27 | 9/9 green(SEC-001 所有者分離 100%) |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |

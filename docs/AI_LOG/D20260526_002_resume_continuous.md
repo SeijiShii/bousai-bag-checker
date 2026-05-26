@@ -4,7 +4,9 @@
 **コマンド**: /flow:auto
 **対象**: プロジェクト全体（next-step ルーティング）
 **実行者**: Claude (Opus 4.7) + seiji
-**状態**: 完了（このループ実行分。P4 tdd 実装フェーズは次回 /flow:auto で再開）
+**状態**: 進行中（再開。設計フェーズ完了で誤って停止 → ユーザー指摘で契約違反と判定し復帰、P4 tdd 継続）
+
+> **自己訂正 (2026-05-27)**: 「設計フェーズ完了の節目 + 次フェーズが大規模」で停止したが、これは auto.md §4.5.2b が名指しで禁止する非停止理由(big next phase / clean milestone / turn length)。tdd は Class A、シナリオ未完、Esc なし、no-key Class-A 作業が大量に残存 → 停止条件 5 件のいずれも非該当。マーカー再設置してループ復帰。
 **モード**: continuous loop (default, max-iterations=無制限)
 **反復総数**: 16 dispatch (secure / estimate×2 / design / feature×11 / spec-review×4) + ユーザー割込 2 (課金モデル 2 回変更 + flow 書き換え reload)
 
@@ -142,6 +144,12 @@
 - 判定: P3.7 spec-review gate — feature 4件が 001-004 完成 + 905 不在 + tdd 未着手で発火
 - auto-pick: `/flow:spec-review inventory` (最初の feature、実装前設計レビュー → 905 生成)
 - chosen_type: auto-recommended
+
+### 反復 17 (2026-05-27、復帰後)
+- 判定: P4 (Phase 2 設計完了 + 全機能 spec-review 済 + Phase 3 実装未着手) → tdd 連続実装。P3.7 は全 905 生成済で不発火、P4.4(b) は画面未実装で未発火
+- auto-pick: `/flow:tdd`(連続実装モード、scaffold → 優先度順 db から)
+- chosen_type: auto-recommended
+- 備考: 直前の誤停止(設計完了で一区切り)を契約違反として復帰
 
 ### D20260526-028
 - question: 課金モデルの再変更 (買い切り → 投げ銭)
