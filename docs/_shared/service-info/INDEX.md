@@ -15,6 +15,8 @@ service-hub 連携(O48)。GET /api/service-info(アプリ層指標を HUB が pu
 | 002 | [002__shared_service-info_PLAN.md](./002__shared_service-info_PLAN.md) | PLAN | 設計済 | 2026-05-27 | 集計 + 認可エンドポイントの 2 Phase |
 | 003 | [003__shared_service-info_UNIT_TEST.md](./003__shared_service-info_UNIT_TEST.md) | UNIT_TEST | 設計済 | 2026-05-27 | PII 非混入 + 認可スコープ重点 |
 | 004 | (E2E は cross-cutting でスキップ。スモーク/契約テストでカバー) | — | — | — | — |
+| 101 | [101__shared_service-info_IMPL_REPORT.md](./101__shared_service-info_IMPL_REPORT.md) | IMPL_REPORT | 実装完了 | 2026-05-27 | MVP最小+認可+PII非混入+共通レート制限、7テスト green |
+| 102 | [102__shared_service-info_UNIT_TEST_REPORT.md](./102__shared_service-info_UNIT_TEST_REPORT.md) | UNIT_TEST_REPORT | 実装完了 | 2026-05-27 | 7/7 green(SEC-004+PII) |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |

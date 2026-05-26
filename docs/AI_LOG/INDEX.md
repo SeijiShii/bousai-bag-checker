@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 24 (... + tdd:db,ui,auth,notification,legal)
-**総 decision 数**: 70
-**進捗**: **P4 tdd 実装中**。実装 5/11(db/ui/auth/notification/legal、計45テスト green)。次=_shared/service-info
+**総セッション数**: 25 (... + tdd:...,service-info)
+**総 decision 数**: 72
+**進捗**: **P4 tdd 実装中**。実装 6/11(横断 6 完了 + 共通ratelimit、計52テスト green)。残=billing + 機能4。次=_shared/billing
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
@@ -16,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_025_tdd__shared_service-info.md](./D20260527_025_tdd__shared_service-info.md) | 2026-05-27 | /flow:tdd | _shared/service-info | D20260527-071〜072 | 完了 |
 | [D20260527_024_tdd__shared_legal.md](./D20260527_024_tdd__shared_legal.md) | 2026-05-27 | /flow:tdd | _shared/legal | D20260527-070 | 完了 |
 | [D20260527_023_tdd__shared_notification.md](./D20260527_023_tdd__shared_notification.md) | 2026-05-27 | /flow:tdd | _shared/notification | D20260527-068〜069 | 完了 |
 | [D20260527_022_tdd__shared_auth.md](./D20260527_022_tdd__shared_auth.md) | 2026-05-27 | /flow:tdd | _shared/auth | D20260527-066〜067 | 完了 |
