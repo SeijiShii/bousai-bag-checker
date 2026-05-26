@@ -15,6 +15,8 @@
 | 002 | [002__shared_legal_PLAN.md](./002__shared_legal_PLAN.md) | PLAN | 設計済 | 2026-05-26 | 3 法務ページ + フッタ/免責の 2 Phase |
 | 003 | [003__shared_legal_UNIT_TEST.md](./003__shared_legal_UNIT_TEST.md) | UNIT_TEST | 設計済 | 2026-05-26 | 必須法務項目の存在 + 導線 + O43/O38 |
 | 004 | (E2E は cross-cutting でスキップ。リンク到達は機能側 E2E/スモーク) | — | — | — | — |
+| 101 | [101__shared_legal_IMPL_REPORT.md](./101__shared_legal_IMPL_REPORT.md) | IMPL_REPORT | 実装完了 | 2026-05-27 | privacy/terms/特商法+Footer、4テスト green。文言は公開前human |
+| 102 | [102__shared_legal_UNIT_TEST_REPORT.md](./102__shared_legal_UNIT_TEST_REPORT.md) | UNIT_TEST_REPORT | 実装完了 | 2026-05-27 | 4/4 green(必須項目+O43) |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
