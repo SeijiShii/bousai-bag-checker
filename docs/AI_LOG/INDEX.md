@@ -2,7 +2,7 @@
 
 **最終更新**: 2026-05-26 19:55 (+09:00)
 **総セッション数**: 1
-**総 decision 数**: 14
+**総 decision 数**: 16
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -20,8 +20,10 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
-| D20260526-014 | /flow:concept | Step 7.7 Git | git init 確認待ち | open | D20260526_001_concept_initial.md |
-| D20260526-013 | /flow:concept | Step 7.5 preferences | 更新確認待ち | open | D20260526_001_concept_initial.md |
+| D20260526-016 | /flow:concept | Step 7.7 Git 実施 | git init + commit aff3cc9 | explicit-choice | D20260526_001_concept_initial.md |
+| D20260526-015 | /flow:concept | Step 7.5 preferences 実施 | 全更新(Neon等 +1, Resend新規) | explicit-choice | D20260526_001_concept_initial.md |
+| D20260526-014 | /flow:concept | Step 7.7 Git | git init+commit(→D-016 で解決) | open→解決 | D20260526_001_concept_initial.md |
+| D20260526-013 | /flow:concept | Step 7.5 preferences | 全更新(→D-015 で解決) | open→解決 | D20260526_001_concept_initial.md |
 | D20260526-012 | /flow:concept | Step 5.47 シナリオ | 新規 MVP 立ち上げ | auto-recommended | D20260526_001_concept_initial.md |
 | D20260526-011 | /flow:concept | Step 3 §1.3 構造 | 機能4 + 横断7 | auto-recommended | D20260526_001_concept_initial.md |
 | D20260526-010 | /flow:concept | Q12.13 feedback | 👍/👎+バグ報告、hub将来 | auto-recommended | D20260526_001_concept_initial.md |
@@ -39,8 +41,6 @@
 
 | ID | 論点タイトル | 採番セッション | 関連 decision |
 |---|---|---|---|
-| D20260526-013 | preferences 更新確認 | D20260526_001 | D20260526-001 |
-| D20260526-014 | Git init 確認 | D20260526_001 | D20260526-006 |
 | [論点-001] | 期限のない品目の鮮度の扱い | D20260526_001 | concept §8 |
 | [論点-002] | feedback-hub 未構築 | D20260526_001 | concept §8 |
 | [論点-003] | service-info スキーマ | D20260526_001 | concept §8 |
@@ -49,7 +49,8 @@
 
 | 旧 ID | 新 ID | 解決日 | 解決セッション |
 |---|---|---|---|
-| (なし) |
+| D20260526-013 (preferences 更新) | D20260526-015 | 2026-05-26 | D20260526_001 |
+| D20260526-014 (Git init) | D20260526-016 | 2026-05-26 | D20260526_001 |
 
 <!-- auto-generated-end -->
 

@@ -5,7 +5,7 @@
 **対象**: プロジェクト全体（初版作成、/flow:ideate I20260526-008 から連鎖）
 **実行者**: Claude (Opus 4.7) + seiji
 **状態**: 完了
-**含まれる decision**: D20260526-001 〜 D20260526-014
+**含まれる decision**: D20260526-001 〜 D20260526-016
 **ファイル**: `D20260526_001_concept_initial.md`
 
 ---
@@ -31,7 +31,9 @@
 - 新規: `docs/INDEX.md` / `docs/DOC_MAP.md` / `docs/PREREQUISITES.md` / `docs/SCENARIO.md`
 - 新規: 機能フォルダ 4 (inventory/inspection/shopping-list/feedback) + 横断 7 (_shared/{db,ui,auth,notification,legal,service-info,billing}) の README + INDEX
 - 新規: `docs/AI_LOG/D20260526_001_concept_initial.md`(本ファイル) + `INDEX.md`
-- (予定) ルート README.md / Git init + commit
+- 新規: ルート `README.md`(Getting Started 含む O36)/ `.gitignore`
+- git init -b main + 初回コミット aff3cc9
+- 更新: `~/.claude/flow-data/preferences.md`(Neon スタック +1, Resend 新規, 学習元 PJ 2→3)
 
 ## 学習・改善
 - このセッションでのコマンド改善要望なし(既存テンプレで充足)
@@ -220,3 +222,27 @@
   depends_on: [D20260526-006]
   context: git-commit-policy §1。新規 PJ で .git 不在、自動 init はしない方針。
 ```
+
+- id: D20260526-015
+  timestamp: 2026-05-26T19:56:30+09:00
+  command: /flow:concept
+  phase: Step 7.5 / preferences 更新実施
+  question: preferences.md を全更新するか (D20260526-013 の解決)
+  options: ["全更新 (recommended)", "個別更新", "更新しない"]
+  recommended: "全更新"
+  chosen: "全更新実施。Neon/Clerk/Drizzle/Vercel Functions/Vercel Cron を 1→2、React+TS/Vercel/Sentry/CI/shadcn を 2→3 (閾値 3 到達)、新 §2.18 メール送信(Resend=1) 追加、学習元 PJ 2→3、§7 履歴追記"
+  chosen_type: explicit-choice
+  depends_on: [D20260526-013]
+  context: ユーザー承認(全更新)。暗黙更新禁止のため確認後に実施。
+
+- id: D20260526-016
+  timestamp: 2026-05-26T19:57:00+09:00
+  command: /flow:concept
+  phase: Step 7.7 / Git init + commit 実施
+  question: git init して生成物をコミットするか (D20260526-014 の解決)
+  options: ["git init + commit (recommended)", "skip"]
+  recommended: "git init + commit"
+  chosen: "git init -b main → .gitignore 生成(.env*.local 除外) → wants.md/docs/README/.gitignore を 1 commit (aff3cc9)。push はしない。初回コミットのため main に直接(保護対象なし)"
+  chosen_type: explicit-choice
+  depends_on: [D20260526-014, D20260526-006]
+  context: ユーザー承認。新規 PJ で .git 不在、自動 init はしない方針のため確認後に実施。秘密ファイル未ステージを確認済。
