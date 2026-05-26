@@ -10,10 +10,10 @@
 | ファイル | 責務 | 依存 | LOC 見積 |
 |---|---|---|---|
 | `itemRepository.ts` | items CRUD ラッパ (withOwner 経由) | db | 90 |
-| `freshness.ts` | 鮮度算出 (expiry/replace_guide/check_only → fresh/warn/expired) | lib(date) | 70 |
-| `itemSchema.ts` | Zod 入力スキーマ (SEC-003 一元化) | zod | 60 |
+| `freshness.ts` | 鮮度算出 (expiry/replace_guide/check_only → fresh/warn/expired)。**inventory 単一所有、inspection/shopping-list は import(重複禁止)。lead_days を引数に取る** <!-- spec-review R1/R4: freshness 共有ヘルパ化 + lead_days 連動 --> | lib(date) | 70 |
+| `itemSchema.ts` | Zod 入力スキーマ (SEC-003 一元化)。**API+フォーム単一ソース、enum は db/enums.ts 由来(二重定義回避)** <!-- spec-review R2 --> | zod | 60 |
 | `api/items/index.ts` / `[id].ts` | CRUD API (requireUser + withOwner) | repo, auth | 120 |
-| `api/items/photo.ts` | R2 写真アップロード | R2 | 60 |
+| `api/items/photo.ts` | R2 写真アップロード(**サーバープロキシ方式**、R2鍵をクライアント露出しない SEC-005) <!-- spec-review R3: presigned でなく server proxy --> | R2 | 60 |
 | `ItemList.tsx` | 一覧 + StatusChip + EmptyState | ui | 120 |
 | `ItemForm.tsx` | 登録/編集フォーム (freshness 種別で動的) | ui | 150 |
 | `ItemCard.tsx` | 品目カード | ui | 60 |

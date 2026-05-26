@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 17 (..._feature:..../inventory/feedback/inspection/shopping-list)
-**総 decision 数**: 55
-**Phase 2 設計進捗**: **全 11 ターゲット設計完了** (横断7 + 機能4)。次は P3.7 spec-review gate (機能4件) → P4 tdd 実装
+**総セッション数**: 18 (..._feature:..×11 + spec-review:inventory)
+**総 decision 数**: 57
+**進捗**: 全11設計完了 + spec-review 1/4 (inventory)。残 spec-review: feedback/inspection/shopping-list → P4 tdd 実装
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -15,6 +15,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_018_spec-review_inventory.md](./D20260527_018_spec-review_inventory.md) | 2026-05-27 | /flow:spec-review | inventory | D20260527-056〜057 | 完了 |
 | [D20260527_017_feature_shopping-list.md](./D20260527_017_feature_shopping-list.md) | 2026-05-27 | /flow:feature | shopping-list | D20260527-054〜055 | 完了 |
 | [D20260527_016_feature_inspection.md](./D20260527_016_feature_inspection.md) | 2026-05-27 | /flow:feature | inspection | D20260527-052〜053 | 完了 |
 | [D20260527_015_feature_feedback.md](./D20260527_015_feature_feedback.md) | 2026-05-27 | /flow:feature | feedback | D20260527-050〜051 | 完了 |
@@ -37,6 +38,8 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-057 | /flow:spec-review | inventory 905 | 905生成+002反映、Critical/Highなし | auto-recommended | D20260527_018_spec-review_inventory.md |
+| D20260527-056 | /flow:spec-review | inventory 判断4件 | freshness共有/itemSchema単一/写真proxy/lead_days連動 | auto-recommended | D20260527_018_spec-review_inventory.md |
 | D20260527-055 | /flow:feature | shopping CSV/SEC | CSV インジェクションエスケープ+withOwner | auto-recommended | D20260527_017_feature_shopping-list.md |
 | D20260527-054 | /flow:feature | shopping タグ | feature/auth、TODO 生成+購入管理、無料(D-028) | auto-recommended | D20260527_017_feature_shopping-list.md |
 | D20260527-053 | /flow:feature | inspection cron | Cron シークレット保護+通知トリガー | auto-recommended | D20260527_016_feature_inspection.md |

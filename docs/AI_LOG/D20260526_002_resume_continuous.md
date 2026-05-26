@@ -121,6 +121,14 @@
 - auto-pick: `/flow:feature shopping-list`(inline)。買い物 TODO 生成+購入管理、CSV インジェクション(SEC-003)反映
 - chosen_type: auto-recommended
 
+### マイルストーン (2026-05-27): Phase 2 設計 100% 完了
+- 全 11 ターゲット (横断7 + 機能4) の SPEC/PLAN/UNIT(+E2E) 生成完了、論点 001/002/003 解決済
+
+### 反復 16 (2026-05-27)
+- 判定: P3.7 spec-review gate — feature 4件が 001-004 完成 + 905 不在 + tdd 未着手で発火
+- auto-pick: `/flow:spec-review inventory` (最初の feature、実装前設計レビュー → 905 生成)
+- chosen_type: auto-recommended
+
 ### D20260526-028
 - question: 課金モデルの再変更 (買い切り → 投げ銭)
 - chosen: **100円の投げ銭(任意支援)**。社会善アプリのためペイウォール廃止 → 買い物 TODO リスト含む全機能を無料化。投げ銭は機能アンロックを伴わない (Stripe・ログイン不要・複数回可)

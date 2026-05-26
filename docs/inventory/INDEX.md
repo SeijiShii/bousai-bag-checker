@@ -15,7 +15,7 @@
 | 002 | [002_inventory_PLAN.md](./002_inventory_PLAN.md) | PLAN | 設計済 | 2026-05-27 | freshness→repo→api→UI の 4 Phase |
 | 003 | [003_inventory_UNIT_TEST.md](./003_inventory_UNIT_TEST.md) | UNIT_TEST | 設計済 | 2026-05-27 | freshness 3種×3段階 + 所有者分離100% |
 | 004 | [004_inventory_E2E_TEST.md](./004_inventory_E2E_TEST.md) | E2E_TEST | 設計済 | 2026-05-27 | CRUD ジャーニー + IDOR + L1/L2 視覚検証 |
-| 905 | (spec-review 未) | — | 未 | — | tdd 着手前に /flow:spec-review |
+| 905 | [905_inventory_SPEC_REVIEW.md](./905_inventory_SPEC_REVIEW.md) | SPEC_REVIEW | 完了 | 2026-05-27 | greenfield 設計レビュー: freshness/itemSchema 共有・写真 server proxy・lead_days 連動 (R1-R5) |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
