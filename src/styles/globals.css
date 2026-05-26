@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* design-system トークンの CSS 変数 (非 Tailwind 経路用)。SoT は src/lib/tokens.ts。 */
+:root {
+  --color-primary: #2e8b74;
+  --color-primary-dark: #1f6b58;
+  --color-primary-fg: #ffffff;
+  --color-bg: #f7f8f6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eff2ee;
+  --color-text: #2a2f2c;
+  --color-text-muted: #6b746f;
+  --color-border: #e2e6e2;
+  --color-fresh: #4ca085;
+  --color-warn: #c98a3b;
+  --color-warn-bg: #fbf3e6;
+  --color-expired: #c25b4e;
+  --color-expired-bg: #fbedea;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: Inter, 'Noto Sans JP', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
