@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
-**最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 34 (... + E2E, release(進行中))
-**総 decision 数**: 88
-**進捗**: **autonomous 全完了** (unit 136 + E2E 11 green、bootstrap/Design/E2E すべて green)。**P4.7 Release は Class C/B 境界でユーザー主導待ち** (実キー FILL + Clerk/Stripe/Resend 配線 + Vercel デプロイ)。`/flow:release --resume` で再開。※ /flow:wording(P4.45)は仕上げで推奨
+**最終更新**: 2026-05-27 15:49 (+09:00)
+**総セッション数**: 36 (... + audit(full), resume)
+**総 decision 数**: 92
+**進捗**: **autonomous 全完了** (unit 136 + E2E 11 green、bootstrap/Design/E2E すべて green)。**リリース前 full 監査 (D-036) 実施** → High 1 件: **O48 service-info エンドポイント未配線** (`api/service-info.ts` 不在) を検出、auto §3.0c で `/flow:revise _shared/service-info` シューティング中。**P4.7 Release は Class C/B 境界でユーザー主導待ち** (実キー FILL + Clerk/Stripe/Resend 配線 + Vercel デプロイ)。※ /flow:wording(P4.45)は仕上げで推奨
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
@@ -16,6 +16,8 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_036_audit_full.md](./D20260527_036_audit_full.md) | 2026-05-27 | /flow:audit | full (リリース前) | D20260527-090〜092 | 完了 |
+| [D20260527_035_resume_continuous.md](./D20260527_035_resume_continuous.md) | 2026-05-27 | /flow:auto | next-step ルーティング (audit→revise) | D20260527-089 | 進行中 |
 | [D20260527_034_release_root.md](./D20260527_034_release_root.md) | 2026-05-27 | /flow:release | root | D20260527-088 | 進行中(ユーザー待ち) |
 | [D20260527_033_e2e_features.md](./D20260527_033_e2e_features.md) | 2026-05-27 | /flow:e2e | inventory/shopping/inspection/feedback | D20260527-085〜087 | 完了 |
 | [D20260527_032_design_review.md](./D20260527_032_design_review.md) | 2026-05-27 | /flow:design --review-only | 全画面 | D20260527-083〜084 | 完了 |
@@ -55,6 +57,10 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-092 | /flow:audit | drift シューティング | High(#4 O48)を /flow:revise dispatch(auto-execute)、論点status/カーソルはbookkeeping | auto-recommended | D20260527_036_audit_full.md |
+| D20260527-091 | /flow:audit | O48 判定 | service-info core+7unit緑だが api/service-info.ts 不在=実行時pull不可、High(no-key修正) | auto-recommended | D20260527_036_audit_full.md |
+| D20260527-090 | /flow:audit | full scope 範囲 | #1-#4実行+#6/#8/#9補足、#5/#7枠組みのみskip | auto-recommended | D20260527_036_audit_full.md |
+| D20260527-089 | /flow:auto | 再開 next-step | §3.0c鮮度ゲート(audit初回stale)発火→/flow:audit full を auto-invoke | auto-recommended | D20260527_035_resume_continuous.md |
 | D20260527-088 | /flow:release | P4.7 到達 | no-key 枯渇→release dispatch。実キー(C)+SDK配線+デプロイ(B)はユーザー主導待ちで一時停止 | explicit-choice | D20260527_034_release_root.md |
 | D20260527-087 | /flow:e2e | E2E 結果/完了判定 | 11 spec 全 green(flaky なし)、IDOR/cron/PII/CSV は unit、103×4 生成 | auto-recommended | D20260527_033_e2e_features.md |
 | D20260527-086 | /flow:e2e | FeedbackWidget 未マウント | 設定画面にマウント+unit回帰、feedback E2E 到達性確保 | auto-recommended | D20260527_033_e2e_features.md |
