@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
-**最終更新**: 2026-05-27 15:49 (+09:00)
-**総セッション数**: 36 (... + audit(full), resume)
-**総 decision 数**: 92
-**進捗**: **autonomous 全完了** (unit 136 + E2E 11 green、bootstrap/Design/E2E すべて green)。**リリース前 full 監査 (D-036) 実施** → High 1 件: **O48 service-info エンドポイント未配線** (`api/service-info.ts` 不在) を検出、auto §3.0c で `/flow:revise _shared/service-info` シューティング中。**P4.7 Release は Class C/B 境界でユーザー主導待ち** (実キー FILL + Clerk/Stripe/Resend 配線 + Vercel デプロイ)。※ /flow:wording(P4.45)は仕上げで推奨
+**最終更新**: 2026-05-27 16:00 (+09:00)
+**総セッション数**: 37 (... + audit(full), resume, revise(svc-info))
+**総 decision 数**: 95
+**進捗**: **autonomous 全完了** (unit 145 + E2E 11 green、bootstrap/Design/E2E すべて green)。**リリース前 full 監査 (D-036)** → High 1 件 (O48 service-info エンドポイント未配線) を検出 → **D-037 で `api/service-info.ts` 配線・撃ち落とし完了** (9 スモーク green、145 total)。**P4.7 Release は Class C/B 境界でユーザー主導待ち** (実キー FILL + Clerk/Stripe/Resend 配線 + Vercel デプロイ)。※ /flow:wording(P4.45)は仕上げで推奨
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
@@ -16,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_037_revise__shared_service-info.md](./D20260527_037_revise__shared_service-info.md) | 2026-05-27 | /flow:revise | _shared/service-info (audit-p001) | D20260527-093〜095 | 完了 |
 | [D20260527_036_audit_full.md](./D20260527_036_audit_full.md) | 2026-05-27 | /flow:audit | full (リリース前) | D20260527-090〜092 | 完了 |
 | [D20260527_035_resume_continuous.md](./D20260527_035_resume_continuous.md) | 2026-05-27 | /flow:auto | next-step ルーティング (audit→revise) | D20260527-089 | 進行中 |
 | [D20260527_034_release_root.md](./D20260527_034_release_root.md) | 2026-05-27 | /flow:release | root | D20260527-088 | 進行中(ユーザー待ち) |
@@ -57,6 +58,9 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-095 | /flow:revise | svc-info test 配線 | vitest include に api/**/*.test.ts 追加、スモーク9 green | auto-recommended | D20260527_037_revise__shared_service-info.md |
+| D20260527-094 | /flow:revise | token/fail-closed | Bearer/X-token 両対応+token未設定503+Sentry未配線null→degraded | auto-recommended | D20260527_037_revise__shared_service-info.md |
+| D20260527-093 | /flow:revise | 配線方針 | core無変更で api/service-info.ts wiring追加、後方互換・DB変更なし | auto-recommended | D20260527_037_revise__shared_service-info.md |
 | D20260527-092 | /flow:audit | drift シューティング | High(#4 O48)を /flow:revise dispatch(auto-execute)、論点status/カーソルはbookkeeping | auto-recommended | D20260527_036_audit_full.md |
 | D20260527-091 | /flow:audit | O48 判定 | service-info core+7unit緑だが api/service-info.ts 不在=実行時pull不可、High(no-key修正) | auto-recommended | D20260527_036_audit_full.md |
 | D20260527-090 | /flow:audit | full scope 範囲 | #1-#4実行+#6/#8/#9補足、#5/#7枠組みのみskip | auto-recommended | D20260527_036_audit_full.md |

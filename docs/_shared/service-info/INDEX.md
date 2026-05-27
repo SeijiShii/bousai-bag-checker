@@ -21,7 +21,7 @@ service-hub 連携(O48)。GET /api/service-info(アプリ層指標を HUB が pu
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
 |---|---|---|---|---|---|
-| (なし) |
+| [revise_audit-p001_20260527_wire-endpoint](./revise_audit-p001_20260527_wire-endpoint/) | revise | audit-p001 | 実装完了 | O48 endpoint 配線 (api/service-info.ts)、AUDIT High 解消、9 スモーク green | [INDEX](./revise_audit-p001_20260527_wire-endpoint/INDEX.md) |
 
 ## 関連
 - 親 concept: `../../concept.md` §1.3.2
