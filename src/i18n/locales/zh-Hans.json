@@ -5,7 +5,9 @@
     "save": "保存",
     "send": "发送",
     "loading": "加载中…",
-    "close": "关闭"
+    "close": "关闭",
+    "notFound": "未找到页面。",
+    "backToTop": "← 返回首页"
   },
   "header": {
     "title": "应急包检查器",
@@ -57,7 +59,9 @@
     "empty": "尚未登记任何物品。",
     "allGreen": "检查完成 — 全部正常。",
     "recorded": "已记录检查结果。",
-    "complete": "完成检查"
+    "complete": "完成检查",
+    "checkAria": "将{{name}}标记为已确认",
+    "recordedCount": "已记录检查（已确认 {{checked}}/{{total}}）。"
   },
   "shopping": {
     "generate": "生成购物清单",

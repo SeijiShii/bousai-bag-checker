@@ -1,8 +1,9 @@
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { StatusChip } from '@/components/ui/status-chip';
-import { EmptyState } from '@/components/ui/empty-state';
-import type { ItemWithFreshness } from './inventoryService';
+import { useTranslation } from "react-i18next";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { StatusChip } from "@/components/ui/status-chip";
+import { EmptyState } from "@/components/ui/empty-state";
+import type { ItemWithFreshness } from "./inventoryService";
 
 export interface ItemListProps {
   items: ItemWithFreshness[];
@@ -11,11 +12,16 @@ export interface ItemListProps {
 }
 
 export function ItemList({ items, onDelete, onAdd }: ItemListProps) {
+  const { t } = useTranslation();
   if (items.length === 0) {
     return (
       <EmptyState
-        message="まだ品目が登録されていません。最初の品目を追加しましょう。"
-        action={onAdd ? <Button onClick={onAdd}>品目を追加</Button> : undefined}
+        message={t("inventory.empty")}
+        action={
+          onAdd ? (
+            <Button onClick={onAdd}>{t("inventory.addItem")}</Button>
+          ) : undefined
+        }
       />
     );
   }
@@ -29,8 +35,12 @@ export function ItemList({ items, onDelete, onAdd }: ItemListProps) {
               <StatusChip status={item.freshness} />
             </div>
             {onDelete ? (
-              <Button variant="ghost" aria-label={`${item.name}を削除`} onClick={() => onDelete(item.id)}>
-                削除
+              <Button
+                variant="ghost"
+                aria-label={t("inventory.deleteAria", { name: item.name })}
+                onClick={() => onDelete(item.id)}
+              >
+                {t("inventory.delete")}
               </Button>
             ) : null}
           </Card>

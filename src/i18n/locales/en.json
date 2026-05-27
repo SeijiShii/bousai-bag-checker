@@ -5,7 +5,9 @@
     "save": "Save",
     "send": "Send",
     "loading": "Loading…",
-    "close": "Close"
+    "close": "Close",
+    "notFound": "Page not found.",
+    "backToTop": "← Back to top"
   },
   "header": {
     "title": "Bousai Bag Checker",
@@ -57,7 +59,9 @@
     "empty": "No items registered.",
     "allGreen": "Inspection complete — everything's green.",
     "recorded": "Inspection recorded.",
-    "complete": "Complete inspection"
+    "complete": "Complete inspection",
+    "checkAria": "Mark {{name}} as checked",
+    "recordedCount": "Inspection recorded ({{checked}}/{{total}} checked)."
   },
   "shopping": {
     "generate": "Create shopping list",

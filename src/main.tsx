@@ -6,6 +6,7 @@ import {
   makeMemoryBackend,
   makeHttpBackend,
 } from "./services/backend";
+import "./i18n/config"; // i18n 初期化 (render 前: ロケール検出 + カタログ登録)
 import "./styles/globals.css";
 
 const el = document.getElementById("root");

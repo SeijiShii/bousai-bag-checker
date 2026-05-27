@@ -5,7 +5,9 @@
     "save": "保存",
     "send": "送信",
     "loading": "読み込み中…",
-    "close": "閉じる"
+    "close": "閉じる",
+    "notFound": "ページが見つかりません。",
+    "backToTop": "← トップに戻る"
   },
   "header": {
     "title": "持ち出し袋チェッカー",
@@ -57,7 +59,9 @@
     "empty": "登録された品目がありません。",
     "allGreen": "点検完了 — 全部グリーンです。",
     "recorded": "点検を記録しました。",
-    "complete": "点検を完了する"
+    "complete": "点検を完了する",
+    "checkAria": "{{name}}を確認済みにする",
+    "recordedCount": "点検を記録しました（{{checked}}/{{total}} 確認）。"
   },
   "shopping": {
     "generate": "買い物リストを作る",

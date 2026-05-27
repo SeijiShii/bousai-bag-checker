@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ItemList, ItemForm, type ItemInput } from "@/features/inventory";
 import { Button } from "@/components/ui/button";
 import { useBackend } from "@/services/backend";
@@ -6,6 +7,7 @@ import { useBackendData } from "../useBackendData";
 
 /** 品目画面: 一覧 (鮮度 StatusChip) + 追加フォーム (動的 freshness 入力)。 */
 export function InventoryScreen() {
+  const { t } = useTranslation();
   const backend = useBackend();
   const {
     data: items,
@@ -29,19 +31,21 @@ export function InventoryScreen() {
     <section aria-labelledby="inventory-heading">
       <div className="mb-3 flex items-center justify-between">
         <h2 id="inventory-heading" className="text-lg font-semibold text-text">
-          品目
+          {t("inventory.heading")}
         </h2>
-        {!adding ? <Button onClick={() => setAdding(true)}>追加</Button> : null}
+        {!adding ? (
+          <Button onClick={() => setAdding(true)}>{t("common.add")}</Button>
+        ) : null}
       </div>
       {adding ? (
         <div className="flex flex-col gap-2">
           <ItemForm onSubmit={handleSubmit} />
           <Button variant="ghost" onClick={() => setAdding(false)}>
-            キャンセル
+            {t("common.cancel")}
           </Button>
         </div>
       ) : loading ? (
-        <p className="text-text-muted">読み込み中…</p>
+        <p className="text-text-muted">{t("common.loading")}</p>
       ) : (
         <ItemList
           items={items ?? []}

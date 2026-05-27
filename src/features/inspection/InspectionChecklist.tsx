@@ -1,31 +1,48 @@
-import { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { StatusChip } from '@/components/ui/status-chip';
-import { EmptyState } from '@/components/ui/empty-state';
-import type { ItemWithFreshness } from '@/features/inventory';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { StatusChip } from "@/components/ui/status-chip";
+import { EmptyState } from "@/components/ui/empty-state";
+import type { ItemWithFreshness } from "@/features/inventory";
 
 export interface InspectionChecklistProps {
   items: ItemWithFreshness[];
-  onComplete: (summary: { total: number; checked: number; needsReplace: number }) => void;
+  onComplete: (summary: {
+    total: number;
+    checked: number;
+    needsReplace: number;
+  }) => void;
 }
 
 /** 季節点検チェックリスト。各品目を確認 → 完了で inspection_log 記録 + 「全部グリーン」サマリ。 */
-export function InspectionChecklist({ items, onComplete }: InspectionChecklistProps) {
+export function InspectionChecklist({
+  items,
+  onComplete,
+}: InspectionChecklistProps) {
+  const { t } = useTranslation();
   const [checked, setChecked] = useState<Record<string, boolean>>({});
   const [done, setDone] = useState(false);
 
   if (items.length === 0) {
-    return <EmptyState message="登録された品目がありません。" />;
+    return <EmptyState message={t("inspection.empty")} />;
   }
   if (done) {
-    const allGreen = items.every((i) => i.freshness === 'fresh');
-    return <p className="text-base text-fresh">{allGreen ? '点検完了 — 全部グリーンです。' : '点検を記録しました。'}</p>;
+    const allGreen = items.every((i) => i.freshness === "fresh");
+    return (
+      <p className="text-base text-fresh">
+        {allGreen ? t("inspection.allGreen") : t("inspection.recorded")}
+      </p>
+    );
   }
 
   function complete() {
-    const needsReplace = items.filter((i) => i.freshness === 'expired').length;
-    onComplete({ total: items.length, checked: Object.values(checked).filter(Boolean).length, needsReplace });
+    const needsReplace = items.filter((i) => i.freshness === "expired").length;
+    onComplete({
+      total: items.length,
+      checked: Object.values(checked).filter(Boolean).length,
+      needsReplace,
+    });
     setDone(true);
   }
 
@@ -38,9 +55,11 @@ export function InspectionChecklist({ items, onComplete }: InspectionChecklistPr
               <label className="flex items-center gap-2">
                 <input
                   type="checkbox"
-                  aria-label={`${item.name}を確認済みにする`}
+                  aria-label={t("inspection.checkAria", { name: item.name })}
                   checked={!!checked[item.id]}
-                  onChange={(e) => setChecked((c) => ({ ...c, [item.id]: e.target.checked }))}
+                  onChange={(e) =>
+                    setChecked((c) => ({ ...c, [item.id]: e.target.checked }))
+                  }
                 />
                 {item.name}
               </label>
@@ -49,7 +68,7 @@ export function InspectionChecklist({ items, onComplete }: InspectionChecklistPr
           </li>
         ))}
       </ul>
-      <Button onClick={complete}>点検を完了する</Button>
+      <Button onClick={complete}>{t("inspection.complete")}</Button>
     </div>
   );
 }

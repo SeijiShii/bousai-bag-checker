@@ -55,7 +55,7 @@ describe("ShoppingScreen (配線、無料 D-028)", () => {
     renderWithBackend(<ShoppingScreen />, backend);
 
     fireEvent.click(
-      await screen.findByRole("button", { name: "リストを生成" }),
+      await screen.findByRole("button", { name: "買い物リストを作る" }),
     );
     // seed の expired (モバイルバッテリー) が TODO 化される
     expect(await screen.findByText("モバイルバッテリー")).toBeInTheDocument();
