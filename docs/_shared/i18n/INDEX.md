@@ -15,6 +15,7 @@
 | 002 | [002__shared_i18n_PLAN.md](./002__shared_i18n_PLAN.md) | PLAN | 設計済 | 2026-05-27 | 5 Phase (基盤→翻訳→Switcher→t()置換→法務注記) |
 | 003 | [003__shared_i18n_UNIT_TEST.md](./003__shared_i18n_UNIT_TEST.md) | UNIT_TEST | 設計済 | 2026-05-27 | 検出/正規化/フォールバック/キー集合一致(品質ゲート) |
 | 004 | [004__shared_i18n_E2E_TEST.md](./004__shared_i18n_E2E_TEST.md) | E2E_TEST | 設計済 | 2026-05-27 | 言語切替ジャーニー S1-S7 (切替/永続/検出/法務JA正本/enumラベル) |
+| 905 | [905__shared_i18n_SPEC_REVIEW.md](./905__shared_i18n_SPEC_REVIEW.md) | SPEC_REVIEW | 完了 | 2026-05-27 | R1抽出漏れ7キー/R2 aria interpolation/R3 Zod=キー格納→001反映 |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |

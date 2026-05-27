@@ -126,6 +126,16 @@ src/i18n/
 | `errors.replaceMonthsRequired` | 交換の目安(月)を入力してください | itemSchema |
 | `legal.jaAuthoritative` | この文書の正本は日本語です。 | 法務ページ (非 ja ロケール時に表示) |
 | `language.label` | 言語 / Language | LanguageSwitcher aria |
+| `feedback.bugReport` | 不具合を報告 | FeedbackWidget (spec-review R1) |
+| `errors.feedbackReactionRequired` | reaction が必要です | feedbackSchema (R1/R3) |
+| `errors.feedbackContentRequired` | 内容を入力してください | feedbackSchema (R1/R3) |
+| `inventory.delete` | 削除 | ItemList ボタン (R1) |
+| `inventory.deleteAria` | {{name}}を削除 | ItemList aria (R1/R2 interpolation、en: "Delete {{name}}") |
+| `shopping.exportCsv` | CSV で書き出し | ShoppingList (R1) |
+| `shopping.toggleBoughtAria` | {{name}}を購入済みにする | ShoppingList aria (R1/R2 interpolation、en: "Mark {{name}} as bought") |
+
+<!-- spec-review R1: 抽出漏れ 7 キーを追加 (feedback 報告/Zod 2件/削除+aria/CSV+aria)。R2: aria は接尾辞分割でなく完全文 interpolation キー。R4: settings 100円 は 1 キー 1 完全文 (分割禁止) -->
+
 
 > ja 値が確定したら tdd Phase 2 で en/zh-Hans/ko を生成 (design-system ボイス基準 = 淡々・穏やか)。`header.title` は固有名詞のため en では "Bousai Bag Checker" 等、各言語で自然な表記。
 
@@ -143,13 +153,14 @@ src/i18n/
 - **全 UI (screens/components/features)**: ハードコード文字列を `t()` 呼び出しに置換 (被依存)。
 - **_shared/ui (StatusChip/Field/Button/InfoButton)**: ラベルを t() 化。
 - **_shared/legal**: JA 正本維持。非 ja ロケール時に `legal.jaAuthoritative` 注記を表示し本文は JA。
-- **itemSchema (Zod)**: エラーメッセージを t() キー参照に (検証関数に t を渡すか、キーを返して表示層で t)。
+- **itemSchema + feedbackSchema (Zod)**: **Zod `message` に i18n キー文字列を格納** (例 `message: 'errors.nameRequired'`)、表示層 (Field error / FeedbackWidget) で `t(issue.message)` する。**Zod スキーマは t に非依存のまま**保つ (純粋性/テスタビリティ維持、テストは key を assert)。<!-- spec-review R3: Zod=キー格納 / 表示層 t()、関心分離 -->
 
 ## 6. タグ別追加項目 (i18n)
 
 - **翻訳キー設計**: §3.2 命名規約。ネスト + ドメイン prefix。
 - **プレースホルダ/補間**: `{{count}}` 等は i18next 形式。日付/数値は format.ts。
 - **ロケール正規化**: `zh`/`zh-CN`/`zh-Hans` → `zh-Hans`、`ko-KR` → `ko`、`en-*` → `en`、その他 → `ja`。
+- **接尾辞・区切りの禁止 (R2、CLAUDE.md i18n 方針)**: `${name}を削除` のような**固定接尾辞のハードコードを禁止**。完全文を 1 キーにして interpolation (`t('inventory.deleteAria', {name})`)。en/ko/zh は語順が異なるため接尾辞分割は破綻する。
 
 ## 7. スコープ外
 - 法務長文の zh/ko/en 翻訳 (JA 正本、フォールバック)。
