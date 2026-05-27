@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 33 (... + design 視覚レビュー, E2E)
-**総 decision 数**: 87
-**進捗**: **unit 11/11 + bootstrap + Design 視覚レビュー + P4.5 E2E(11 spec green)完了**(unit 136 + E2E 11 green)。残=**P4.7 Release のみ**(実キー FILL + デプロイ、Class C+B)。※ /flow:wording(P4.45、人間対話)は仕上げで推奨
+**総セッション数**: 34 (... + E2E, release(進行中))
+**総 decision 数**: 88
+**進捗**: **autonomous 全完了** (unit 136 + E2E 11 green、bootstrap/Design/E2E すべて green)。**P4.7 Release は Class C/B 境界でユーザー主導待ち** (実キー FILL + Clerk/Stripe/Resend 配線 + Vercel デプロイ)。`/flow:release --resume` で再開。※ /flow:wording(P4.45)は仕上げで推奨
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
@@ -16,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_034_release_root.md](./D20260527_034_release_root.md) | 2026-05-27 | /flow:release | root | D20260527-088 | 進行中(ユーザー待ち) |
 | [D20260527_033_e2e_features.md](./D20260527_033_e2e_features.md) | 2026-05-27 | /flow:e2e | inventory/shopping/inspection/feedback | D20260527-085〜087 | 完了 |
 | [D20260527_032_design_review.md](./D20260527_032_design_review.md) | 2026-05-27 | /flow:design --review-only | 全画面 | D20260527-083〜084 | 完了 |
 | [D20260527_031_tdd_app-shell.md](./D20260527_031_tdd_app-shell.md) | 2026-05-27 | /flow:auto (bootstrap) | app-shell | D20260527-079〜082 | 完了 |
@@ -54,6 +55,7 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-088 | /flow:release | P4.7 到達 | no-key 枯渇→release dispatch。実キー(C)+SDK配線+デプロイ(B)はユーザー主導待ちで一時停止 | explicit-choice | D20260527_034_release_root.md |
 | D20260527-087 | /flow:e2e | E2E 結果/完了判定 | 11 spec 全 green(flaky なし)、IDOR/cron/PII/CSV は unit、103×4 生成 | auto-recommended | D20260527_033_e2e_features.md |
 | D20260527-086 | /flow:e2e | FeedbackWidget 未マウント | 設定画面にマウント+unit回帰、feedback E2E 到達性確保 | auto-recommended | D20260527_033_e2e_features.md |
 | D20260527-085 | /flow:e2e | E2E FW/環境 | @playwright/test + system chrome(channel)、keyless dev(memory seed) headless | auto-recommended | D20260527_033_e2e_features.md |
