@@ -26,6 +26,7 @@
 |---|---|---|---|---|
 | 1 | [_shared/db](./_shared/db/) | 実装完了 | ✅ | [INDEX](./_shared/db/INDEX.md) |
 | 1 | [_shared/ui](./_shared/ui/) | 実装完了 | ✅ | [INDEX](./_shared/ui/INDEX.md) |
+| 1 | [_shared/i18n](./_shared/i18n/) | 設計待ち | ❌ | [INDEX](./_shared/i18n/INDEX.md) |
 | 2 | [_shared/auth](./_shared/auth/) | 実装完了(core) | ✅ | [INDEX](./_shared/auth/INDEX.md) |
 | 2 | [_shared/notification](./_shared/notification/) | 実装完了(core) | ✅ | [INDEX](./_shared/notification/INDEX.md) |
 | 2 | [_shared/legal](./_shared/legal/) | 実装完了 | ✅ | [INDEX](./_shared/legal/INDEX.md) |
