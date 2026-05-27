@@ -1,8 +1,8 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
-**最終更新**: 2026-05-27 16:05 (+09:00)
-**総セッション数**: 38 (... + audit(full), resume, revise(svc-info), scenario)
-**総 decision 数**: 96
+**最終更新**: 2026-05-27 16:10 (+09:00)
+**総セッション数**: 39 (... + audit(full), resume, revise(svc-info), scenario, concept-update)
+**総 decision 数**: 97
 **進捗**: **autonomous 全完了** (unit 145 + E2E 11 green、bootstrap/Design/E2E すべて green)。**リリース前 full 監査 (D-036)** → High 1 件 (O48 service-info エンドポイント未配線) を検出 → **D-037 で `api/service-info.ts` 配線・撃ち落とし完了** (9 スモーク green、145 total)。**P4.7 Release は Class C/B 境界でユーザー主導待ち** (実キー FILL + Clerk/Stripe/Resend 配線 + Vercel デプロイ)。※ /flow:wording(P4.45)は仕上げで推奨
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
@@ -16,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_039_concept_update_20260527.md](./D20260527_039_concept_update_20260527.md) | 2026-05-27 | /flow:concept | UPDATE (§8 論点 status reconcile) | D20260527-097 | 完了 |
 | [D20260527_038_scenario_update.md](./D20260527_038_scenario_update.md) | 2026-05-27 | /flow:scenario | --update (カーソル reconcile) | D20260527-096 | 完了 |
 | [D20260527_037_revise__shared_service-info.md](./D20260527_037_revise__shared_service-info.md) | 2026-05-27 | /flow:revise | _shared/service-info (audit-p001) | D20260527-093〜095 | 完了 |
 | [D20260527_036_audit_full.md](./D20260527_036_audit_full.md) | 2026-05-27 | /flow:audit | full (リリース前) | D20260527-090〜092 | 完了 |
@@ -59,6 +60,7 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-097 | /flow:concept | §8 論点 status reconcile | 006/007→dispatched-to-feature、001/002 解決、§9.1 scaffold実装済(文面release) | auto-recommended | D20260527_039_concept_update_20260527.md |
 | D20260527-096 | /flow:scenario | §5 カーソル reconcile | Phase4(公開準備)+完了[1,1.5,2,3]、次=wording→release、stale解消 | auto-recommended | D20260527_038_scenario_update.md |
 | D20260527-095 | /flow:revise | svc-info test 配線 | vitest include に api/**/*.test.ts 追加、スモーク9 green | auto-recommended | D20260527_037_revise__shared_service-info.md |
 | D20260527-094 | /flow:revise | token/fail-closed | Bearer/X-token 両対応+token未設定503+Sentry未配線null→degraded | auto-recommended | D20260527_037_revise__shared_service-info.md |
@@ -158,8 +160,8 @@
 | [論点-002] | feedback-hub 未構築 | D20260526_001 | **解決**: 案A(自前DB+運用通知、hub後)採用、feedback SPEC 反映 (D-043/050) |
 | [論点-003] | service-info スキーマ | D20260526_001 | **dispatched-to-feature** (MVP最小先行、調整は論点-S-svc-1) |
 | [論点-S-svc-1] | service-hub 契約スキーマ確定 | D20260527_012 | 契約確定時 (担当 seiji) |
-| [論点-006] | [SEC-003] 入力検証 (Zod/CSV/XSS) | D20260526_003 | concept §8、feature 設計時解消 |
-| [論点-007] | [SEC-004] レート制限/公開EP | D20260526_003 | concept §8、feature 設計時解消 |
+| [論点-006] | [SEC-003] 入力検証 (Zod/CSV/XSS) | D20260526_003 | **dispatched-to-feature** (inventory/shopping-list/feedback で zod+CSV エスケープ+withOwner 実装、D-055。AUDIT #3 reconcile D-097) |
+| [論点-007] | [SEC-004] レート制限/公開EP | D20260526_003 | **dispatched-to-feature** (service-info + feedback、共通 ratelimit 共有 D-051/058。AUDIT #3 reconcile D-097) |
 | [論点-S-db-1] | freshness_type 最終形 | D20260526_006 | inventory 設計時 (担当 seiji) |
 | [論点-S-auth-1] | クロスデバイス ゲストデータ統合 | D20260526_009 | v2 defer (担当 seiji) |
 | [論点-S-legal-1] | 投げ銭の特商法該当性 最終確認 | D20260526_011 | 公開前 (担当 seiji) |

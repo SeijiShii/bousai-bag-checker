@@ -383,10 +383,14 @@ service-hub → /api/service-info を pull(アプリ層指標)
 | 2026-05-26 | ~~課金=PWYW(品目テンプレ拡張・買い替えリスト PDF)~~ → **D20260526-024 で supersede** | charter §1.2 第一推奨 | _shared/billing | [D20260526-003](./AI_LOG/D20260526_001_concept_initial.md#decisions) |
 | 2026-05-26 | ~~課金=100 円単発買い切り(買い物 TODO アンロック)~~ → **D20260526-028 で supersede** | ユーザー指示 | §1.1, §1.2, §1.3, §4.4, §5, §9.4 | [D20260526-024](./AI_LOG/D20260526_002_resume_continuous.md#decisions) |
 | 2026-05-26 | 課金=**100 円の投げ銭(任意支援)**。社会善アプリのためペイウォール廃止 → 買い物 TODO リストを含む**全機能を無料**化。投げ銭は機能アンロックを伴わない任意支援(Stripe・ログイン不要・複数回可)。billing→投げ銭基盤、shopping-list の billing 依存を解消、user.plan 廃止、billing entity→donation。特商法は「対価なき任意支援」で原則非該当(運営者情報は明示) | ユーザー指示「社会善アプリなので買い切りTODOではなく投げ銭にします。100円」 | §1.1, §1.2, §1.3(優先度/依存), §4.1/§4.3/§4.4/§4.6/§4.7/§4.8, §5, §6, §9 | [D20260526-028](./AI_LOG/D20260526_002_resume_continuous.md#decisions) |
+| 2026-05-27 | [論点-001] 解決: 期限なし品目の鮮度=カテゴリ別 3 種 freshness (期限あり/交換目安あり/内容確認のみ) を inventory で採用・実装 | 防災備蓄は期限なし品目も点検価値が高い | §8 論点-001, inventory | [D20260527-048](./AI_LOG/D20260527_014_feature_inventory.md#decisions) |
+| 2026-05-27 | [論点-002] 解決: feedback は案A (MVP 自前 DB + 運用通知、hub 連携は後) を採用・実装。共有 hub は将来別 PJ 化 | 1〜2 ヶ月 MVP を優先 | §8 論点-002, feedback | [D20260527-050](./AI_LOG/D20260527_015_feature_feedback.md#decisions) |
+| 2026-05-27 | リリース前 full 監査の drift シューティング: 論点-006/007 を dispatched-to-feature、論点-001/002 を解決、§9.1 法務を scaffold 実装済に reconcile。High=O48 service-info endpoint は api/service-info.ts 配線で解消 | AUDIT_20260527_1549 #3/#9 | §8, §9.1, _shared/service-info | [D20260527-097](./AI_LOG/D20260527_039_concept_update_20260527.md#decisions) |
 
 ## 8. 未決事項（論点リスト）
 
 ### [論点-001] 期限のないアイテムの「鮮度」をどう扱うか
+- **status**: `解決済` (2026-05-27) — inventory で案A (カテゴリ別 3 種 freshness: 期限あり/交換目安あり/内容確認のみ) を採用・実装完了 (D20260527-048, AUDIT_20260527_1549 #3 で reconcile)。§7 決定事項ログに記録
 - **影響範囲**: inventory, inspection
 - **詰めるべき問い**:
   1. 電池/モバイルバッテリーは賞味期限でなく「推奨交換時期」。手入力 or カテゴリ別デフォルト目安?
@@ -399,6 +403,7 @@ service-hub → /api/service-info を pull(アプリ層指標)
 - **担当**: seiji
 
 ### [論点-002] feedback-hub が未構築
+- **status**: `解決済` (2026-05-27) — feedback で案A (MVP は自前 DB + 運用チャンネル通知のみ、hub 連携は hub 構築後) を採用・実装完了 (D20260527-050, AUDIT_20260527_1549 #3 で reconcile)。共有 feedback-hub の別 PJ 立ち上げは将来 /flow:ideate→concept で独立化。§7 決定事項ログに記録
 - **影響範囲**: feedback
 - **詰めるべき問い**: O40 の中央 feedback-hub がまだ無い。本サービスを最初の連携先にするか、MVP は即時通知(運用チャンネル)のみにするか
 - **候補案**:
@@ -442,8 +447,8 @@ service-hub → /api/service-info を pull(アプリ層指標)
 - **L1 レポート**: `./SECURITY_REVIEW_20260526.md#sec-002`
 
 ### [論点-006] [SEC-003] 入力検証 (Zod / CSV インジェクション / XSS): Medium
-- **status**: `open`
-- **status 履歴**: 2026-05-26 20:20 open
+- **status**: `dispatched-to-feature`
+- **status 履歴**: 2026-05-26 20:20 open → 2026-05-27 dispatched-to-feature (AUDIT_20260527_1549 #3 で reconcile。inventory/shopping-list/feedback の各 feature SPEC + 実装で Zod 入力スキーマ + shopping-list の CSV インジェクションエスケープ (D20260527-055) + withOwner を採用・実装完了)
 - **影響範囲**: inventory, shopping-list, feedback
 - **観点 ID**: O24_input_validation
 - **severity**: Medium (Drizzle で SQLi 緩和・React で XSS 基本緩和の部分対応)
@@ -454,8 +459,8 @@ service-hub → /api/service-info を pull(アプリ層指標)
 - **L1 レポート**: `./SECURITY_REVIEW_20260526.md#sec-003`
 
 ### [論点-007] [SEC-004] レート制限 / 公開エンドポイント: Medium
-- **status**: `open`
-- **status 履歴**: 2026-05-26 20:20 open → 2026-05-27 service-info 部分は dispatched-to-feature (service-info SPEC で共有トークン+レート制限を設計)、feedback 部分は open (feedback 設計時)
+- **status**: `dispatched-to-feature`
+- **status 履歴**: 2026-05-26 20:20 open → 2026-05-27 service-info 部分は dispatched-to-feature (service-info SPEC で共有トークン+レート制限を設計) → 2026-05-27 feedback 部分も dispatched-to-feature (AUDIT_20260527_1549 #3 で reconcile。feedback 実装 + 共通レート制限 `src/services/ratelimit` 共通化で feedback/tip/service-info が共有、D20260527-051/058)
 - **影響範囲**: feedback, _shared/service-info
 - **観点 ID**: O27_rate_limit_scope
 - **severity**: Medium
@@ -470,11 +475,14 @@ service-hub → /api/service-info を pull(アプリ層指標)
 > 公開 PJ + 100円の投げ銭(任意支援)。§9.1 プライバシーポリシー必須。投げ銭は対価なき任意支援のため特商法「販売」には原則非該当だが、決済を扱うため運営者情報・連絡先・支援の任意性を明示(§9.4)。
 
 ### 9.1 必須書類チェックリスト
+
+> **状態注記 (2026-05-27, AUDIT_20260527_1549 #9 reconcile)**: `_shared/legal` のページ scaffold (ルート `/legal/*` + 表示コンポーネント) は実装完了 (D20260526-042、`src/features/legal`)。下表「状態」は**文面コンテンツの確定状況**を指し、実文面 (プラポリ本文・特商法表記・免責文) の最終確定は release/wording 工程 (Class C、人間文面) で行う。公開前に必ず確定すること。
+
 | 書類 | 必要性 | 状態 | 配置パス / URL | 備考 |
 |---|---|---|---|---|
-| プライバシーポリシー | ✅ | 未作成 | `/legal/privacy` | Clerk 経由メール等を扱う公開 PJ で必須 |
-| 利用規約 | ✅ | 未作成 | `/legal/terms` | 公開サービス。免責(防災情報の正確性を保証しない)明記 |
-| 特定商取引法に基づく表記 | △ | 未作成 | `/legal/specified-commercial-transactions` | 投げ銭(対価なき任意支援)は特商法「販売」に原則非該当。運営者情報は明示。決済導線次第で要確認 |
+| プライバシーポリシー | ✅ | scaffold 実装済 / 文面 release で確定 | `/legal/privacy` | Clerk 経由メール等を扱う公開 PJ で必須 |
+| 利用規約 | ✅ | scaffold 実装済 / 文面 release で確定 | `/legal/terms` | 公開サービス。免責(防災情報の正確性を保証しない)明記 |
+| 特定商取引法に基づく表記 | △ | scaffold 実装済 / 文面 release で確定 | `/legal/specified-commercial-transactions` | 投げ銭(対価なき任意支援)は特商法「販売」に原則非該当。運営者情報は明示。決済導線次第で要確認 |
 | Cookie ポリシー | ❌ | — | — | トラッキング Cookie 不使用のため不要 |
 
 ### 9.2 対応地域法規
@@ -529,3 +537,4 @@ auto_branch_prefix: "flow/"
 | 日付 | 変更概要 | 実行者 |
 |---|---|---|
 | 2026-05-26 | 初版作成(wants.md I20260526-008 由来、/flow:ideate から連鎖)。MVP=単一ユーザー、家族共有 v2 | /flow:concept |
+| 2026-05-27 | リリース前 full 監査 (AUDIT_20260527_1549) の drift reconcile: §8 論点-001/002 解決・006/007 dispatched-to-feature、§9.1 法務を scaffold 実装済に更新、§7 に解決ログ追加 | /flow:concept (UPDATE, /flow:auto 経由) |
