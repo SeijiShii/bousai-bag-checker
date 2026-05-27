@@ -1,0 +1,107 @@
+{
+  "common": {
+    "add": "추가",
+    "cancel": "취소",
+    "save": "저장",
+    "send": "보내기",
+    "loading": "불러오는 중…",
+    "close": "닫기"
+  },
+  "header": {
+    "title": "비상 가방 체커",
+    "about": "이 서비스 소개",
+    "aboutBody1": "비상 가방에 넣어 둔 물・식품・건전지 등을 등록하면 소비기한이나 교체 시기가 다가올 때 알려 드립니다. 정작 필요할 때 \"기한이 지난 걸 몰랐다\"를 막아 주는 체커입니다.",
+    "aboutBody2": "모든 기능을 무료로 사용할 수 있습니다. 도움이 되었다면 100엔 후원으로 응원할 수 있습니다(선택)."
+  },
+  "nav": {
+    "inventory": "물품",
+    "inspection": "점검",
+    "shopping": "쇼핑",
+    "settings": "설정",
+    "aria": "메인 내비게이션"
+  },
+  "inventory": {
+    "heading": "물품",
+    "empty": "아직 등록된 물품이 없습니다. 첫 물품을 추가해 보세요.",
+    "addItem": "물품 추가",
+    "delete": "삭제",
+    "deleteAria": "{{name}} 삭제",
+    "form": {
+      "name": "물품 이름",
+      "category": "종류",
+      "freshnessType": "관리 방식",
+      "expiresAt": "기한",
+      "replaceMonths": "교체 기준(개월)",
+      "quantity": "수량"
+    }
+  },
+  "category": {
+    "water": "물",
+    "food": "식품",
+    "battery": "건전지",
+    "medicine": "의약품",
+    "document": "서류",
+    "other": "기타"
+  },
+  "freshness": {
+    "expiry": "기한으로 관리",
+    "replace_guide": "교체 기준으로 관리",
+    "check_only": "내용 확인만"
+  },
+  "status": {
+    "fresh": "문제 없음",
+    "warn": "슬슬 점검",
+    "expired": "교체 시기"
+  },
+  "inspection": {
+    "empty": "등록된 물품이 없습니다.",
+    "allGreen": "점검 완료 — 모두 정상입니다.",
+    "recorded": "점검을 기록했습니다.",
+    "complete": "점검 완료하기"
+  },
+  "shopping": {
+    "generate": "쇼핑 목록 만들기",
+    "empty": "쇼핑 목록이 비어 있습니다. 점검 후에 목록을 만들 수 있습니다.",
+    "exportCsv": "CSV로 내보내기",
+    "toggleBoughtAria": "{{name}} 구매 완료로 표시"
+  },
+  "settings": {
+    "heading": "설정",
+    "notification": "알림",
+    "emailReminder": "기한이 다가오면 이메일로 알림",
+    "leadDays": "며칠 전부터 알릴지",
+    "support": "개발 응원하기",
+    "supportBody": "모든 기능을 무료로 사용할 수 있습니다. 100엔 후원으로 개발을 응원할 수 있습니다(선택・기능은 달라지지 않습니다).",
+    "tip": "100엔으로 응원하기",
+    "feedback": "의견・오류"
+  },
+  "feedback": {
+    "thanks": "감사합니다.",
+    "good": "좋아요",
+    "bad": "별로예요",
+    "bugReport": "오류 신고",
+    "bugContent": "오류 내용"
+  },
+  "footer": {
+    "privacy": "개인정보 처리방침",
+    "terms": "이용약관",
+    "tokushoho": "후원・운영자 정보",
+    "legal": "법무",
+    "tagline": "AI 주도 개발로 공개하는 개인 프로젝트입니다."
+  },
+  "errors": {
+    "nameRequired": "물품 이름을 입력해 주세요",
+    "quantityInvalid": "수량을 확인해 주세요",
+    "dateInvalid": "날짜를 확인해 주세요",
+    "expiresRequired": "기한을 입력해 주세요",
+    "replaceMonthsRequired": "교체 기준(개월)을 입력해 주세요",
+    "feedbackReactionRequired": "평가가 필요합니다",
+    "feedbackContentRequired": "내용을 입력해 주세요"
+  },
+  "legal": {
+    "jaAuthoritative": "이 문서의 정본은 일본어입니다."
+  },
+  "language": {
+    "label": "언어"
+  }
+}

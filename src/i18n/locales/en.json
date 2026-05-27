@@ -1,0 +1,107 @@
+{
+  "common": {
+    "add": "Add",
+    "cancel": "Cancel",
+    "save": "Save",
+    "send": "Send",
+    "loading": "Loading…",
+    "close": "Close"
+  },
+  "header": {
+    "title": "Bousai Bag Checker",
+    "about": "About this service",
+    "aboutBody1": "Register the water, food, batteries and other items in your emergency bag, and we'll let you know when their expiry or replacement time is approaching. It's a checker that helps you avoid the \"oops, it expired\" moment when it matters most.",
+    "aboutBody2": "All features are free to use. If it helps, you can support us with a 100-yen tip (optional)."
+  },
+  "nav": {
+    "inventory": "Items",
+    "inspection": "Inspection",
+    "shopping": "Shopping",
+    "settings": "Settings",
+    "aria": "Main navigation"
+  },
+  "inventory": {
+    "heading": "Items",
+    "empty": "No items registered yet. Let's add your first item.",
+    "addItem": "Add item",
+    "delete": "Delete",
+    "deleteAria": "Delete {{name}}",
+    "form": {
+      "name": "Item name",
+      "category": "Type",
+      "freshnessType": "How to track",
+      "expiresAt": "Expiry date",
+      "replaceMonths": "Replacement guide (months)",
+      "quantity": "Quantity"
+    }
+  },
+  "category": {
+    "water": "Water",
+    "food": "Food",
+    "battery": "Battery",
+    "medicine": "Medicine",
+    "document": "Documents",
+    "other": "Other"
+  },
+  "freshness": {
+    "expiry": "Track by expiry",
+    "replace_guide": "Track by replacement guide",
+    "check_only": "Check only"
+  },
+  "status": {
+    "fresh": "All good",
+    "warn": "Time to check soon",
+    "expired": "Time to replace"
+  },
+  "inspection": {
+    "empty": "No items registered.",
+    "allGreen": "Inspection complete — everything's green.",
+    "recorded": "Inspection recorded.",
+    "complete": "Complete inspection"
+  },
+  "shopping": {
+    "generate": "Create shopping list",
+    "empty": "Your shopping list is empty. You can create one after an inspection.",
+    "exportCsv": "Export as CSV",
+    "toggleBoughtAria": "Mark {{name}} as bought"
+  },
+  "settings": {
+    "heading": "Settings",
+    "notification": "Notifications",
+    "emailReminder": "Email me when an expiry is approaching",
+    "leadDays": "How many days in advance to notify",
+    "support": "Support development",
+    "supportBody": "All features are free to use. You can support development with a 100-yen tip (optional — features don't change).",
+    "tip": "Support with 100 yen",
+    "feedback": "Feedback & issues"
+  },
+  "feedback": {
+    "thanks": "Thank you.",
+    "good": "Good",
+    "bad": "Not great",
+    "bugReport": "Report an issue",
+    "bugContent": "Describe the issue"
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "tokushoho": "Tips & operator info",
+    "legal": "Legal",
+    "tagline": "A personal project published with AI-driven development."
+  },
+  "errors": {
+    "nameRequired": "Please enter an item name",
+    "quantityInvalid": "Please check the quantity",
+    "dateInvalid": "Please check the date",
+    "expiresRequired": "Please enter an expiry date",
+    "replaceMonthsRequired": "Please enter a replacement guide (months)",
+    "feedbackReactionRequired": "A reaction is required",
+    "feedbackContentRequired": "Please enter the details"
+  },
+  "legal": {
+    "jaAuthoritative": "The authoritative version of this document is in Japanese."
+  },
+  "language": {
+    "label": "Language"
+  }
+}

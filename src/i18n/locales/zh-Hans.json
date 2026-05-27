@@ -1,0 +1,107 @@
+{
+  "common": {
+    "add": "添加",
+    "cancel": "取消",
+    "save": "保存",
+    "send": "发送",
+    "loading": "加载中…",
+    "close": "关闭"
+  },
+  "header": {
+    "title": "应急包检查器",
+    "about": "关于本服务",
+    "aboutBody1": "登记应急包中的水、食品、电池等物品后，当保质期或更换时间临近时会提醒您。这是一个帮您避免“关键时刻才发现已过期”的检查工具。",
+    "aboutBody2": "所有功能均可免费使用。如果对您有帮助，可用 100 日元的打赏来支持我们（自愿）。"
+  },
+  "nav": {
+    "inventory": "物品",
+    "inspection": "检查",
+    "shopping": "购物",
+    "settings": "设置",
+    "aria": "主导航"
+  },
+  "inventory": {
+    "heading": "物品",
+    "empty": "还没有登记任何物品。先来添加第一件物品吧。",
+    "addItem": "添加物品",
+    "delete": "删除",
+    "deleteAria": "删除{{name}}",
+    "form": {
+      "name": "物品名称",
+      "category": "种类",
+      "freshnessType": "管理方式",
+      "expiresAt": "保质期",
+      "replaceMonths": "更换参考（月）",
+      "quantity": "数量"
+    }
+  },
+  "category": {
+    "water": "水",
+    "food": "食品",
+    "battery": "电池",
+    "medicine": "药品",
+    "document": "文件",
+    "other": "其他"
+  },
+  "freshness": {
+    "expiry": "按保质期管理",
+    "replace_guide": "按更换参考管理",
+    "check_only": "仅确认内容"
+  },
+  "status": {
+    "fresh": "状态良好",
+    "warn": "建议尽快检查",
+    "expired": "需要更换"
+  },
+  "inspection": {
+    "empty": "尚未登记任何物品。",
+    "allGreen": "检查完成 — 全部正常。",
+    "recorded": "已记录检查结果。",
+    "complete": "完成检查"
+  },
+  "shopping": {
+    "generate": "生成购物清单",
+    "empty": "购物清单为空。检查之后可以生成清单。",
+    "exportCsv": "导出为 CSV",
+    "toggleBoughtAria": "将{{name}}标记为已购买"
+  },
+  "settings": {
+    "heading": "设置",
+    "notification": "通知",
+    "emailReminder": "保质期临近时通过邮件提醒",
+    "leadDays": "提前几天通知",
+    "support": "支持开发",
+    "supportBody": "所有功能均可免费使用。可用 100 日元的打赏支持开发（自愿，功能不变）。",
+    "tip": "用 100 日元支持",
+    "feedback": "意见与故障"
+  },
+  "feedback": {
+    "thanks": "谢谢您。",
+    "good": "好",
+    "bad": "一般",
+    "bugReport": "报告故障",
+    "bugContent": "故障内容"
+  },
+  "footer": {
+    "privacy": "隐私政策",
+    "terms": "使用条款",
+    "tokushoho": "打赏与运营者信息",
+    "legal": "法务",
+    "tagline": "以 AI 驱动开发公开的个人项目。"
+  },
+  "errors": {
+    "nameRequired": "请输入物品名称",
+    "quantityInvalid": "请确认数量",
+    "dateInvalid": "请确认日期",
+    "expiresRequired": "请输入保质期",
+    "replaceMonthsRequired": "请输入更换参考（月）",
+    "feedbackReactionRequired": "需要选择评价",
+    "feedbackContentRequired": "请输入内容"
+  },
+  "legal": {
+    "jaAuthoritative": "本文件以日语版本为准。"
+  },
+  "language": {
+    "label": "语言"
+  }
+}
