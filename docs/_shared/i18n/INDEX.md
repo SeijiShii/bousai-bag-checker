@@ -2,7 +2,7 @@
 
 **最終更新**: 2026-05-27
 **生成元**: /flow:concept (初期化) → /flow:feature (設計) → /flow:tdd (実装完了)
-**状態**: 実装完了 (unit green、E2E は /flow:e2e で実行)
+**状態**: 実装完了 + E2E green (unit 14 + E2E 7 journey green)
 
 <!-- auto-generated-start -->
 
@@ -19,6 +19,7 @@
 | 905 | [905__shared_i18n_SPEC_REVIEW.md](./905__shared_i18n_SPEC_REVIEW.md) | SPEC_REVIEW | 完了 | 2026-05-27 | R1抽出漏れ7キー/R2 aria interpolation/R3 Zod=キー格納→001反映 |
 | 101 | [101__shared_i18n_IMPL_REPORT.md](./101__shared_i18n_IMPL_REPORT.md) | IMPL_REPORT | 実装完了 | 2026-05-27 | 基盤+4ロケール+Switcher+全UI t()化+法務JA正本、156 green |
 | 102 | [102__shared_i18n_UNIT_TEST_REPORT.md](./102__shared_i18n_UNIT_TEST_REPORT.md) | UNIT_TEST_REPORT | 実装完了 | 2026-05-27 | i18n 11 + 全体 156 green、キー集合一致ゲート |
+| 103 | [103__shared_i18n_E2E_REPORT.md](./103__shared_i18n_E2E_REPORT.md) | E2E_REPORT | E2E green | 2026-05-27 | 切替ジャーニー S1-S7 + 全体18 green、html lang バグ発見即修正 |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
