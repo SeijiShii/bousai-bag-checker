@@ -1,8 +1,8 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
-**最終更新**: 2026-05-27 16:10 (+09:00)
-**総セッション数**: 39 (... + audit(full), resume, revise(svc-info), scenario, concept-update)
-**総 decision 数**: 97
+**最終更新**: 2026-05-27 16:13 (+09:00)
+**総セッション数**: 40 (... + audit(full), resume, revise(svc-info), scenario, concept-update, secure-deps)
+**総 decision 数**: 99
 **進捗**: **autonomous 全完了** (unit 145 + E2E 11 green、bootstrap/Design/E2E すべて green)。**リリース前 full 監査 (D-036)** → High 1 件 (O48 service-info エンドポイント未配線) を検出 → **D-037 で `api/service-info.ts` 配線・撃ち落とし完了** (9 スモーク green、145 total)。**P4.7 Release は Class C/B 境界でユーザー主導待ち** (実キー FILL + Clerk/Stripe/Resend 配線 + Vercel デプロイ)。※ /flow:wording(P4.45)は仕上げで推奨
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
@@ -16,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_040_secure_deps.md](./D20260527_040_secure_deps.md) | 2026-05-27 | /flow:secure | --phase=deps (L4 CVE) | D20260527-098〜099 | 完了 |
 | [D20260527_039_concept_update_20260527.md](./D20260527_039_concept_update_20260527.md) | 2026-05-27 | /flow:concept | UPDATE (§8 論点 status reconcile) | D20260527-097 | 完了 |
 | [D20260527_038_scenario_update.md](./D20260527_038_scenario_update.md) | 2026-05-27 | /flow:scenario | --update (カーソル reconcile) | D20260527-096 | 完了 |
 | [D20260527_037_revise__shared_service-info.md](./D20260527_037_revise__shared_service-info.md) | 2026-05-27 | /flow:revise | _shared/service-info (audit-p001) | D20260527-093〜095 | 完了 |
@@ -60,6 +61,8 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-099 | /flow:secure | dev CVE 8件 defer | esbuild/vite/vitest dev-only→Dependabot委譲、release非ブロッカー | auto-recommended | D20260527_040_secure_deps.md |
+| D20260527-098 | /flow:secure | High SEC-005 解消 | drizzle-orm SQLi を 0.36.4→0.45.2 で即解消(145緑+build OK) | auto-recommended | D20260527_040_secure_deps.md |
 | D20260527-097 | /flow:concept | §8 論点 status reconcile | 006/007→dispatched-to-feature、001/002 解決、§9.1 scaffold実装済(文面release) | auto-recommended | D20260527_039_concept_update_20260527.md |
 | D20260527-096 | /flow:scenario | §5 カーソル reconcile | Phase4(公開準備)+完了[1,1.5,2,3]、次=wording→release、stale解消 | auto-recommended | D20260527_038_scenario_update.md |
 | D20260527-095 | /flow:revise | svc-info test 配線 | vitest include に api/**/*.test.ts 追加、スモーク9 green | auto-recommended | D20260527_037_revise__shared_service-info.md |

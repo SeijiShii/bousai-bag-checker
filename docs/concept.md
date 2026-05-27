@@ -470,6 +470,27 @@ service-hub → /api/service-info を pull(アプリ層指標)
 - **担当**: seiji
 - **L1 レポート**: `./SECURITY_REVIEW_20260526.md#sec-004`
 
+### [論点-008] [SEC-005] drizzle-orm SQL injection (依存 CVE): High
+- **status**: `closed`
+- **status 履歴**: 2026-05-27 16:13 検出 (npm audit, /flow:secure --phase=deps) → 2026-05-27 closed (drizzle-orm 0.36.4 → 0.45.2 アップグレードで解消、全 145 テスト green + build OK)
+- **影響範囲**: _shared/db, 全 feature の DB クエリ
+- **観点 ID**: O28_dependency_vulnerability
+- **severity**: High (CVSS High、本番依存)
+- **検出根拠**: drizzle-orm `<0.45.2` に SQL 識別子の不適切エスケープによる SQL injection advisory。本 PJ の実エクスポージャは低 (動的識別子をユーザー入力から構築しない) が公開前に予防的アップグレード
+- **対応 commit**: 本 deps セッション (SECURITY_DEPS_20260527.md §2)
+- **L4 レポート**: `./SECURITY_DEPS_20260527.md#sec-005`
+
+### [論点-009] [SEC-006] dev ツールチェーン CVE ×8 (esbuild/vite/vitest): Medium
+- **status**: `open` (deferred — dev-only、Dependabot 継続監視へ委譲)
+- **status 履歴**: 2026-05-27 16:13 検出 (npm audit moderate ×8)
+- **影響範囲**: dev/build/test ツールチェーンのみ (本番ランタイム非同梱)
+- **観点 ID**: O28_dependency_vulnerability
+- **severity**: Medium (moderate、ただし**本番影響なし** = dev server / テスト実行時のみ)
+- **検出根拠**: esbuild dev server SSRF (GHSA-67mh-4wv8-2f99) / vite `.map` パストラバーサル / vitest 推移的。修正は全て isSemVerMajor (vite 5→7 等の大型移行)
+- **推奨**: L4-cont に委譲 — `.github/dependabot.yml` + CI `npm audit --audit-level=high`。本番リスクゼロに対し回帰リスクが高いため、ツールチェーン移行は計画的に独立実施
+- **判断期限**: 次回ツールチェーン更新時 (release ブロッカーではない)
+- **L4 レポート**: `./SECURITY_DEPS_20260527.md#3-moderate-8-件-dev-only-build-toolchain-defer`
+
 ## 9. 法務・コンプライアンス書類
 
 > 公開 PJ + 100円の投げ銭(任意支援)。§9.1 プライバシーポリシー必須。投げ銭は対価なき任意支援のため特商法「販売」には原則非該当だが、決済を扱うため運営者情報・連絡先・支援の任意性を明示(§9.4)。
