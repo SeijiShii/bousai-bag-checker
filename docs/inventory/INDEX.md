@@ -18,6 +18,7 @@
 | 905 | [905_inventory_SPEC_REVIEW.md](./905_inventory_SPEC_REVIEW.md) | SPEC_REVIEW | 完了 | 2026-05-27 | greenfield 設計レビュー: freshness/itemSchema 共有・写真 server proxy・lead_days 連動 (R1-R5) |
 | 101 | [101_inventory_IMPL_REPORT.md](./101_inventory_IMPL_REPORT.md) | IMPL_REPORT | 実装完了 | 2026-05-27 | freshness+schema+CRUD+UI、18テスト green |
 | 102 | [102_inventory_UNIT_TEST_REPORT.md](./102_inventory_UNIT_TEST_REPORT.md) | UNIT_TEST_REPORT | 実装完了 | 2026-05-27 | 18/18 green(SEC-001 100%+freshness網羅) |
+| 103 | [103_inventory_E2E_REPORT.md](./103_inventory_E2E_REPORT.md) | E2E_REPORT | E2E green | 2026-05-27 | UC1/UC2/UC3 4 spec pass(IDOR は apiCore unit) |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |

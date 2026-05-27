@@ -18,6 +18,7 @@
 | 905 | [905_inspection_SPEC_REVIEW.md](./905_inspection_SPEC_REVIEW.md) | SPEC_REVIEW | 完了 | 2026-05-27 | freshness import(R1)、cron 冪等(R2)、通知PII最小化(R3) |
 | 101 | [101_inspection_IMPL_REPORT.md](./101_inspection_IMPL_REPORT.md) | IMPL_REPORT | 実装完了 | 2026-05-27 | 期限リマインドcron(冪等)+季節点検、7テスト green |
 | 102 | [102_inspection_UNIT_TEST_REPORT.md](./102_inspection_UNIT_TEST_REPORT.md) | UNIT_TEST_REPORT | 実装完了 | 2026-05-27 | 7/7 green(R2冪等) |
+| 103 | [103_inspection_E2E_REPORT.md](./103_inspection_E2E_REPORT.md) | E2E_REPORT | E2E green | 2026-05-27 | 点検チェックリスト→完了記録 1 spec pass(cron は unit) |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |

@@ -18,6 +18,7 @@
 | 905 | [905_shopping-list_SPEC_REVIEW.md](./905_shopping-list_SPEC_REVIEW.md) | SPEC_REVIEW | 完了 | 2026-05-27 | freshness import(R1)、generate 重複防止マージ(R2) |
 | 101 | [101_shopping-list_IMPL_REPORT.md](./101_shopping-list_IMPL_REPORT.md) | IMPL_REPORT | 実装完了 | 2026-05-27 | TODO生成(重複防止)+購入管理+CSV安全、11テスト green |
 | 102 | [102_shopping-list_UNIT_TEST_REPORT.md](./102_shopping-list_UNIT_TEST_REPORT.md) | UNIT_TEST_REPORT | 実装完了 | 2026-05-27 | 11/11 green(R2/R3/SEC-001) |
+| 103 | [103_shopping-list_E2E_REPORT.md](./103_shopping-list_E2E_REPORT.md) | E2E_REPORT | E2E green | 2026-05-27 | UC4 生成/購入/無料 3 spec pass |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |

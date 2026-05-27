@@ -18,6 +18,7 @@
 | 905 | [905_feedback_SPEC_REVIEW.md](./905_feedback_SPEC_REVIEW.md) | SPEC_REVIEW | 完了 | 2026-05-27 | レート制限/bot を _shared 共通化(R1)、scrubPII import(R2) |
 | 101 | [101_feedback_IMPL_REPORT.md](./101_feedback_IMPL_REPORT.md) | IMPL_REPORT | 実装完了 | 2026-05-27 | 👍/👎+バグ報告+PII scrub+レート制限、8テスト green |
 | 102 | [102_feedback_UNIT_TEST_REPORT.md](./102_feedback_UNIT_TEST_REPORT.md) | UNIT_TEST_REPORT | 実装完了 | 2026-05-27 | 8/8 green(SEC-002/004) |
+| 103 | [103_feedback_E2E_REPORT.md](./103_feedback_E2E_REPORT.md) | E2E_REPORT | E2E green | 2026-05-27 | UC5 👍/バグ報告/価格透明性 3 spec pass(設定にマウント) |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
