@@ -1,6 +1,6 @@
 # 持ち出し袋チェッカー 開発シナリオ
 
-**最終更新**: 2026-05-26 19:55
+**最終更新**: 2026-05-27 16:05
 **生成元**: /flow:concept (初回) / /flow:scenario (更新)
 **シナリオ種別**: 新規 MVP 立ち上げ (UI あり PWA、公開 + 100円の投げ銭/任意支援)
 
@@ -66,14 +66,15 @@
 ## 5. 現在地カーソル
 
 <!-- AUTO-GENERATED:BEGIN scenario-cursor -->
-- 現在フェーズ: Phase 1.5 (デザインシステム) — SoT 生成済み (視覚レビューは画面実装後)
-- 進行中ターゲット: なし (Phase 2 機能設計 着手待ち)
-- 最終更新セッション: D20260526_005_design_system (auto loop D20260526_002 経由)
-- 最終更新時刻: 2026-05-26 20:27
-- 完了フェーズ: [Phase 1, Phase 1.5(SoT)]
-- 次の推奨コマンド: /flow:feature _shared/db (Phase 2 基盤起点、優先度順: db → ui → auth → notification → service-info → legal → billing → inventory → feedback → inspection → shopping-list)
-- 備考: secure(concept L1)済 / initial 見積済 / design-system.md(ティールグリーン)済。視覚レビューは画面実装後に /flow:design --review-only。課金=**100円の投げ銭(任意支援、機能アンロックなし)**に変更済(D-028、買い切り D-024 を supersede)。全機能無料、billing 優先度 3→2、shopping-list の billing 依存解消
+- 現在フェーズ: Phase 4 (公開準備) — 実装完了、リリース工程待ち
+- 進行中ターゲット: なし (全 11 ターゲット実装完了)
+- 最終更新セッション: D20260527_038_scenario_update (auto loop D20260527_035 経由)
+- 最終更新時刻: 2026-05-27 16:05
+- 完了フェーズ: [Phase 1, Phase 1.5, Phase 2 (機能設計 全 11), Phase 3 (実装: unit 145 + E2E 11 + 視覚デザインレビュー、全 green)]
+- 次の推奨コマンド: /flow:wording (P4.45 Wording gate、未実行 — UI コピー校正) → /flow:release (P4.7、実キー FILL + ローカルスマホ動作確認 + デプロイ)
+- 備考: リリース前 full 監査済 (AUDIT_20260527_1549、検出 High=O48 service-info エンドポイント未配線 → D-037 で api/service-info.ts 配線・解消済)。残はリリース工程 (Class C 実キー + Clerk/Stripe/Resend 配線 + Class B デプロイ) と wording (Class C コピー校正) で、いずれも人間主導が必要。課金=100円の投げ銭(任意支援、機能アンロックなし)
 <!-- AUTO-GENERATED:END scenario-cursor -->
 
 ## 6. 変更履歴
 - 2026-05-26: /flow:concept で初回生成(新規 MVP 立ち上げシナリオ、/flow:ideate から連鎖)
+- 2026-05-27 16:05: /flow:scenario --update で §5 カーソルを reconcile (AUDIT-structure-001 drift シューティング、decision_id=D20260527-096)。実態 (全 11 実装完了 + unit 145/E2E 11/視覚レビュー green + full 監査済 + Release gate 到達) に同期。Phase 1.5 表記の stale を解消
