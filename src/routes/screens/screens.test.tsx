@@ -86,4 +86,15 @@ describe("SettingsScreen (配線)", () => {
       screen.getByRole("button", { name: /応援する/ }),
     ).toBeInTheDocument();
   });
+
+  it("フィードバックウィジェットがマウントされている (UC5)", async () => {
+    const backend = makeMemoryBackend({ now: () => NOW });
+    renderWithBackend(<SettingsScreen />, backend);
+    expect(
+      await screen.findByRole("button", { name: "良い" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "不具合を報告" }),
+    ).toBeInTheDocument();
+  });
 });
