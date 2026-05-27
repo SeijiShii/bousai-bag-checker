@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
 **最終更新**: 2026-05-27 (+09:00)
-**総セッション数**: 31 (... + tdd:shopping-list, app-shell bootstrap)
-**総 decision 数**: 82
-**進捗**: **P4 unit 11/11 + app shell bootstrap 完了**(134テスト green、keyless 起動可、build OK、本番api経路配線済)。次=P4.4(b) Design 視覚レビュー / P4.5 E2E gate(両方 app shell で解錠済)→ P4.7 Release(実キー+デプロイ)
+**総セッション数**: 32 (... + app-shell bootstrap, design 視覚レビュー)
+**総 decision 数**: 84
+**進捗**: **P4 unit 11/11 + bootstrap + P4.4(b) Design 視覚レビュー 完了**(135テスト green)。次=P4.5 E2E gate(/flow:e2e、Playwright 導入済)→ P4.7 Release。※ /flow:wording(P4.45、人間対話)は仕上げで推奨
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
@@ -16,6 +16,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_032_design_review.md](./D20260527_032_design_review.md) | 2026-05-27 | /flow:design --review-only | 全画面 | D20260527-083〜084 | 完了 |
 | [D20260527_031_tdd_app-shell.md](./D20260527_031_tdd_app-shell.md) | 2026-05-27 | /flow:auto (bootstrap) | app-shell | D20260527-079〜082 | 完了 |
 | [D20260527_030_tdd_shopping-list.md](./D20260527_030_tdd_shopping-list.md) | 2026-05-27 | /flow:tdd | shopping-list | D20260527-078 | 完了 |
 | [D20260527_029_tdd_inspection.md](./D20260527_029_tdd_inspection.md) | 2026-05-27 | /flow:tdd | inspection | D20260527-077 | 完了 |
@@ -52,6 +53,8 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-084 | /flow:design | 視覚レビュー逸脱対応 | [High]品目追加導線欠落をTDD修正(常設追加ボタン)、視覚/O38/O41/O43 PASS | auto-recommended | D20260527_032_design_review.md |
+| D20260527-083 | /flow:design | 視覚レビュー手法 | system chrome+Playwright(channel:chrome、DL無)でkeyless dev をスクショ | auto-recommended | D20260527_032_design_review.md |
 | D20260527-082 | /flow:auto | app-shell Phase E | dev launcher(keyless smoke)+CI+.env.example、O36/O37 完了 | auto-recommended | D20260527_031_tdd_app-shell.md |
 | D20260527-081 | /flow:auto | app-shell Phase D | api core(SEC-001/PGlite)+Vercel adapters+httpBackend、実SDKはrelease注入 | auto-recommended | D20260527_031_tdd_app-shell.md |
 | D20260527-080 | /flow:auto | app-shell データ層 | injectable Backend port(memory keyless/http本番)、最小pathルーティング | auto-recommended | D20260527_031_tdd_app-shell.md |

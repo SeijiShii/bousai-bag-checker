@@ -39,6 +39,14 @@ describe("InventoryScreen (配線)", () => {
     await screen.findByText("非常食(アルファ米)"); // 再描画後も他は残る
     expect(screen.queryByText("保存水 2L")).not.toBeInTheDocument();
   });
+
+  it("品目がある時もヘッダの「追加」でフォームを開ける (視覚レビュー High 修正)", async () => {
+    const backend = makeMemoryBackend({ seed: true, now: () => NOW });
+    renderWithBackend(<InventoryScreen />, backend);
+    await screen.findByText("保存水 2L");
+    fireEvent.click(screen.getByRole("button", { name: "追加" }));
+    expect(screen.getByRole("button", { name: "保存" })).toBeInTheDocument();
+  });
 });
 
 describe("ShoppingScreen (配線、無料 D-028)", () => {
