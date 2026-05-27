@@ -1,6 +1,6 @@
 # 持ち出し袋チェッカー 開発シナリオ
 
-**最終更新**: 2026-05-27 16:05
+**最終更新**: 2026-05-27 21:30
 **生成元**: /flow:concept (初回) / /flow:scenario (更新)
 **シナリオ種別**: 新規 MVP 立ち上げ (UI あり PWA、公開 + 100円の投げ銭/任意支援)
 
@@ -66,15 +66,16 @@
 ## 5. 現在地カーソル
 
 <!-- AUTO-GENERATED:BEGIN scenario-cursor -->
-- 現在フェーズ: Phase 4 (公開準備) — 実装完了、リリース工程待ち
-- 進行中ターゲット: なし (全 11 ターゲット実装完了)
-- 最終更新セッション: D20260527_038_scenario_update (auto loop D20260527_035 経由)
-- 最終更新時刻: 2026-05-27 16:05
-- 完了フェーズ: [Phase 1, Phase 1.5, Phase 2 (機能設計 全 11), Phase 3 (実装: unit 145 + E2E 11 + 視覚デザインレビュー、全 green)]
-- 次の推奨コマンド: /flow:wording (P4.45 Wording gate、未実行 — UI コピー校正) → /flow:release (P4.7、実キー FILL + ローカルスマホ動作確認 + デプロイ)
-- 備考: リリース前 full 監査済 (AUDIT_20260527_1549、検出 High=O48 service-info エンドポイント未配線 → D-037 で api/service-info.ts 配線・解消済)。残はリリース工程 (Class C 実キー + Clerk/Stripe/Resend 配線 + Class B デプロイ) と wording (Class C コピー校正) で、いずれも人間主導が必要。課金=100円の投げ銭(任意支援、機能アンロックなし)
+- 現在フェーズ: Phase 4 (公開準備) — 全実装 + 多言語対応 + 全ゲート (Wording まで) 通過、Release gate 待ち
+- 進行中ターゲット: なし (全 11 ターゲット + _shared/i18n 実装完了)
+- 最終更新セッション: D20260527_047_scenario_update (auto loop D20260527_035 経由)
+- 最終更新時刻: 2026-05-27 21:30
+- 完了フェーズ: [Phase 1, Phase 1.5, Phase 2 (機能設計 全 11 + i18n), Phase 3 (実装: unit 156 + E2E 18 + 視覚レビュー、全 green), 多言語対応 i18n (ja/en/zh-Hans/ko、concept→e2e→wording 全工程), Wording gate (P4.45 通過)]
+- 次の推奨コマンド: **/flow:release (P4.7、唯一の残ゲート)** — 実キー FILL (Clerk/Stripe/Resend/Neon/Sentry/R2) + SDK 配線 + ローカルスマホ動作確認 + デプロイ。Class C/B = ユーザー主導必須
+- 備考: no-key/Class-A 作業はすべて完了 (audit/secure fresh、drift ゼロ、O48 配線済、i18n 完成、Wording 通過)。残るは Release gate のみ (実キーは人間保有 = Class C、デプロイ = Class B)。公開 PJ のため Release 後 P4.8 Promote gate (告知文、要サブドメイン確定)。課金=100円の投げ銭(任意支援、機能アンロックなし)
 <!-- AUTO-GENERATED:END scenario-cursor -->
 
 ## 6. 変更履歴
 - 2026-05-26: /flow:concept で初回生成(新規 MVP 立ち上げシナリオ、/flow:ideate から連鎖)
 - 2026-05-27 16:05: /flow:scenario --update で §5 カーソルを reconcile (AUDIT-structure-001 drift シューティング、decision_id=D20260527-096)。実態 (全 11 実装完了 + unit 145/E2E 11/視覚レビュー green + full 監査済 + Release gate 到達) に同期。Phase 1.5 表記の stale を解消
+- 2026-05-27 21:30: /flow:scenario --update で §5 カーソルを reconcile (decision_id=D20260527-109)。多言語対応 i18n の追加・完成 + Wording gate 通過を反映。残ゲートは Release (P4.7) のみであることを明記

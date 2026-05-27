@@ -1,8 +1,8 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
-**最終更新**: 2026-05-27 21:24 (+09:00)
-**総セッション数**: 46 (... + e2e(i18n), wording(catalog))
-**総 decision 数**: 108
+**最終更新**: 2026-05-27 21:30 (+09:00)
+**総セッション数**: 47 (... + wording(catalog), scenario)
+**総 decision 数**: 109
 **i18n**: 多言語基盤 (ja/en/zh-Hans/ko) 実装 + E2E green + Wording gate 通過 (D-104〜108、catalog 校正済)。**残るは P4.7 Release gate のみ** (実キー FILL + SDK 配線 + デプロイ、Class C/B、ユーザー主導)
 **新スコープ**: 多言語対応 (i18n) を追加 (D-101)。UI 4 言語(ja/en/zh-Hans/ko) + react-i18next、法務は JA 正本。`_shared/i18n` 設計完了 (D-102、001-004)。次=`/flow:spec-review _shared/i18n` → tdd 実装
 **進捗**: **autonomous 全完了** (unit 145 + E2E 11 green、bootstrap/Design/E2E すべて green)。**リリース前 full 監査 (D-036)** → High 1 件 (O48 service-info エンドポイント未配線) を検出 → **D-037 で `api/service-info.ts` 配線・撃ち落とし完了** (9 スモーク green、145 total)。**P4.7 Release は Class C/B 境界でユーザー主導待ち** (実キー FILL + Clerk/Stripe/Resend 配線 + Vercel デプロイ)。※ /flow:wording(P4.45)は仕上げで推奨
@@ -18,6 +18,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_047_scenario_update.md](./D20260527_047_scenario_update.md) | 2026-05-27 | /flow:scenario | --update (i18n+wording 反映) | D20260527-109 | 完了 |
 | [D20260527_046_wording_catalog.md](./D20260527_046_wording_catalog.md) | 2026-05-27 | /flow:wording | i18n catalog (P4.45) | D20260527-108 | 完了 |
 | [D20260527_045_e2e__shared_i18n.md](./D20260527_045_e2e__shared_i18n.md) | 2026-05-27 | /flow:e2e | _shared/i18n (103) | D20260527-106〜107 | 完了 |
 | [D20260527_044_tdd__shared_i18n.md](./D20260527_044_tdd__shared_i18n.md) | 2026-05-27 | /flow:tdd | _shared/i18n (101/102) | D20260527-104〜105 | 完了 |
@@ -69,6 +70,7 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-109 | /flow:scenario | §5 カーソル reconcile | i18n+Wording 反映、残ゲート=Release のみ明記 | auto-recommended | D20260527_047_scenario_update.md |
 | D20260527-108 | /flow:wording | i18n カタログ校正 | 大半オントーン確認、settings.leadDays のみ柔らか化、parity維持 | explicit-choice | D20260527_046_wording_catalog.md |
 | D20260527-107 | /flow:e2e | i18n E2E ロケール安定化 | config locale=ja-JP固定+文字列追従+switcher testid | auto-recommended | D20260527_045_e2e__shared_i18n.md |
 | D20260527-106 | /flow:e2e | html lang バグ即修正 | 初期/リロード時 html lang 未同期→languageChanged リスナーで一元化、18 E2E green | auto-recommended | D20260527_045_e2e__shared_i18n.md |
