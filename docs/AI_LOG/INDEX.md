@@ -1,9 +1,9 @@
 # AI_LOG インデックス — 持ち出し袋チェッカー
 
-**最終更新**: 2026-05-27 16:25 (+09:00)
-**総セッション数**: 41 (... + secure-deps, concept-update(i18n))
-**総 decision 数**: 101
-**新スコープ**: 多言語対応 (i18n) を追加 (D-101)。UI 4 言語(ja/en/zh-Hans/ko) + react-i18next、法務は JA 正本。新 横断 `_shared/i18n` (優先度1)。次=`/flow:feature _shared/i18n`
+**最終更新**: 2026-05-27 16:30 (+09:00)
+**総セッション数**: 42 (... + concept-update(i18n), feature(i18n))
+**総 decision 数**: 102
+**新スコープ**: 多言語対応 (i18n) を追加 (D-101)。UI 4 言語(ja/en/zh-Hans/ko) + react-i18next、法務は JA 正本。`_shared/i18n` 設計完了 (D-102、001-004)。次=`/flow:spec-review _shared/i18n` → tdd 実装
 **進捗**: **autonomous 全完了** (unit 145 + E2E 11 green、bootstrap/Design/E2E すべて green)。**リリース前 full 監査 (D-036)** → High 1 件 (O48 service-info エンドポイント未配線) を検出 → **D-037 で `api/service-info.ts` 配線・撃ち落とし完了** (9 スモーク green、145 total)。**P4.7 Release は Class C/B 境界でユーザー主導待ち** (実キー FILL + Clerk/Stripe/Resend 配線 + Vercel デプロイ)。※ /flow:wording(P4.45)は仕上げで推奨
 **横断 TODO (spec-review 由来)**: 公開EPレート制限/bot を `src/services/ratelimit/` 共通化(feedback/tip/service-info)
 
@@ -17,6 +17,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260527_042_feature__shared_i18n.md](./D20260527_042_feature__shared_i18n.md) | 2026-05-27 | /flow:feature | _shared/i18n (設計 4 文書) | D20260527-102 | 完了 |
 | [D20260527_041_concept_update_i18n.md](./D20260527_041_concept_update_i18n.md) | 2026-05-27 | /flow:concept | UPDATE (多言語 i18n スコープ追加) | D20260527-100〜101 | 完了 |
 | [D20260527_040_secure_deps.md](./D20260527_040_secure_deps.md) | 2026-05-27 | /flow:secure | --phase=deps (L4 CVE) | D20260527-098〜099 | 完了 |
 | [D20260527_039_concept_update_20260527.md](./D20260527_039_concept_update_20260527.md) | 2026-05-27 | /flow:concept | UPDATE (§8 論点 status reconcile) | D20260527-097 | 完了 |
@@ -63,6 +64,7 @@
 
 | ID | command | phase | chosen (短縮) | type | ファイル |
 |---|---|---|---|---|---|
+| D20260527-102 | /flow:feature | i18n 設計 4 文書 | react-i18next+4ロケールJSON+useLocale/Switcher、~50キー化(校正4件反映)、5 Phase | auto-recommended | D20260527_042_feature__shared_i18n.md |
 | D20260527-101 | /flow:concept | i18n 設計判断 | ja+en+zh-Hans+ko / react-i18next / UIのみ4言語・法務JA正本 | explicit-choice | D20260527_041_concept_update_i18n.md |
 | D20260527-100 | /flow:concept | i18n pivot | Wording gate でユーザーが多言語要件提示→i18n基盤導入へ転換 | explicit-choice | D20260527_041_concept_update_i18n.md |
 | D20260527-099 | /flow:secure | dev CVE 8件 defer | esbuild/vite/vitest dev-only→Dependabot委譲、release非ブロッカー | auto-recommended | D20260527_040_secure_deps.md |
