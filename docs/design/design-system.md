@@ -115,12 +115,37 @@
 
 ---
 
-## 7. アイコン & イラスト戦略
+## 7. アイコン & イラスト & ブランドマーク 戦略
 
 - **UI アイコン**: OSS アイコンセット(例: lucide)。**絵文字は使わない**(環境依存で崩れる + 一貫性欠如)。
 - **ブランド表現/空状態/入口ヒーロー**: 自作 SVG イラスト(line-art、`currentColor`/テーマ色追従、no-key)。防災備蓄の「整頓された棚」「チェック済みリスト」等を穏やかに。
 - **写実ラスター画像**: 原則使わない(必要時のみ任意・要キーのエスケープハッチ)。品目写真はユーザーアップロード(R2)で別レイヤー。
 - **アイコンの意味**: 鮮度3段階(fresh=チェック/葉、warn=時計、expired=リフレッシュ/交換)を状態色と組で。
+
+### 7.1 ブランドマーク (favicon / PWA app icon、O56)
+
+**サービスの「アイコン顔」**。ブラウザタブ / iOS ホーム画面 / Android インストール時 / OS スイッチャーでユーザーが本サービスを識別する第一の視覚要素。
+
+**デザイン方向**:
+- 形: 角丸正方形 (radius 14/64) — 落ち着き・iOS / Android 標準シェイプとの整合
+- 背景: `--color-primary` (#2E8B74) — `theme-color` と完全一致 = PWA install 時の background と一体
+- 主役: 白の backpack silhouette (持ち出し袋) + 白の check ✓ アクセント (鮮度の検証済み状態)
+- トーン: line-art (stroke-width 2.5、line-cap=round) — 穏やか / 淡々
+- **絵文字 favicon は NG** (環境依存で iOS/Android で崩れる)
+
+**必須 deliverable (O56 required_signals)**: 単一 SVG ソース `public/favicon.svg` から `scripts/gen-favicon.ts` で派生生成:
+
+| 用途 | ファイル | サイズ | 備考 |
+|---|---|---|---|
+| modern ブラウザタブ | `public/favicon.svg` | vector | **source** |
+| legacy ブラウザタブ | `public/favicon.ico` | multi-resolution (16/32/48) | gen-favicon が生成 |
+| iOS ホーム画面 | `public/apple-touch-icon.png` | 180×180 | 同 |
+| Android インストール | `public/icon-192.png` / `public/icon-512.png` | 192/512 | 同 |
+| Android maskable (safe-area) | `public/icon-maskable-512.png` | 512 (内 80% に主役) | gen-favicon が padding |
+| PWA manifest | `public/manifest.json` | — | `icons[]` 配列 |
+| HTML wiring | `index.html` head | — | `rel="icon"` + `rel="apple-touch-icon"` + `rel="manifest"` |
+
+**再生成**: SVG ソース変更時は `npm run gen:favicon` で全派生を再生成。デザイン変更は **`public/favicon.svg` 1 ファイル編集 → npm run gen:favicon** で完結 (単一ソース原則)。
 
 ---
 
