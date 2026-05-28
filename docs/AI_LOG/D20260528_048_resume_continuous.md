@@ -60,3 +60,41 @@
   - L1 i18n 追加に対する新規 SEC finding ゼロ (React 標準 escape、認可境界外、秘密情報含まず)
   - 過去 SEC findings (SEC-001〜007): すべて accepted-as-requirement / dispatched-to-feature / closed (Step 0.4 重複検出回避)
 - next: release-pre 必須監査 (audit + secure) 完了 → P4.7 Release gate (/flow:release) へ合流
+
+## D20260528-006: [flow] フィードバック CF-20260528-010 適用 — audit #4 に契約 drift 検知追加
+- question: 「ServiceHUB 側の契約変更を audit が検知できない記述になっていないか」
+- chosen: audit.md #4 に `required_signals` AND マッチ検証 (項目 3) を追加、perspectives.md O48 に `required_signals=[HUB_SERVICE_INFO_SECRET, /api/hub/service-info]` を追加
+- chosen_type: command-feedback (CF-20260528-010)
+- context:
+  - audit.md commit 53a1be1 (flow-suite)
+  - perspectives.md commit cfae088 (flow-suite)
+  - 新ルールで本 PJ を grep 検証 → drift 確証取得
+    - required_signals: HUB_SERVICE_INFO_SECRET 不在、/api/hub/service-info 不在
+    - legacy: SERVICE_INFO_TOKEN 6 occurrences、/api/service-info 2 occurrences
+- 余波: AUDIT_20260528_1211 が drift を見逃していた = release-pre 監査として無効だった。当初の P4.7 release dispatch は時期尚早。retrofit → 再 audit/secure → release のシーケンスへ切替
+
+## D20260528-007: O48 契約 drift retrofit の dispatch
+- question: 新ルールが検出した O48 High drift への対応
+- chosen: /flow:revise _shared/service-info を Skill ツールで auto-dispatch (Class A、auto-execute)
+- chosen_type: auto-recommended (§3.0c drift シューティング)
+- context:
+  - 現契約: HUB_SERVICE_INFO_SECRET / /api/hub/service-info / metrics[]{key:"mau"} / response {schemaVersion,service,status,metrics?,version?,extra?}
+  - 旧契約 (本 PJ 現状): SERVICE_INFO_TOKEN / /api/service-info / MAU 未含
+  - 既存 [論点-003] で「契約確定後の調整を追跡」と記述済 = まさに今の retrofit タイミング
+- next: revise 完了後、AUDIT 再生成 (新ルール) + SECURITY 再評価 → release 戻り
+
+## D20260528-008: /flow:revise _shared/service-info 完了
+- question: O48 2026-05-28 契約改訂への retrofit 設計
+- chosen: revise_002_20260528_o48-hub-contract/ サブフォルダに 4 文書 (SPEC/PLAN/UNIT_TEST/E2E_TEST) を生成
+- chosen_type: auto-recommended (auto-pick で改修固有 5 項目を推奨採用)
+  - 動機: perspectives.md O48 2026-05-28 改訂への追従 (audit drift 検出経由)
+  - 後方互換: 一括非互換 (HUB 専用 endpoint、両側同時切替)
+  - リリース: 一括 (HUB registry を seiji が admin 更新)
+  - テスト: 既存 handler.test.ts + api/service-info.test.ts を新 endpoint/shape 用に修正
+  - ロールバック: コード revert (DB 変更なし)
+- context:
+  - 変更ファイル: api/service-info.ts→api/hub/service-info.ts move + 410 stub / collectMetrics.ts response shape 変更 + MAU 算出 / .env.example/.env.local rename / handler.ts コメント / tests 更新
+  - マイグレーション: 不要 (users.updatedAt 既存カラム流用)
+  - 論点-001: MAU の updated_at touch 戦略 = 案 A (auth middleware で全 request touch) を推奨、tdd 着手時に確定
+- depends_on: D20260528-007 (drift retrofit dispatch), CF-20260528-010 (audit ルール改善), perspectives.md O48 2026-05-28 改訂
+- next: /flow:tdd で実装 → AUDIT 再実行 (新ルール、drift 解消確認) → /flow:secure → /flow:release
