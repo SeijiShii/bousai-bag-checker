@@ -46,6 +46,9 @@
 | `package.json` | 低 | `@clerk/backend` 追加 |
 | 全 API route (api/*.ts) | 中 | 現状 throw で 500 だったのが、Clerk dev instance キー設定後に 200/401 として動作 (機能ゲートが実稼働) |
 
+<!-- spec-review R3: 後続 revise (Class A no-key) で同 factory pattern を踏襲する想定 — _shared/billing (makeStripeGateway) / _shared/notification (makeResendSender) / 任意で Upstash rate limiter。composition.ts は 4 SDK seam の集約所のため、ここで pattern を確立し続行は機械的に -->
+
+
 ## 4. 後方互換性
 
 - **互換維持**: ✅ (interface 不変、内部 seam の実装注入のみ)
@@ -82,6 +85,9 @@ export function makeClerkSessionResolver(config: ClerkConfig): SessionResolver {
   return {
     async resolveClerkUserId(req: unknown): Promise<string | null> {
       // 1. req から Authorization header / __session cookie を抽出 (Vercel ApiReq 互換)
+      //    <!-- spec-review R1: req は { headers, url, method } の Web Request minimum subset を満たす形式で
+      //         clerk.authenticateRequest の request プロパティに渡す。Vercel ApiReq は標準で同形式を満たす。
+      //         narrowing が必要なら `req as { headers?: Record<string,string>; url?: string; method?: string }` -->
       // 2. clerk.authenticateRequest({ request, secretKey, publishableKey }) を呼ぶ
       // 3. status='signed-in' なら toAuth().userId、それ以外は null
       // 4. PII を含むエラーは投げず、log 経由で握りつぶし null 返却 (SEC-002 PII ログ漏洩防止)

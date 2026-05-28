@@ -35,6 +35,7 @@
 
 ### Phase 1: `@clerk/backend` インストール + 型確認
 - `npm install @clerk/backend` (devDeps でなく dependencies に、サーバー実行時必要)
+- **バージョン**: `^2.x.x` 系 (現行安定版) を採用 <!-- spec-review R2: major 上げ (3.x 等) は別 revise で扱う、SDK signature 変動 retrofit リスクを限定 -->
 - `createClerkClient` / `authenticateRequest` の型を確認 (TypeScript 補完で動作確認)
 
 ### Phase 2: `clerkAuthClient.ts` 実装 (TDD)
