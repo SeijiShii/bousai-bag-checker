@@ -22,7 +22,7 @@ service-hub 連携(O48)。GET /api/service-info(アプリ層指標を HUB が pu
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
 |---|---|---|---|---|---|
 | [revise_audit-p001_20260527_wire-endpoint](./revise_audit-p001_20260527_wire-endpoint/) | revise | audit-p001 | 実装完了 | O48 endpoint 配線 (api/service-info.ts)、AUDIT High 解消、9 スモーク green | [INDEX](./revise_audit-p001_20260527_wire-endpoint/INDEX.md) |
-| [revise_002_20260528_o48-hub-contract](./revise_002_20260528_o48-hub-contract/) | revise | 002 | 設計完了 | O48 2026-05-28 契約改訂への retrofit (endpoint /api/hub/service-info、env HUB_SERVICE_INFO_SECRET、response 新 shape + MAU 自己申告)。CF-20260528-010 経由 | [INDEX](./revise_002_20260528_o48-hub-contract/INDEX.md) |
+| [revise_002_20260528_o48-hub-contract](./revise_002_20260528_o48-hub-contract/) | revise | 002 | 実装完了 (2026-05-28) | O48 2026-05-28 契約改訂への retrofit (endpoint /api/hub/service-info、env HUB_SERVICE_INFO_SECRET、response 新 shape + MAU 自己申告)。CF-20260528-010 経由、21 tests green + 全 161 tests green + drift 解消 | [INDEX](./revise_002_20260528_o48-hub-contract/INDEX.md) |
 
 ## 関連
 - 親 concept: `../../concept.md` §1.3.2

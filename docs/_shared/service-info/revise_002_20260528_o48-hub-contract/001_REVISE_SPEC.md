@@ -175,15 +175,12 @@ ServiceHUB が 2026-05-28 に確定した契約改訂 ([D20260528-001/002]、per
 ## 9. 未決事項
 
 ### [論点-001] MAU 算出のための updated_at touch 戦略
+- **status**: `解決済` (2026-05-28、案 A 同等を**既存実装で達成**)
 - **影響範囲**: §7.3 データモデル、`users` テーブル更新タイミング
-- **詰めるべき問い**: `users.updated_at` を「実 active」のシグナルにするため、どのタイミングで touch するか?
-- **候補案**:
-  - 案 A: 全 API request (認証通過時) で `updated_at = now()` を update (最も active らしい) ／ 欠点: 全 request に write が乗る (low-traffic なら問題なし)
-  - 案 B: 主要操作 (品目 CRUD / 季節点検開始) のみ touch (write 負荷低) ／ 欠点: read-only 利用が active 扱いされない
-  - 案 C: 暫定で users_total = MAU 近似 (low-traffic 段階、後で A/B へ移行) ／ 欠点: HUB ダッシュボードで「全員 active」と見える
-- **推奨**: **案 A** (auth middleware で touch、無視できる write コスト、MAU 定義が「直近 30 日アクセス」で素直)
-- **判断期限**: 本 revise の /flow:tdd 着手時
-- **担当**: seiji (auto-pick 推奨で進めてよければ案 A 採用)
+- **解決の経緯**: tdd 実装中に `src/services/auth/makeAuth.ts:getOrCreateUser` が既に `onConflictDoUpdate({ set: { updatedAt: new Date() }})` で **認証通過のたびに `users.updated_at` を touch する upsert** を実装済と判明。`requireUser` → `getAuthUserId` → `getOrCreateUser` の経路で全 API request で touch が走る = 案 A (auth middleware touch) と同等のロジックが既に完結している。
+- **採用案**: **案 A 同等 (既存 `getOrCreateUser` upsert で達成、追加実装不要)**
+- **判断期限**: 本 revise の /flow:tdd 着手時 → ✅ 達成 (2026-05-28)
+- **担当**: seiji
 
 ## 10. 更新履歴
 

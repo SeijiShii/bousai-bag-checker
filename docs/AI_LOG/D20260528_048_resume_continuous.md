@@ -98,3 +98,16 @@
   - 論点-001: MAU の updated_at touch 戦略 = 案 A (auth middleware で全 request touch) を推奨、tdd 着手時に確定
 - depends_on: D20260528-007 (drift retrofit dispatch), CF-20260528-010 (audit ルール改善), perspectives.md O48 2026-05-28 改訂
 - next: /flow:tdd で実装 → AUDIT 再実行 (新ルール、drift 解消確認) → /flow:secure → /flow:release
+
+## D20260528-009: /flow:tdd _shared/service-info revise 002 完了
+- question: revise 002 (O48 契約改訂 retrofit) の実装
+- chosen: Phase A+B 実装完了、Phase C は既存 getOrCreateUser upsert で完結 (追加実装不要)
+- chosen_type: auto-recommended (Class A、auto-pick で軽寄り判定 + メイン直接実装)
+- context:
+  - Phase A (重→メイン): collectMetrics 新 shape + api/hub/service-info.ts move + handler.ts 型更新 + tests
+  - Phase B (軽): api/service-info.ts 410 stub + .env rename + コメント更新
+  - Phase C 自動解決: makeAuth.getOrCreateUser の onConflictDoUpdate({set:{updatedAt:new Date()}}) が認証通過毎に touch 済 → 案 A 同等のロジック完結、論点-001 close
+  - テスト: 21 tests green (service-info 関連) / 161 tests green (全体) / build OK
+  - 新 contract drift 検証: HUB_SERVICE_INFO_SECRET 10 occ / /api/hub/service-info 8 occ、旧 signal は説明文のみ残存
+- depends_on: D20260528-007 (revise dispatch), D20260528-008 (revise 設計 4 文書), perspectives.md O48 2026-05-28 改訂
+- next: AUDIT を新ルールで再実行 (drift 解消確認) → /flow:secure → /flow:release (env rename を deploy-target に反映 + デプロイ)
