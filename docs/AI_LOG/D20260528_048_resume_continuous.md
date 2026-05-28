@@ -123,3 +123,13 @@
   - トレンド: 改善継続 (Critical 0、High 1→0→0、Medium 0→1→0)
   - CF-20260528-010 ルール検証: required_signals AND マッチが想定通り drift 検知/解消の双方向で機能
 - next: /flow:secure を release-pre で実行 → P4.7 Release gate 評価へ合流
+
+## D20260528-011: /flow:secure release-pre 再 run (revise 002 後)
+- question: revise 002 retrofit 後の release-pre secure 再確認
+- chosen: SECURITY_DEPS_20260528_1248.md 生成、新規 finding ゼロ
+- chosen_type: auto-recommended
+- context:
+  - L4 deps: 前回と完全同一の 8 Moderate (lockfile 無変更、[論点-009] deferred)
+  - L1 revise 002 影響: O23/O24/O25/O26/O27 すべて finding なし (認証/PII/レート制限の設計原則維持、env rename は gitignore カバー、response 集計値のみ test で assert)
+  - Step 6.5 取り崩し: §8 SEC findings 全 status 確定済、新規 dispatch なし
+- next: P4.7 Release gate 評価 → /flow:release dispatch (Phase 1 = 実キー FILL の対話に入る)
