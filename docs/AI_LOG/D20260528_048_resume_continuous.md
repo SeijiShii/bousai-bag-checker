@@ -111,3 +111,15 @@
   - 新 contract drift 検証: HUB_SERVICE_INFO_SECRET 10 occ / /api/hub/service-info 8 occ、旧 signal は説明文のみ残存
 - depends_on: D20260528-007 (revise dispatch), D20260528-008 (revise 設計 4 文書), perspectives.md O48 2026-05-28 改訂
 - next: AUDIT を新ルールで再実行 (drift 解消確認) → /flow:secure → /flow:release (env rename を deploy-target に反映 + デプロイ)
+
+## D20260528-010: /flow:audit --scope=full 再 run (revise 002 後の drift 解消確認)
+- question: revise 002 retrofit 完了後、新 audit ルールで drift 解消を公式に確認
+- chosen: docs/AUDIT_20260528_1246.md 生成、Critical/High/Medium/Low/Info 全レベル 0 件
+- chosen_type: auto-recommended (release-pre 必須監査 re-run)
+- context:
+  - #1-#3: drift なし
+  - #4 (新 required_signals AND マッチ): HUB_SERVICE_INFO_SECRET 9 occ + /api/hub/service-info 8 occ = 全揃い、旧 signal は deprecation stub の説明文のみ残存
+  - 前回比: AUDIT_20260528_1211 (Medium 1: 命名差異) → 本回 0 (revise 002 で解消)
+  - トレンド: 改善継続 (Critical 0、High 1→0→0、Medium 0→1→0)
+  - CF-20260528-010 ルール検証: required_signals AND マッチが想定通り drift 検知/解消の双方向で機能
+- next: /flow:secure を release-pre で実行 → P4.7 Release gate 評価へ合流
