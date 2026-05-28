@@ -49,3 +49,14 @@
   - #5-#9: 枠組みのみ ⏳
   - トレンド: 改善継続 (前回 High 1 → 本回 High 0)
 - next: /flow:secure を release-pre で実行 → 完了後に P4.7 Release gate 評価へ合流
+
+## D20260528-005: /flow:secure (release-pre, --phase=all) 完了
+- question: release-pre secure (L4 deps + L1 i18n 再評価)
+- chosen: SECURITY_DEPS_20260528.md 生成、新規 finding ゼロ
+- chosen_type: auto-recommended
+- context:
+  - L4 deps: Critical 0 / High 0 / Moderate 8 / Low 0 (前回と完全同一、すべて [論点-009] deferred)
+  - i18n 新 deps (react-i18next/i18next/i18next-browser-languagedetector) は CVE 検出なし
+  - L1 i18n 追加に対する新規 SEC finding ゼロ (React 標準 escape、認可境界外、秘密情報含まず)
+  - 過去 SEC findings (SEC-001〜007): すべて accepted-as-requirement / dispatched-to-feature / closed (Step 0.4 重複検出回避)
+- next: release-pre 必須監査 (audit + secure) 完了 → P4.7 Release gate (/flow:release) へ合流
