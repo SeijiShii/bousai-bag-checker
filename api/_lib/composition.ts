@@ -7,6 +7,8 @@ import type {
 import { makeClerkSessionResolver } from "../../src/services/auth/clerkAuthClient";
 import { makeStripeGateway } from "../../src/services/billing/stripeGateway";
 import type { PaymentGateway } from "../../src/services/billing/paymentGateway";
+import { makeResendSender } from "../../src/services/notification/resendSender";
+import type { EmailSender } from "../../src/services/notification/makeNotification";
 import { makeApiCore, type ApiCore } from "../../src/server/api/apiCore";
 
 /**
@@ -45,11 +47,23 @@ function getGateway(): PaymentGateway | undefined {
   });
 }
 
+/**
+ * Resend EmailSender を env から組み立てる (release Phase で配線、notification/revise_001)。
+ * env 未設定時は undefined を返し、makeApiCore 側で sender 未注入を許容
+ * (scheduler 側で skip / log のみ)。
+ */
+function getSender(): EmailSender | undefined {
+  const apiKey = process.env.RESEND_API_KEY;
+  const fromAddress = process.env.RESEND_FROM_ADDRESS;
+  if (!apiKey || !fromAddress) return undefined;
+  return makeResendSender({ apiKey, fromAddress });
+}
+
 let cached: { core: ApiCore; auth: AuthClient } | undefined;
 
 /**
  * /api/* の合成ルート。getDb (Neon) + apiCore + auth を組み立てる。
- * sender (Resend) / rateLimiter (Upstash) は後続 revise で注入予定。
+ * rateLimiter (Upstash) は任意・後続検討。
  */
 export function composition(): { core: ApiCore; auth: AuthClient } {
   if (!cached) {
@@ -57,9 +71,8 @@ export function composition(): { core: ApiCore; auth: AuthClient } {
     cached = {
       core: makeApiCore(db, {
         gateway: getGateway(),
-        // 後続 revise 注入ポイント:
-        // sender: makeResendSender(process.env.RESEND_API_KEY!),
-        // rateLimiter: makeUpstashRateLimiter(...),
+        sender: getSender(),
+        // 任意・後続検討: rateLimiter: makeUpstashRateLimiter(...),
       }),
       auth: makeAuth(db, getSessionResolver()),
     };

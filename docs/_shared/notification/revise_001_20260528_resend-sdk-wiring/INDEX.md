@@ -1,7 +1,7 @@
 # 改修 #001 — Resend SDK 実 wiring
 
 **実施日**: 2026-05-28
-**状態**: 設計完了 (/flow:tdd で実装予定)
+**状態**: **実装完了 (2026-05-28)** ✅ (unit 182/182 green、typecheck pass、composition seam 3/3)
 
 <!-- AUTO-GENERATED:BEGIN status -->
 
