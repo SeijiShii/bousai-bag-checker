@@ -70,7 +70,7 @@ export interface StripeConfig {
 }
 
 export function makeStripeGateway(config: StripeConfig): PaymentGateway {
-  const stripe = new Stripe(config.secretKey);
+  const stripe = new Stripe(config.secretKey, { apiVersion: '2024-12-18.acacia' }); // <!-- spec-review R2: API version 明示 pin、破壊変更回避 (実装時 SDK latest が指す acacia/basil を確認) -->
   return {
     async createCheckout(amountYen, userId) {
       const session = await stripe.checkout.sessions.create({

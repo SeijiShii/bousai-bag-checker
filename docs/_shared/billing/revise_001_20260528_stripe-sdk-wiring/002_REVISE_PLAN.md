@@ -27,7 +27,7 @@
 
 ### Phase 1: `stripe` インストール
 - `npm install stripe`
-- バージョン: latest stable (確認後 SPEC 反映)
+- **バージョン**: `^17.x.x` 系 (現行安定版、Node.js 18+ 対応) <!-- spec-review R1: major 上げ別 revise、signature 変動 retrofit リスクを限定 (auth R2 と同 pattern) -->
 
 ### Phase 2: `stripeGateway.ts` 実装 (TDD)
 - RED: stripeGateway.test.ts (mock Stripe client、createCheckout / verifyWebhook 各成功・失敗ケース)
